@@ -1,7 +1,9 @@
 <template>
   <div>
     <h1>Create Custom Template Form Builder</h1>
-    <el-select style="width:200px;" v-model="field.type" placeholder="Select">
+    <el-input v-if="field.type=='' && !tempStart" v-model="tempName" style="width:200px;" placeholder="Enter template name "></el-input>
+    <el-button  v-if="field.type=='' && tempName && !tempStart" @click="tempStart=true;" type="primary" style="width:200px;">create new template</el-button>
+    <el-select v-if="tempStart" style="width:200px;" v-model="field.type" placeholder="Select">
       <el-option v-for="item in types" :key="item" :label="item" :value="item"></el-option>
     </el-select>
     <el-input v-if="field.type" placeholder="Enter name" v-model="field.name" style="width:200px;"></el-input>
@@ -29,7 +31,8 @@
     ></el-input>
     <el-input v-if="field.name" placeholder="Enter size" v-model="field.size" style="width:200px;"></el-input>
     <el-checkbox v-if="field.name" v-model="field.clearable">Clearable</el-checkbox>
-    <br><br>
+    <br />
+    <br />
     <el-checkbox v-if="field.name" v-model="field.isDisabled">Disabled</el-checkbox>
     <el-checkbox v-if="field.name" v-model="field.inline">Inline</el-checkbox>
     <br />
@@ -37,7 +40,12 @@
     <el-button @click="add()" v-if="field.name" type="success">Create</el-button>
     <el-button @click="clear()" v-if="field.name" type="danger">Update and Clear</el-button>
     <br />
+    <br />
+    <h3  v-if="fields.length>0">This is your template </h3>
     <form-builder :config="fields"></form-builder>
+    <div>
+      <el-button v-if="fields.length>0" @click="saveTemplate()" type="primary">Save Template</el-button>
+    </div>
   </div>
 </template>
 
@@ -48,6 +56,8 @@ export default {
   name: "DynamicForm",
   data() {
     return {
+      tempName:"",
+      tempStart:false,
       field: {
         type: "",
         name: "",
@@ -242,6 +252,9 @@ export default {
     add() {
       this.fields.push(this.field);
       this.clear();
+    },
+    saveTemplate(){
+      localStorage.setItem(this.tempName,JSON.stringify(this.fields));
     },
     clear() {
       this.field = {

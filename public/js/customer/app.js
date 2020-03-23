@@ -4408,11 +4408,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 // import Config from '../../components/config/form.json';
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "DynamicForm",
   data: function data() {
     return {
+      tempName: "",
+      tempStart: false,
       field: {
         type: "",
         name: "",
@@ -4594,6 +4604,9 @@ __webpack_require__.r(__webpack_exports__);
     add: function add() {
       this.fields.push(this.field);
       this.clear();
+    },
+    saveTemplate: function saveTemplate() {
+      localStorage.setItem(this.tempName, JSON.stringify(this.fields));
     },
     clear: function clear() {
       this.field = {
@@ -34508,27 +34521,59 @@ var render = function() {
     [
       _c("h1", [_vm._v("Create Custom Template Form Builder")]),
       _vm._v(" "),
-      _c(
-        "el-select",
-        {
-          staticStyle: { width: "200px" },
-          attrs: { placeholder: "Select" },
-          model: {
-            value: _vm.field.type,
-            callback: function($$v) {
-              _vm.$set(_vm.field, "type", $$v)
-            },
-            expression: "field.type"
-          }
-        },
-        _vm._l(_vm.types, function(item) {
-          return _c("el-option", {
-            key: item,
-            attrs: { label: item, value: item }
+      _vm.field.type == "" && !_vm.tempStart
+        ? _c("el-input", {
+            staticStyle: { width: "200px" },
+            attrs: { placeholder: "Enter template name " },
+            model: {
+              value: _vm.tempName,
+              callback: function($$v) {
+                _vm.tempName = $$v
+              },
+              expression: "tempName"
+            }
           })
-        }),
-        1
-      ),
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.field.type == "" && _vm.tempName && !_vm.tempStart
+        ? _c(
+            "el-button",
+            {
+              staticStyle: { width: "200px" },
+              attrs: { type: "primary" },
+              on: {
+                click: function($event) {
+                  _vm.tempStart = true
+                }
+              }
+            },
+            [_vm._v("create new template")]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.tempStart
+        ? _c(
+            "el-select",
+            {
+              staticStyle: { width: "200px" },
+              attrs: { placeholder: "Select" },
+              model: {
+                value: _vm.field.type,
+                callback: function($$v) {
+                  _vm.$set(_vm.field, "type", $$v)
+                },
+                expression: "field.type"
+              }
+            },
+            _vm._l(_vm.types, function(item) {
+              return _c("el-option", {
+                key: item,
+                attrs: { label: item, value: item }
+              })
+            }),
+            1
+          )
+        : _vm._e(),
       _vm._v(" "),
       _vm.field.type
         ? _c("el-input", {
@@ -34635,6 +34680,7 @@ var render = function() {
         : _vm._e(),
       _vm._v(" "),
       _c("br"),
+      _vm._v(" "),
       _c("br"),
       _vm._v(" "),
       _vm.field.name
@@ -34705,7 +34751,34 @@ var render = function() {
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
-      _c("form-builder", { attrs: { config: _vm.fields } })
+      _c("br"),
+      _vm._v(" "),
+      _vm.fields.length > 0
+        ? _c("h3", [_vm._v("This is your template ")])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("form-builder", { attrs: { config: _vm.fields } }),
+      _vm._v(" "),
+      _c(
+        "div",
+        [
+          _vm.fields.length > 0
+            ? _c(
+                "el-button",
+                {
+                  attrs: { type: "primary" },
+                  on: {
+                    click: function($event) {
+                      return _vm.saveTemplate()
+                    }
+                  }
+                },
+                [_vm._v("Save Template")]
+              )
+            : _vm._e()
+        ],
+        1
+      )
     ],
     1
   )

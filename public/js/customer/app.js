@@ -2680,6 +2680,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_config_customerForm_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/config/customerForm.json */ "./resources/js/admin/components/config/customerForm.json");
+var _components_config_customerForm_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../../components/config/customerForm.json */ "./resources/js/admin/components/config/customerForm.json", 1);
 //
 //
 //
@@ -2729,11 +2731,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-// import Config from "../../components/config/customerForm.json";
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    customerFormStatus: String // Config,
-
+    customerFormStatus: String,
+    Config: _components_config_customerForm_json__WEBPACK_IMPORTED_MODULE_0__
   },
   data: function data() {
     return {
@@ -2752,8 +2754,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     formConfig: function formConfig() {
-      var Config = JSON.parse(localStorage.getItem("customer"));
-      return Config;
+      // let Config = JSON.parse(localStorage.getItem("customer"));
+      return _components_config_customerForm_json__WEBPACK_IMPORTED_MODULE_0__;
     }
   },
   methods: {
@@ -51909,6 +51911,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginReg_vue_vue_type_template_id_a79593d2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/admin/components/config/customerForm.json":
+/*!****************************************************************!*\
+  !*** ./resources/js/admin/components/config/customerForm.json ***!
+  \****************************************************************/
+/*! exports provided: 0, 1, 2, 3, 4, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("[{\"type\":\"EInput\",\"label\":\"Name\",\"name\":\"name\",\"placeholder\":\"Name\",\"icon\":\"el-icon-user-solid\",\"isDisabled\":false,\"size\":\"small\"},{\"type\":\"EInputNum\",\"label\":\"Age\",\"name\":\"age\",\"placeholder\":\"Enter Age\",\"isClear\":true,\"size\":\"small\"},{\"type\":\"EInput\",\"label\":\"Email\",\"name\":\"email\",\"placeholder\":\"Enter Email\",\"icon\":\"el-icon-message\",\"isDisabled\":false,\"size\":\"small\"},{\"type\":\"ESelect\",\"label\":\"Skills\",\"name\":\"skills\",\"placeholder\":\"Select Skills\",\"clear\":true,\"multiple\":true,\"size\":\"small\",\"params\":{\"options\":[{\"value\":\"angular\",\"label\":\"angular\"},{\"value\":\"vue\",\"label\":\"vue\"},{\"value\":\"react\",\"label\":\"react\"}]}},{\"type\":\"ESwitch\",\"label\":\"Status\",\"name\":\"status\",\"activeColor\":\"green\",\"inActiveColor\":\"red\"}]");
 
 /***/ }),
 

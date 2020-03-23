@@ -30,8 +30,8 @@
         "label": "Skills",
         "name" :"skills",
         "placeholder":"Select Skills",
-        "isClear":true,
-        "isMultiple":true,
+        "clear":true,
+        "multiple":true,
         "size":"small",
         "params": {
             "options": [

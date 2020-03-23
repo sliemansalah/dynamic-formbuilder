@@ -2265,7 +2265,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["name", "params", "valid", "placeholder", "clearable", "multiple", "size", "search", "inline"],
+  props: ["name", "params", "valid", "placeholder", "clearable", "multiple", "size", "search", "width", "inline"],
   data: function data() {
     return {
       selected: ""
@@ -2274,6 +2274,11 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     options: function options() {
       return this.params.options;
+    },
+    inputStyle: function inputStyle() {
+      return {
+        width: this.width
+      };
     }
   }
 });
@@ -32411,7 +32416,7 @@ var render = function() {
           _c(
             "el-select",
             {
-              staticStyle: { width: "100%" },
+              style: _vm.inputStyle,
               attrs: {
                 filterable: _vm.search,
                 size: _vm.size,

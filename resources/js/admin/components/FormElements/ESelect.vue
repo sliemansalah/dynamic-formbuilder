@@ -2,7 +2,7 @@
   <div>
     <el-form-item :prop="valid">
       <el-select
-        style="width:100%;"
+        :style="inputStyle"
         :filterable="search"
         :size="size"
         :multiple="multiple"
@@ -25,7 +25,18 @@
 
 <script>
 export default {
-  props: ["name", "params", "valid", "placeholder","clearable","multiple","size","search","inline"],
+  props: [
+    "name",
+    "params",
+    "valid",
+    "placeholder",
+    "clearable",
+    "multiple",
+    "size",
+    "search",
+    "width",
+    "inline"
+  ],
   data() {
     return {
       selected: ""
@@ -34,6 +45,11 @@ export default {
   computed: {
     options() {
       return this.params.options;
+    },
+    inputStyle() {
+      return {
+        width: this.width
+      };
     }
   }
 };

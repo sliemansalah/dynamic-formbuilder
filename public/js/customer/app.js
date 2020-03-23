@@ -2799,6 +2799,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["config"],
@@ -2868,6 +2874,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     updateField: function updateField(field, value) {
       this.formValues[field] = value;
+    },
+    update: function update(data) {
+      this.$parent.field = data;
     },
     submitForm: function submitForm(formName) {
       var _this = this;
@@ -4395,6 +4404,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 // import Config from '../../components/config/form.json';
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "DynamicForm",
@@ -4412,6 +4425,8 @@ __webpack_require__.r(__webpack_exports__);
         clearable: false,
         inline: false,
         width: "",
+        "delete": true,
+        update: true,
         options: []
       },
       types: ["EInput", "EInputNum", "EDate", "ETime", "ETextarea", "ESwitch", "ECheckbox", "ERadio", "ESelect", "EUpload", "EAddMore"],
@@ -4578,6 +4593,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     add: function add() {
       this.fields.push(this.field);
+      this.clear();
+    },
+    clear: function clear() {
       this.field = {
         type: "",
         name: "",
@@ -4590,28 +4608,12 @@ __webpack_require__.r(__webpack_exports__);
         clearable: false,
         inline: false,
         width: "",
+        "delete": true,
+        update: true,
         options: []
       };
     }
-  },
-  mounted: function mounted() {
-    this.fields.push //   {
-    //     "type": "EInput",
-    //     "label": "First Name",
-    //     "name" :"firstname",
-    //     "valid":"firstname",
-    //     "placeholder":"Enter First Name",
-    //     "icon":"el-icon-user-solid",
-    //     "isDisabled":false,
-    //     "size":"small"
-    // },
-    ();
-  } // computed:{
-  //     formConfig(){
-  //         return Config;
-  //     }
-  // },
-
+  }
 });
 
 /***/ }),
@@ -32293,6 +32295,28 @@ var render = function() {
               "div",
               { key: key, class: field.inline ? "inline ml-15" : "ml-15" },
               [
+                field.delete
+                  ? _c("i", {
+                      staticClass: "fa fa-trash inline",
+                      on: {
+                        click: function($event) {
+                          return _vm.config.splice(key, 1)
+                        }
+                      }
+                    })
+                  : _vm._e(),
+                _vm._v(" "),
+                field.update
+                  ? _c("i", {
+                      staticClass: "fa fa-pen inline",
+                      on: {
+                        click: function($event) {
+                          return _vm.update(field)
+                        }
+                      }
+                    })
+                  : _vm._e(),
+                _vm._v(" "),
                 _c("label", [_vm._v(_vm._s(field.label))]),
                 _vm._v(" "),
                 _c(
@@ -34610,6 +34634,9 @@ var render = function() {
           )
         : _vm._e(),
       _vm._v(" "),
+      _c("br"),
+      _c("br"),
+      _vm._v(" "),
       _vm.field.name
         ? _c(
             "el-checkbox",
@@ -34643,6 +34670,7 @@ var render = function() {
         : _vm._e(),
       _vm._v(" "),
       _c("br"),
+      _vm._v(" "),
       _c("br"),
       _vm._v(" "),
       _vm.field.name
@@ -34659,6 +34687,23 @@ var render = function() {
             [_vm._v("Create")]
           )
         : _vm._e(),
+      _vm._v(" "),
+      _vm.field.name
+        ? _c(
+            "el-button",
+            {
+              attrs: { type: "danger" },
+              on: {
+                click: function($event) {
+                  return _vm.clear()
+                }
+              }
+            },
+            [_vm._v("Update and Clear")]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _c("br"),
       _vm._v(" "),
       _c("form-builder", { attrs: { config: _vm.fields } })
     ],

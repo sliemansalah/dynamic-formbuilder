@@ -4,6 +4,12 @@
       <div v-for="(field, key) in config"
        :key="key"
        :class="field.inline?'inline ml-15':'ml-15'">
+        <i v-if="field.delete"
+          class="fa fa-trash inline"
+          @click="config.splice(key,1)"></i>
+          <i v-if="field.update"
+          class="fa fa-pen inline"
+          @click="update(field)"></i>
         <label>{{ field.label }}</label>
         <component
            v-bind="field"
@@ -101,6 +107,9 @@ export default {
   methods: {
     updateField(field, value) {
       this.formValues[field] = value;
+    },
+    update(data){
+      this.$parent.field = data;
     },
     submitForm(formName) {
       this.$refs[formName].validate(valid => {

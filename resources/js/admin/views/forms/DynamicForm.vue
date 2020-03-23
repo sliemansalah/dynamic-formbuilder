@@ -29,10 +29,14 @@
     ></el-input>
     <el-input v-if="field.name" placeholder="Enter size" v-model="field.size" style="width:200px;"></el-input>
     <el-checkbox v-if="field.name" v-model="field.clearable">Clearable</el-checkbox>
+    <br><br>
     <el-checkbox v-if="field.name" v-model="field.isDisabled">Disabled</el-checkbox>
     <el-checkbox v-if="field.name" v-model="field.inline">Inline</el-checkbox>
-    <br><br>
+    <br />
+    <br />
     <el-button @click="add()" v-if="field.name" type="success">Create</el-button>
+    <el-button @click="clear()" v-if="field.name" type="danger">Update and Clear</el-button>
+    <br />
     <form-builder :config="fields"></form-builder>
   </div>
 </template>
@@ -54,8 +58,10 @@ export default {
         size: "",
         isDisabled: false,
         clearable: false,
-        inline:false,
+        inline: false,
         width: "",
+        delete: true,
+        update: true,
         options: []
       },
       types: [
@@ -69,7 +75,7 @@ export default {
         "ERadio",
         "ESelect",
         "EUpload",
-        "EAddMore",
+        "EAddMore"
       ],
       fields: [
         // {
@@ -235,6 +241,9 @@ export default {
   methods: {
     add() {
       this.fields.push(this.field);
+      this.clear();
+    },
+    clear() {
       this.field = {
         type: "",
         name: "",
@@ -245,32 +254,14 @@ export default {
         size: "",
         isDisabled: false,
         clearable: false,
-        inline:false,
+        inline: false,
         width: "",
+        delete: true,
+        update: true,
         options: []
       };
     }
-  },
-  mounted() {
-    this.fields
-      .push
-      //   {
-      //     "type": "EInput",
-      //     "label": "First Name",
-      //     "name" :"firstname",
-      //     "valid":"firstname",
-      //     "placeholder":"Enter First Name",
-      //     "icon":"el-icon-user-solid",
-      //     "isDisabled":false,
-      //     "size":"small"
-      // },
-      ();
   }
-  // computed:{
-  //     formConfig(){
-  //         return Config;
-  //     }
-  // },
 };
 </script>
 

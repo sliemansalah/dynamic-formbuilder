@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  props: ["placeholder","size"],
+  props: ["placeholder","size","inline"],
   data() {
     return {
       model: ""

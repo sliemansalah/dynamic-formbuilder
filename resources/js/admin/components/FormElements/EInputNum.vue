@@ -19,7 +19,7 @@
 
 <script>
 export default {
-  props: ["placeholder","clearable","icon","isPassword","isDisabled","valid","size","width"],
+  props: ["placeholder","clearable","icon","isPassword","isDisabled","valid","size","width","inline"],
   data() {
     return {
       model: ""

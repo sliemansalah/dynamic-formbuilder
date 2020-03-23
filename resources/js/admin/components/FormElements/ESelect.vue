@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  props: ["name", "params", "valid", "placeholder","clearable","multiple","size","search"],
+  props: ["name", "params", "valid", "placeholder","clearable","multiple","size","search","inline"],
   data() {
     return {
       selected: ""

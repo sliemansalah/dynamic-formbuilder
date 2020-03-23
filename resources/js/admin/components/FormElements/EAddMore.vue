@@ -54,7 +54,8 @@ export default {
     "isDisabled",
     "valid",
     "size",
-    "width"
+    "width",
+    "inline"
   ],
   data() {
     return {

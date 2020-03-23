@@ -50,7 +50,7 @@
 
 <script>
 export default {
-  props: ["limit", "drag", "action", "multiple", "autoUpload"],
+  props: ["limit", "drag", "action", "multiple", "autoUpload","inline"],
   data() {
     return {
           dialogImageUrl: '',

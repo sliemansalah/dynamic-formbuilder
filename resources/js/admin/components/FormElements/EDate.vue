@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  props: ["placeholder","clearable","icon","isDisabled","valid"],
+  props: ["placeholder","clearable","icon","isDisabled","valid","inline"],
   data() {
     return {
       model: ""

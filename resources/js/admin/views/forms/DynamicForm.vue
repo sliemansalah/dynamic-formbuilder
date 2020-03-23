@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Create Custom Template Form Builder</h1>
-    <el-select v-model="field.type" placeholder="Select">
+    <el-select style="width:200px;" v-model="field.type" placeholder="Select">
       <el-option v-for="item in types" :key="item" :label="item" :value="item"></el-option>
     </el-select>
     <el-input v-if="field.type" placeholder="Enter name" v-model="field.name" style="width:200px;"></el-input>
@@ -12,26 +12,26 @@
       v-model="field.label"
       style="width:200px;"
     ></el-input>
-     <el-input
+    <br />
+    <br />
+    <el-input
       v-if="field.name"
       placeholder="Enter placeholder"
       v-model="field.placeholder"
       style="width:200px;"
     ></el-input>
+    <el-input v-if="field.name" placeholder="Enter icon" v-model="field.icon" style="width:200px;"></el-input>
     <el-input
       v-if="field.name"
-      placeholder="Enter icon"
-      v-model="field.icon"
+      placeholder="Enter width"
+      v-model="field.width"
       style="width:200px;"
     ></el-input>
-    <el-input
-      v-if="field.name"
-      placeholder="Enter size"
-      v-model="field.size"
-      style="width:200px;"
-    ></el-input>
-        <el-checkbox v-if="field.name" v-model="field.clearable">Clearable</el-checkbox>
+    <el-input v-if="field.name" placeholder="Enter size" v-model="field.size" style="width:200px;"></el-input>
+    <el-checkbox v-if="field.name" v-model="field.clearable">Clearable</el-checkbox>
     <el-checkbox v-if="field.name" v-model="field.isDisabled">Disabled</el-checkbox>
+    <el-checkbox v-if="field.name" v-model="field.inline">Inline</el-checkbox>
+    <br><br>
     <el-button @click="add()" v-if="field.name" type="success">Create</el-button>
     <form-builder :config="fields"></form-builder>
   </div>
@@ -48,12 +48,15 @@ export default {
         type: "",
         name: "",
         label: "",
-        valid:"",
-        placeholder:"",
-        icon:"",
-        isDisabled:false,
-        size:"",
-        clearable:""
+        valid: "",
+        placeholder: "",
+        icon: "",
+        size: "",
+        isDisabled: false,
+        clearable: false,
+        inline:false,
+        width: "",
+        options: []
       },
       types: [
         "EInput",
@@ -66,7 +69,7 @@ export default {
         "ERadio",
         "ESelect",
         "EUpload",
-        "EAddMore"
+        "EAddMore",
       ],
       fields: [
         // {
@@ -236,27 +239,32 @@ export default {
         type: "",
         name: "",
         label: "",
-        valid:"",
-        placeholder:"",
-        icon:"",
-        isDisabled:false,
-        size:""
+        valid: "",
+        placeholder: "",
+        icon: "",
+        size: "",
+        isDisabled: false,
+        clearable: false,
+        inline:false,
+        width: "",
+        options: []
       };
     }
   },
-  mounted(){
-      this.fields.push(
-        //   {
-        //     "type": "EInput",
-        //     "label": "First Name",
-        //     "name" :"firstname",
-        //     "valid":"firstname",
-        //     "placeholder":"Enter First Name",
-        //     "icon":"el-icon-user-solid",
-        //     "isDisabled":false,
-        //     "size":"small"
-        // },
-      )
+  mounted() {
+    this.fields
+      .push
+      //   {
+      //     "type": "EInput",
+      //     "label": "First Name",
+      //     "name" :"firstname",
+      //     "valid":"firstname",
+      //     "placeholder":"Enter First Name",
+      //     "icon":"el-icon-user-solid",
+      //     "isDisabled":false,
+      //     "size":"small"
+      // },
+      ();
   }
   // computed:{
   //     formConfig(){

@@ -1,14 +1,16 @@
 <template>
   <div>
     <el-form ref="ruleForm" :model="formValues" :rules="runValid?rules:null">
-      <div v-for="(field, key) in config" :key="key">
+      <div v-for="(field, key) in config"
+       :key="key"
+       :class="field.inline?'inline ml-15':'ml-15'">
         <label>{{ field.label }}</label>
         <component
            v-bind="field"
           :is="field.type"
           @input="updateField(field.name, $event)"
         ></component>
-      </div>
+        </div>
       <div>
       </div>
     </el-form>
@@ -121,4 +123,10 @@ export default {
 </script>
 
 <style>
+.inline{
+  display:inline-block;
+}
+.ml-15{
+    margin-left:15px;
+}
 </style>

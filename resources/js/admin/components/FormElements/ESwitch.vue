@@ -17,6 +17,7 @@ export default {
     "activeColor",
     "inActiveColor",
     "valid",
+    "inline"
   ],
   data() {
     return {

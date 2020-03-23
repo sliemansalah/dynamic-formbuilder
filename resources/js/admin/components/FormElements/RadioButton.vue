@@ -14,7 +14,7 @@
 
 <script>
 export default {
-props:['name','params'],
+props:['name','params',"inline"],
 computed: {
   options(){
     return this.params.options;

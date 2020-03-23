@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  props: ["name", "params","valid"],
+  props: ["name", "params","valid","inline"],
   data() {
     return {
       radio: ""

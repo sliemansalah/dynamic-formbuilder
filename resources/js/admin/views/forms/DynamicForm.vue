@@ -48,8 +48,8 @@
     <el-checkbox v-if="field.name" v-model="field.clearable">Clearable</el-checkbox>
     <el-checkbox v-if="field.name" v-model="field.isDisabled">Disabled</el-checkbox>
     <el-checkbox v-if="field.name" v-model="field.inline">Inline</el-checkbox>
-    <el-checkbox v-if="field.name" v-model="field.multiple">Multiple</el-checkbox>
-    <el-checkbox v-if="field.name" v-model="field.search">Search</el-checkbox>
+    <el-checkbox v-if="field.name && field.type=='ESelect'" v-model="field.multiple">Multiple</el-checkbox>
+    <el-checkbox v-if="field.name && field.type=='ESelect'" v-model="field.search">Search</el-checkbox>
 
     <br />
     <br />

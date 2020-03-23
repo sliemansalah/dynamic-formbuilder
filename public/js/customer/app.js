@@ -35649,7 +35649,7 @@ var render = function() {
           )
         : _vm._e(),
       _vm._v(" "),
-      _vm.field.name
+      _vm.field.name && _vm.field.type == "ESelect"
         ? _c(
             "el-checkbox",
             {
@@ -35665,7 +35665,7 @@ var render = function() {
           )
         : _vm._e(),
       _vm._v(" "),
-      _vm.field.name
+      _vm.field.name && _vm.field.type == "ESelect"
         ? _c(
             "el-checkbox",
             {

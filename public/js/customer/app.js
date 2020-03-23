@@ -4507,7 +4507,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         update: true,
         options: []
       },
-      types: ["EInput", "EInputNum", "EDate", "ETime", "ETextarea", "ESwitch", "ECheckbox", "ERadio", "ESelect", "EUpload", "EAddMore"],
+      types: ["EInput", "EInputNum", "EDate", "ETime", "ETextarea", "ESwitch", "ECheckbox", "ESelect"],
       fields: [// {
         //     "type": "EInput",
         //     "label": "First Name",

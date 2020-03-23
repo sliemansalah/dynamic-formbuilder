@@ -128,10 +128,7 @@ export default {
         "ETextarea",
         "ESwitch",
         "ECheckbox",
-        "ERadio",
         "ESelect",
-        "EUpload",
-        "EAddMore"
       ],
       fields: [
         // {

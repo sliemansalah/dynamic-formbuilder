@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Create Custom Template Form Builder</h1>
-    <el-button @click="loadTemplate()">Load Template</el-button>
+    <!-- <el-button @click="loadTemplate()">Load Template</el-button> -->
     <el-input
       v-if="field.type=='' && !tempStart"
       v-model="tempName"
@@ -48,6 +48,33 @@
     <el-checkbox v-if="field.name" v-model="field.clearable">Clearable</el-checkbox>
     <el-checkbox v-if="field.name" v-model="field.isDisabled">Disabled</el-checkbox>
     <el-checkbox v-if="field.name" v-model="field.inline">Inline</el-checkbox>
+    <el-checkbox v-if="field.name" v-model="field.multiple">Multiple</el-checkbox>
+    <el-checkbox v-if="field.name" v-model="field.search">Search</el-checkbox>
+
+    <br />
+    <br />
+
+    <div v-if="field.type=='ESelect'">
+      <el-card>
+        <h3>Select Options</h3>
+        <i @click="addNewSelectOption()" class="fa fa-plus"></i>
+        <br />
+        <br />
+        <div class="mt-15" v-for="(item1,key) in selectOptions" :key="key">
+          <el-input
+            placeholder="Enter Option Value"
+            v-model="selectOptions[key].value"
+            class="w-200"
+          ></el-input>
+          <el-input
+            placeholder="Enter Label Value"
+            v-model="selectOptions[key].label"
+            class="w-200"
+          ></el-input>
+          <i @click="selectOptions.splice(key,1)" class="fa fa-trash"></i>
+        </div>
+      </el-card>
+    </div>
     <br />
     <br />
     <el-button @click="add()" v-if="field.name" type="success">Create</el-button>
@@ -71,6 +98,7 @@ export default {
     return {
       tempName: "",
       tempStart: false,
+      selectOptions:[],
       field: {
         type: "",
         name: "",
@@ -82,13 +110,16 @@ export default {
         isDisabled: false,
         clearable: false,
         inline: false,
+        multiple:false,
+        search:false,
         width: "",
         activeColor: "",
         inActiveColor: "",
+        params: { options: []},
         delete: true,
         update: true,
-        options: []
-      },
+        options: [],
+        },
       types: [
         "EInput",
         "EInputNum",
@@ -265,6 +296,7 @@ export default {
   },
   methods: {
     add() {
+      this.field.params.options =  this.selectOptions;
       this.fields.push(this.field);
       this.clear();
     },
@@ -297,14 +329,25 @@ export default {
         isDisabled: false,
         clearable: false,
         inline: false,
+        multiple:false,
+        search:false,
         width: "",
         activeColor: "",
         inActiveColor: "",
+        params: { options: []},
         delete: true,
         update: true,
         options: []
       };
+    },
+    addNewSelectOption(){
+       this.selectOptions.push(
+      {value:'',label:''}
+    )
     }
+  },
+  mounted(){
+    this.addNewSelectOption();
   }
 };
 </script>
@@ -312,5 +355,8 @@ export default {
 <style>
 .w-200 {
   width: 200px;
+}
+.mt-15 {
+  margin-top: 15px;
 }
 </style>

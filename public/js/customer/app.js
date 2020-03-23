@@ -2759,6 +2759,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     update: function update() {
       this.customer = this.$children[0].formValues;
+      this.$children[0].field.params.options = this.$children[0].selectOptions;
       this.$emit("update", this.customer);
       this.clear();
     },
@@ -4448,6 +4449,33 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 // import Config from '../../components/config/form.json';
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "DynamicForm",
@@ -4455,6 +4483,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       tempName: "",
       tempStart: false,
+      selectOptions: [],
       field: {
         type: "",
         name: "",
@@ -4466,9 +4495,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         isDisabled: false,
         clearable: false,
         inline: false,
+        multiple: false,
+        search: false,
         width: "",
         activeColor: "",
         inActiveColor: "",
+        params: {
+          options: []
+        },
         "delete": true,
         update: true,
         options: []
@@ -4636,6 +4670,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   methods: {
     add: function add() {
+      this.field.params.options = this.selectOptions;
       this.fields.push(this.field);
       this.clear();
     },
@@ -4686,14 +4721,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         isDisabled: false,
         clearable: false,
         inline: false,
+        multiple: false,
+        search: false,
         width: "",
         activeColor: "",
         inActiveColor: "",
+        params: {
+          options: []
+        },
         "delete": true,
         update: true,
         options: []
       };
+    },
+    addNewSelectOption: function addNewSelectOption() {
+      this.selectOptions.push({
+        value: '',
+        label: ''
+      });
     }
+  },
+  mounted: function mounted() {
+    this.addNewSelectOption();
   }
 });
 
@@ -6159,7 +6208,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.w-200 {\r\n  width: 200px;\n}\r\n", ""]);
+exports.push([module.i, "\n.w-200 {\r\n  width: 200px;\n}\n.mt-15 {\r\n  margin-top: 15px;\n}\r\n", ""]);
 
 // exports
 
@@ -35378,18 +35427,6 @@ var render = function() {
     [
       _c("h1", [_vm._v("Create Custom Template Form Builder")]),
       _vm._v(" "),
-      _c(
-        "el-button",
-        {
-          on: {
-            click: function($event) {
-              return _vm.loadTemplate()
-            }
-          }
-        },
-        [_vm._v("Load Template")]
-      ),
-      _vm._v(" "),
       _vm.field.type == "" && !_vm.tempStart
         ? _c("el-input", {
             staticClass: "w-200",
@@ -35609,6 +35646,113 @@ var render = function() {
               }
             },
             [_vm._v("Inline")]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.field.name
+        ? _c(
+            "el-checkbox",
+            {
+              model: {
+                value: _vm.field.multiple,
+                callback: function($$v) {
+                  _vm.$set(_vm.field, "multiple", $$v)
+                },
+                expression: "field.multiple"
+              }
+            },
+            [_vm._v("Multiple")]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.field.name
+        ? _c(
+            "el-checkbox",
+            {
+              model: {
+                value: _vm.field.search,
+                callback: function($$v) {
+                  _vm.$set(_vm.field, "search", $$v)
+                },
+                expression: "field.search"
+              }
+            },
+            [_vm._v("Search")]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _vm.field.type == "ESelect"
+        ? _c(
+            "div",
+            [
+              _c(
+                "el-card",
+                [
+                  _c("h3", [_vm._v("Select Options")]),
+                  _vm._v(" "),
+                  _c("i", {
+                    staticClass: "fa fa-plus",
+                    on: {
+                      click: function($event) {
+                        return _vm.addNewSelectOption()
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _vm._l(_vm.selectOptions, function(item1, key) {
+                    return _c(
+                      "div",
+                      { key: key, staticClass: "mt-15" },
+                      [
+                        _c("el-input", {
+                          staticClass: "w-200",
+                          attrs: { placeholder: "Enter Option Value" },
+                          model: {
+                            value: _vm.selectOptions[key].value,
+                            callback: function($$v) {
+                              _vm.$set(_vm.selectOptions[key], "value", $$v)
+                            },
+                            expression: "selectOptions[key].value"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("el-input", {
+                          staticClass: "w-200",
+                          attrs: { placeholder: "Enter Label Value" },
+                          model: {
+                            value: _vm.selectOptions[key].label,
+                            callback: function($$v) {
+                              _vm.$set(_vm.selectOptions[key], "label", $$v)
+                            },
+                            expression: "selectOptions[key].label"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("i", {
+                          staticClass: "fa fa-trash",
+                          on: {
+                            click: function($event) {
+                              return _vm.selectOptions.splice(key, 1)
+                            }
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  })
+                ],
+                2
+              )
+            ],
+            1
           )
         : _vm._e(),
       _vm._v(" "),

@@ -84,6 +84,7 @@ export default {
     },
     update() {
       this.customer = this.$children[0].formValues;
+      this.$children[0].field.params.options =  this.$children[0].selectOptions;
       this.$emit("update", this.customer);
       this.clear();
     },

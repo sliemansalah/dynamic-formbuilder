@@ -2,38 +2,50 @@
   <div>
     <h1>Create Custom Template Form Builder</h1>
     <el-button @click="loadTemplate()">Load Template</el-button>
-    <el-input v-if="field.type=='' && !tempStart" v-model="tempName" style="width:200px;" placeholder="Enter template name "></el-input>
-    <el-button  v-if="field.type=='' && tempName && !tempStart" @click="tempStart=true;" type="primary" style="width:200px;">create new template</el-button>
-    <el-select v-if="tempStart" style="width:200px;" v-model="field.type" placeholder="Select">
+    <el-input
+      v-if="field.type=='' && !tempStart"
+      v-model="tempName"
+      class="w-200"
+      placeholder="Enter template name "
+    ></el-input>
+    <el-button
+      v-if="field.type=='' && tempName && !tempStart"
+      @click="tempStart=true;"
+      type="primary"
+      class="w-200"
+    >create new template</el-button>
+    <el-select v-if="tempStart" class="w-200" v-model="field.type" placeholder="Select">
       <el-option v-for="item in types" :key="item" :label="item" :value="item"></el-option>
     </el-select>
-    <el-input v-if="field.type" placeholder="Enter name" v-model="field.name" style="width:200px;"></el-input>
+    <el-input v-if="field.type" placeholder="Enter name" v-model="field.name" class="w-200"></el-input>
 
-    <el-input
-      v-if="field.name"
-      placeholder="Enter label"
-      v-model="field.label"
-      style="width:200px;"
-    ></el-input>
+    <el-input v-if="field.name" placeholder="Enter label" v-model="field.label" class="w-200"></el-input>
     <br />
     <br />
     <el-input
       v-if="field.name"
       placeholder="Enter placeholder"
       v-model="field.placeholder"
-      style="width:200px;"
+      class="w-200"
     ></el-input>
-    <el-input v-if="field.name" placeholder="Enter icon" v-model="field.icon" style="width:200px;"></el-input>
+    <el-input v-if="field.name" placeholder="Enter icon" v-model="field.icon" class="w-200"></el-input>
+    <el-input v-if="field.name" placeholder="Enter width" v-model="field.width" class="w-200"></el-input>
+    <el-input v-if="field.name" placeholder="Enter size" v-model="field.size" class="w-200"></el-input>
+    <br />
+    <br />
     <el-input
-      v-if="field.name"
-      placeholder="Enter width"
-      v-model="field.width"
-      style="width:200px;"
+      v-if="field.type=='ESwitch'"
+      placeholder="Enter Active Color"
+      v-model="field.activeColor"
+      class="w-200"
     ></el-input>
-    <el-input v-if="field.name" placeholder="Enter size" v-model="field.size" style="width:200px;"></el-input>
+    <el-input
+      v-if="field.type=='ESwitch'"
+      placeholder="Enter Inactive Color"
+      v-model="field.inActiveColor"
+      class="w-200"
+    ></el-input>
     <el-checkbox v-if="field.name" v-model="field.clearable">Clearable</el-checkbox>
-    <br />
-    <br />
     <el-checkbox v-if="field.name" v-model="field.isDisabled">Disabled</el-checkbox>
     <el-checkbox v-if="field.name" v-model="field.inline">Inline</el-checkbox>
     <br />
@@ -42,7 +54,7 @@
     <el-button @click="clear()" v-if="field.name" type="danger">Update and Clear</el-button>
     <br />
     <br />
-    <h3  v-if="fields.length>0">This is your template </h3>
+    <h3 v-if="fields.length>0">This is your template</h3>
     <form-builder :config="fields"></form-builder>
     <div>
       <el-button v-if="fields.length>0" @click="saveTemplate()" type="primary">Save Template</el-button>
@@ -57,8 +69,8 @@ export default {
   name: "DynamicForm",
   data() {
     return {
-      tempName:"",
-      tempStart:false,
+      tempName: "",
+      tempStart: false,
       field: {
         type: "",
         name: "",
@@ -71,6 +83,8 @@ export default {
         clearable: false,
         inline: false,
         width: "",
+        activeColor: "",
+        inActiveColor: "",
         delete: true,
         update: true,
         options: []
@@ -254,18 +268,18 @@ export default {
       this.fields.push(this.field);
       this.clear();
     },
-    async saveTemplate(){
+    async saveTemplate() {
       await this.filterTemplate();
-      localStorage.setItem(this.tempName,JSON.stringify(this.fields));
+      localStorage.setItem(this.tempName, JSON.stringify(this.fields));
     },
-    loadTemplate(){
-    this.fields = JSON.parse(localStorage.getItem(this.tempName));
-    this.fields.forEach(d => {
+    loadTemplate() {
+      this.fields = JSON.parse(localStorage.getItem(this.tempName));
+      this.fields.forEach(d => {
         d.delete = true;
         d.update = true;
       });
     },
-     filterTemplate(){
+    filterTemplate() {
       this.fields.forEach(d => {
         delete d.delete;
         delete d.update;
@@ -284,6 +298,8 @@ export default {
         clearable: false,
         inline: false,
         width: "",
+        activeColor: "",
+        inActiveColor: "",
         delete: true,
         update: true,
         options: []
@@ -294,4 +310,7 @@ export default {
 </script>
 
 <style>
+.w-200 {
+  width: 200px;
+}
 </style>

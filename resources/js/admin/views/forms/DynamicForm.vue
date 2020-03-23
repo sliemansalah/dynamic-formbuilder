@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Create Custom Template Form Builder</h1>
+    <el-button @click="loadTemplate()">Load Template</el-button>
     <el-input v-if="field.type=='' && !tempStart" v-model="tempName" style="width:200px;" placeholder="Enter template name "></el-input>
     <el-button  v-if="field.type=='' && tempName && !tempStart" @click="tempStart=true;" type="primary" style="width:200px;">create new template</el-button>
     <el-select v-if="tempStart" style="width:200px;" v-model="field.type" placeholder="Select">
@@ -253,8 +254,22 @@ export default {
       this.fields.push(this.field);
       this.clear();
     },
-    saveTemplate(){
+    async saveTemplate(){
+      await this.filterTemplate();
       localStorage.setItem(this.tempName,JSON.stringify(this.fields));
+    },
+    loadTemplate(){
+    this.fields = JSON.parse(localStorage.getItem(this.tempName));
+    this.fields.forEach(d => {
+        d.delete = true;
+        d.update = true;
+      });
+    },
+     filterTemplate(){
+      this.fields.forEach(d => {
+        delete d.delete;
+        delete d.update;
+      });
     },
     clear() {
       this.field = {

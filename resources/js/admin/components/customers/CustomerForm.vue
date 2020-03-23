@@ -48,12 +48,12 @@
 </template>
 
 <script>
-import Config from "../../components/config/customerForm.json";
+// import Config from "../../components/config/customerForm.json";
 
 export default {
   props: {
     customerFormStatus: String,
-    Config,
+    // Config,
   },
   data() {
     return {
@@ -72,6 +72,7 @@ export default {
   },
   computed: {
     formConfig() {
+      let Config = JSON.parse(localStorage.getItem("customer"));
       return Config;
     }
   },

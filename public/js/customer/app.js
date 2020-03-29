@@ -2440,6 +2440,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var id = 0;
 /* harmony default export */ __webpack_exports__["default"] = ({
   watch: {
@@ -5381,8 +5382,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -5630,7 +5629,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+// import axios from 'axios'
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -32812,6 +32839,7 @@ var render = function() {
     "div",
     [
       _c("el-input", {
+        staticStyle: { width: "200px" },
         attrs: { placeholder: "Filter keyword" },
         model: {
           value: _vm.filterText,
@@ -38166,6 +38194,63 @@ var render = function() {
                       ])
                     ])
                   ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    staticClass: "m-menu__item m-menu__item--submenu",
+                    attrs: {
+                      "aria-haspopup": "true",
+                      "m-menu-submenu-toggle": "hover"
+                    }
+                  },
+                  [
+                    _vm._m(8),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "m-menu__submenu" }, [
+                      _c("span", { staticClass: "m-menu__arrow" }),
+                      _vm._v(" "),
+                      _c("ul", { staticClass: "m-menu__subnav" }, [
+                        _c(
+                          "li",
+                          {
+                            class:
+                              _vm.$route.path == "/tree"
+                                ? "m-menu__item m-menu__item--active"
+                                : "m-menu__item",
+                            attrs: { "aria-haspopup": "true" }
+                          },
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "m-menu__link",
+                                attrs: { to: "/tree" }
+                              },
+                              [
+                                _c(
+                                  "i",
+                                  {
+                                    staticClass:
+                                      "m-menu__link-bullet m-menu__link-bullet--dot"
+                                  },
+                                  [_c("span")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "span",
+                                  { staticClass: "m-menu__link-text" },
+                                  [_vm._v("Tree Control")]
+                                )
+                              ]
+                            )
+                          ],
+                          1
+                        )
+                      ])
+                    ])
+                  ]
                 )
               ]
             )
@@ -38312,6 +38397,25 @@ var staticRenderFns = [
         _c("i", { staticClass: "m-menu__link-icon fa fa-asterisk" }),
         _vm._v(" "),
         _c("span", { staticClass: "m-menu__link-text" }, [_vm._v("Slots")]),
+        _vm._v(" "),
+        _c("i", { staticClass: "m-menu__ver-arrow la la-angle-right" })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "m-menu__link m-menu__toggle",
+        attrs: { href: "javascript:;" }
+      },
+      [
+        _c("i", { staticClass: "m-menu__link-icon fa fa-tree" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "m-menu__link-text" }, [_vm._v("Tree")]),
         _vm._v(" "),
         _c("i", { staticClass: "m-menu__ver-arrow la la-angle-right" })
       ]

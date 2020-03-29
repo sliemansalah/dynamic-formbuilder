@@ -1,6 +1,7 @@
 <template>
   <div>
     <el-input
+    style="width:200px;"
   placeholder="Filter keyword"
   v-model="filterText">
 </el-input>

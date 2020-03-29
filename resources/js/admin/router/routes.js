@@ -22,6 +22,10 @@ import ValidationForm from "../views/forms/ValidationForm";
 import DynamicForm from "../views/forms/DynamicForm";
 
 
+import TreeIndex from "../views/tree/Index";
+import TreeView from "../views/tree/View";
+
+
 export default  [
     { path: '/', component: Dashboard },
     { path: '/customers', component: Index, children:[
@@ -47,5 +51,8 @@ export default  [
     ] },
     { path: '/slot', component: SlotIndex, children:[
         { path: '', component: SlotPage },
+    ] },
+    { path: '/tree', component: TreeIndex, children:[
+        { path: '', component: TreeView },
     ] },
 ]

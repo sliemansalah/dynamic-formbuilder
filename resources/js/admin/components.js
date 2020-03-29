@@ -59,7 +59,7 @@ import EAddMore from "./components/FormElements/EAddMore";
 import Input from "./components/FormElements/Input";
 import Checkbox from "./components/FormElements/Checkbox";
 import RadioButton from "./components/FormElements/RadioButton";
-
+import ETree from "./components/FormElements/ETree";
 
 
 /* USE NGPRIME  Library*/
@@ -151,6 +151,7 @@ Vue.component('ESwitch',ESwitch)
 Vue.component('ESelect',ESelect)
 Vue.component('EUpload',EUpload)
 Vue.component('EAddMore',EAddMore)
+Vue.component('ETree',ETree)
 
 Vue.component('Input',Input)
 Vue.component('Checkbox',Checkbox)

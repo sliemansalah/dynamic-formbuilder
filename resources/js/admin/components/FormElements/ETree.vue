@@ -54,9 +54,9 @@ export default {
             data: [],
             addNew: true,
             node: {
-                id: id,
                 label: null,
                 children: [],
+                parent:null,
                 details: {
                     author: null,
                     age: null
@@ -68,8 +68,6 @@ export default {
     methods: {
         append() {
             let data = this.selectedData;
-            ++id;
-            this.node.id = id;
             const newChild = this.node;
             if (!data.children) {
                 this.$set(data, "children", []);
@@ -96,8 +94,7 @@ export default {
         },
         saveData() {
             if (this.selectedData == null) {
-                ++id;
-                this.node.id = id;
+                id++;
                 this.data.push(this.node);
                 this.clearData();
             } else {
@@ -107,7 +104,6 @@ export default {
         },
         clearData() {
             this.node = {
-                id: id,
                 label: null,
                 children: [],
                 details: {

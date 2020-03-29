@@ -2452,9 +2452,9 @@ var id = 0;
       data: [],
       addNew: true,
       node: {
-        id: id,
         label: null,
         children: [],
+        parent: null,
         details: {
           author: null,
           age: null
@@ -2465,8 +2465,6 @@ var id = 0;
   methods: {
     append: function append() {
       var data = this.selectedData;
-      ++id;
-      this.node.id = id;
       var newChild = this.node;
 
       if (!data.children) {
@@ -2496,8 +2494,7 @@ var id = 0;
     },
     saveData: function saveData() {
       if (this.selectedData == null) {
-        ++id;
-        this.node.id = id;
+        id++;
         this.data.push(this.node);
         this.clearData();
       } else {
@@ -2507,7 +2504,6 @@ var id = 0;
     },
     clearData: function clearData() {
       this.node = {
-        id: id,
         label: null,
         children: [],
         details: {

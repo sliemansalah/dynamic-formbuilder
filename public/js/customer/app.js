@@ -2452,6 +2452,7 @@ var id = 0;
       data: [],
       addNew: true,
       node: {
+        id: id,
         label: null,
         children: [],
         parent: null,
@@ -2465,6 +2466,8 @@ var id = 0;
   methods: {
     append: function append() {
       var data = this.selectedData;
+      this.node.id = id++;
+      this.node.parent = this.selectedNode.parent.id;
       var newChild = this.node;
 
       if (!data.children) {
@@ -2494,16 +2497,18 @@ var id = 0;
     },
     saveData: function saveData() {
       if (this.selectedData == null) {
-        id++;
+        this.node.id = id++;
         this.data.push(this.node);
         this.clearData();
       } else {
-        // eslint-disable-next-line no-console
-        console.log(this.data);
+        this.selectedData.label = this.node.label;
+        this.selectedData.details.author = this.node.details.author;
+        this.selectedData.details.age = this.node.details.age;
       }
     },
     clearData: function clearData() {
       this.node = {
+        id: id,
         label: null,
         children: [],
         details: {

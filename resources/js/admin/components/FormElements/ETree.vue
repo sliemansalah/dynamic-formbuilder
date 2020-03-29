@@ -54,9 +54,10 @@ export default {
             data: [],
             addNew: true,
             node: {
+                id: id,
                 label: null,
                 children: [],
-                parent:null,
+                parent: null,
                 details: {
                     author: null,
                     age: null
@@ -68,6 +69,8 @@ export default {
     methods: {
         append() {
             let data = this.selectedData;
+            this.node.id = id++;
+            this.node.parent = this.selectedNode.parent.id;
             const newChild = this.node;
             if (!data.children) {
                 this.$set(data, "children", []);
@@ -94,16 +97,18 @@ export default {
         },
         saveData() {
             if (this.selectedData == null) {
-                id++;
+                this.node.id = id++;
                 this.data.push(this.node);
                 this.clearData();
             } else {
-                // eslint-disable-next-line no-console
-                console.log(this.data)
+               this.selectedData.label = this.node.label;
+               this.selectedData.details.author= this.node.details.author;
+               this.selectedData.details.age = this.node.details.age;
             }
         },
         clearData() {
             this.node = {
+                id: id,
                 label: null,
                 children: [],
                 details: {

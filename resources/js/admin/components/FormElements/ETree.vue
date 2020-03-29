@@ -13,15 +13,16 @@ style="width:200px;"
   class="filter-tree"
   :data="data"
   :props="defaultProps"
-  show-checkbox
-  default-expand-all
+  :show-checkbox="false"
+  :default-expand-all="true"
    :expand-on-click-node="false"
   :filter-node-method="filterNode"
    draggable
   :allow-drop="allowDrop"
   :allow-drag="allowDrag"
+  @click="edit(node)"
   ref="tree">
-   <span class="custom-tree-node" slot-scope="{ node, data }">
+   <!-- <span class="custom-tree-node" slot-scope="{ node, data }">
         <span>{{ node.label }}</span>
          <span>
           <i @click="append(data)" class="fa fa-plus"></i>
@@ -29,7 +30,7 @@ style="width:200px;"
         <span>
           <i @click="remove(node,data)" class="fa fa-trash"></i>
         </span>
-      </span>
+      </span> -->
 </el-tree>
   </div>
   <div class="col-lg-8">
@@ -106,6 +107,10 @@ export default {
       },
       allowDrag(draggingNode) {
         return draggingNode.data.label.indexOf('Level three 3-1-1') === -1;
+      },
+      edit(node){
+        // eslint-disable-next-line no-console
+        console.log(node);
       }
     },
     

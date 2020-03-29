@@ -2441,6 +2441,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var id = 0;
 /* harmony default export */ __webpack_exports__["default"] = ({
   watch: {
@@ -2512,6 +2513,10 @@ var id = 0;
     },
     allowDrag: function allowDrag(draggingNode) {
       return draggingNode.data.label.indexOf('Level three 3-1-1') === -1;
+    },
+    edit: function edit(node) {
+      // eslint-disable-next-line no-console
+      console.log(node);
     }
   },
   mounted: function mounted() {// let parentNode = {
@@ -32865,48 +32870,19 @@ var render = function() {
               attrs: {
                 data: _vm.data,
                 props: _vm.defaultProps,
-                "show-checkbox": "",
-                "default-expand-all": "",
+                "show-checkbox": false,
+                "default-expand-all": true,
                 "expand-on-click-node": false,
                 "filter-node-method": _vm.filterNode,
                 draggable: "",
                 "allow-drop": _vm.allowDrop,
                 "allow-drag": _vm.allowDrag
               },
-              scopedSlots: _vm._u([
-                {
-                  key: "default",
-                  fn: function(ref) {
-                    var node = ref.node
-                    var data = ref.data
-                    return _c("span", { staticClass: "custom-tree-node" }, [
-                      _c("span", [_vm._v(_vm._s(node.label))]),
-                      _vm._v(" "),
-                      _c("span", [
-                        _c("i", {
-                          staticClass: "fa fa-plus",
-                          on: {
-                            click: function($event) {
-                              return _vm.append(data)
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("span", [
-                        _c("i", {
-                          staticClass: "fa fa-trash",
-                          on: {
-                            click: function($event) {
-                              return _vm.remove(node, data)
-                            }
-                          }
-                        })
-                      ])
-                    ])
-                  }
+              on: {
+                click: function($event) {
+                  return _vm.edit(_vm.node)
                 }
-              ])
+              }
             })
           ],
           1

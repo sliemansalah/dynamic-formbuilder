@@ -2439,73 +2439,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 var id = 0;
 /* harmony default export */ __webpack_exports__["default"] = ({
-  watch: {
-    filterText: function filterText(val) {
-      this.$refs.tree.filter(val);
-    }
-  },
-  props: [],
   data: function data() {
     return {
-      filterText: '',
-      tree: {
-        node: ''
-      },
       selectedData: null,
-      defaultProps: {
-        children: 'children',
-        label: 'label'
-      },
-      data: []
+      selectedNode: "",
+      data: [],
+      addNew: true,
+      node: {
+        id: id,
+        label: null,
+        children: [],
+        details: {
+          author: null,
+          age: null
+        }
+      }
     };
   },
   methods: {
-    filterNode: function filterNode(value, data) {
-      if (!value) return true;
-      return data.label.indexOf(value) !== -1;
-    },
-    handleNodeClick: function handleNodeClick(data) {
-      this.selectedData = data; // eslint-disable-next-line no-console
-
-      console.log(this.selectedData);
-      this.tree.node = data.label;
-    },
-    addRoot: function addRoot() {
-      var root = {
-        id: id++,
-        label: this.tree.node
-      };
-      this.data.push(root);
-    },
-    append: function append(data) {
-      var newChild = {
-        id: id++,
-        label: this.tree.node,
-        children: []
-      };
+    append: function append() {
+      var data = this.selectedData;
+      ++id;
+      this.node.id = id;
+      var newChild = this.node;
 
       if (!data.children) {
-        this.$set(data, 'children', []);
+        this.$set(data, "children", []);
       }
 
       data.children.push(newChild);
+      this.clearData();
     },
-    // remove(){
-    //   // eslint-disable-next-line no-console
-    //   // console.log(this.data);
-    //   // // eslint-disable-next-line no-console
-    //   // console.log(this.selectedData);
-    //   // this.selectedData.children = [];
-    //   let i = this.data.findIndex(e=>e.id == this.selectedData.id);
-    //   // eslint-disable-next-line no-console
-    //   console.log(i);
-    //   // eslint-disable-next-line no-console
-    //   console.log(this.data);
-    //   if(i!== -1) this.data.splice(i,1);
-    // },
-    remove: function remove(node, data) {
+    remove: function remove() {
+      var node = this.selectedNode;
+      var data = this.selectedData;
       var parent = node.parent;
       var children = parent.data.children || parent.data;
       var index = children.findIndex(function (d) {
@@ -2513,28 +2486,36 @@ var id = 0;
       });
       children.splice(index, 1);
     },
-    addChild: function addChild() {
-      var data = this.selectedData;
-      var newChild = {
-        id: id++,
-        label: this.tree.node,
-        children: []
-      };
-
-      if (!data.children) {
-        this.$set(data, 'children', []);
-      }
-
-      data.children.push(newChild);
+    handleNodeClick: function handleNodeClick(data, node) {
+      this.selectedData = data;
+      this.selectedNode = node;
     },
-    update: function update() {}
-  },
-  mounted: function mounted() {// let parentNode = {
-    //   id:1,
-    //   label:'Root'
-    // }
-    // this.data.push(parentNode)
-    //       this.data.push(parentNode)
+    addNewData: function addNewData() {
+      this.selectedData = null;
+      this.addNew = true;
+    },
+    saveData: function saveData() {
+      if (this.selectedData == null) {
+        ++id;
+        this.node.id = id;
+        this.data.push(this.node);
+        this.clearData();
+      } else {// update me
+        // eslint-disable-next-line no-console
+        // console.log(this.$refs.tree);
+      }
+    },
+    clearData: function clearData() {
+      this.node = {
+        id: id,
+        label: null,
+        children: [],
+        details: {
+          author: null,
+          age: null
+        }
+      };
+    }
   }
 });
 
@@ -33894,108 +33875,95 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("el-input", {
-        staticStyle: { width: "200px" },
-        attrs: { placeholder: "Filter keyword" },
-        model: {
-          value: _vm.filterText,
-          callback: function($$v) {
-            _vm.filterText = $$v
-          },
-          expression: "filterText"
-        }
-      }),
-      _vm._v(" "),
-      _c("br"),
-      _c("br"),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "row",
-          scopedSlots: _vm._u([
-            {
-              key: "default",
-              fn: function(ref) {
-                var node = ref.node
-                var data = ref.data
-                return _c(
-                  "div",
-                  { staticClass: "col-lg-8" },
+  return _c("div", { staticClass: "custom-tree-container" }, [
+    _c(
+      "div",
+      { staticClass: "block" },
+      [
+        _c(
+          "button",
+          { staticClass: "btn btn-success", on: { click: _vm.addNewData } },
+          [_vm._v("\n            New data\n        ")]
+        ),
+        _vm._v(" "),
+        _c("i", { staticClass: "fa fa-plus", on: { click: _vm.append } }),
+        _vm._v(" "),
+        _c("i", { staticClass: "fa fa-trash", on: { click: _vm.remove } }),
+        _vm._v(" "),
+        _c("br"),
+        _c("br"),
+        _vm._v(" "),
+        _vm.addNew
+          ? _c(
+              "form",
+              [
+                _c("el-input", {
+                  staticStyle: { width: "200px" },
+                  attrs: { placeholder: "Enter Label" },
+                  model: {
+                    value: _vm.node.label,
+                    callback: function($$v) {
+                      _vm.$set(_vm.node, "label", $$v)
+                    },
+                    expression: "node.label"
+                  }
+                }),
+                _vm._v(" "),
+                _c("el-input", {
+                  staticStyle: { width: "200px" },
+                  attrs: { placeholder: "Enter author name" },
+                  model: {
+                    value: _vm.node.details.author,
+                    callback: function($$v) {
+                      _vm.$set(_vm.node.details, "author", $$v)
+                    },
+                    expression: "node.details.author"
+                  }
+                }),
+                _vm._v(" "),
+                _c("el-input-number", {
+                  staticStyle: { width: "200px" },
+                  attrs: { placeholder: "Enter your age" },
+                  model: {
+                    value: _vm.node.details.age,
+                    callback: function($$v) {
+                      _vm.$set(_vm.node.details, "age", $$v)
+                    },
+                    expression: "node.details.age"
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "el-button",
+                  { attrs: { type: "primary" }, on: { click: _vm.saveData } },
                   [
-                    _c("el-input", {
-                      staticStyle: { width: "200px" },
-                      attrs: { placeholder: "Add Tree Node" },
-                      model: {
-                        value: _vm.tree.node,
-                        callback: function($$v) {
-                          _vm.$set(_vm.tree, "node", $$v)
-                        },
-                        expression: "tree.node"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("i", {
-                      staticClass: "fa fa-plus",
-                      on: { click: _vm.addRoot }
-                    }),
-                    _vm._v(" "),
-                    _c("i", {
-                      staticClass: "fa fa-trash",
-                      on: {
-                        click: function($event) {
-                          return _vm.remove(node, data)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("i", {
-                      staticClass: "fa fa-plus",
-                      on: { click: _vm.addChild }
-                    }),
-                    _vm._v(" "),
-                    _c("i", {
-                      staticClass: "fa fa-pen",
-                      on: { click: _vm.update }
-                    })
-                  ],
-                  1
+                    !_vm.selectedData
+                      ? _c("span", [_vm._v("Save")])
+                      : _c("span", [_vm._v("Update")])
+                  ]
                 )
-              }
-            }
-          ])
-        },
-        [
-          _c(
-            "div",
-            { staticClass: "col-lg-4" },
-            [
-              _c("el-tree", {
-                ref: "tree",
-                staticClass: "filter-tree",
-                staticStyle: { width: "200px" },
-                attrs: {
-                  data: _vm.data,
-                  props: _vm.defaultProps,
-                  "show-checkbox": false,
-                  "default-expand-all": true,
-                  "expand-on-click-node": false,
-                  "filter-node-method": _vm.filterNode,
-                  draggable: ""
-                },
-                on: { "node-click": _vm.handleNodeClick }
-              })
-            ],
-            1
-          )
-        ]
-      )
-    ],
-    1
-  )
+              ],
+              1
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _c("br"),
+        _c("br"),
+        _vm._v(" "),
+        _c("el-tree", {
+          ref: "tree",
+          attrs: {
+            data: _vm.data,
+            "node-key": "id",
+            "expand-on-click-node": false,
+            "empty-text": "No data found ... "
+          },
+          on: { "node-click": _vm.handleNodeClick }
+        })
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

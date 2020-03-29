@@ -2443,14 +2443,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var id = 0;
 /* harmony default export */ __webpack_exports__["default"] = ({
+  watch: {
+    filterText: function filterText(val) {
+      this.$refs.tree.filter(val);
+    }
+  },
   data: function data() {
     return {
       selectedData: null,
       selectedNode: "",
+      filterText: "",
       data: [],
       addNew: true,
+      defaultProps: {
+        children: "children",
+        label: "label"
+      },
       node: {
         id: id,
         label: null,
@@ -2490,21 +2512,30 @@ var id = 0;
     handleNodeClick: function handleNodeClick(data, node) {
       this.selectedData = data;
       this.selectedNode = node;
+      this.node.label = this.selectedData.label;
+      this.node.details.author = this.selectedData.details.author;
+      this.node.details.age = this.selectedData.details.age;
     },
     addNewData: function addNewData() {
       this.selectedData = null;
       this.addNew = true;
+      this.clearData();
     },
     saveData: function saveData() {
       if (this.selectedData == null) {
         this.node.id = id++;
         this.data.push(this.node);
-        this.clearData();
       } else {
         this.selectedData.label = this.node.label;
         this.selectedData.details.author = this.node.details.author;
         this.selectedData.details.age = this.node.details.age;
       }
+
+      this.clearData();
+    },
+    filterNode: function filterNode(value, data) {
+      if (!value) return true;
+      return data.label.toString().toLowerCase().indexOf(value.toString().toLowerCase()) !== -1;
     },
     clearData: function clearData() {
       this.node = {
@@ -2517,6 +2548,81 @@ var id = 0;
         }
       };
     }
+  },
+  mounted: function mounted() {
+    this.data = [{
+      id: 0,
+      label: "Library",
+      children: [{
+        id: 1,
+        label: "Private Books",
+        children: [{
+          id: 5,
+          label: "Vue JS",
+          children: [],
+          details: {
+            author: "slieman",
+            age: 26
+          },
+          parent: 1
+        }, {
+          id: 6,
+          label: "Angular JS",
+          children: [],
+          details: {
+            author: "slieman",
+            age: 26
+          },
+          parent: 1
+        }, {
+          id: 7,
+          label: "React JS",
+          children: [],
+          details: {
+            author: "slieman",
+            age: 26
+          },
+          parent: 1
+        }],
+        details: {
+          author: "slieman",
+          age: 26
+        },
+        parent: 0
+      }, {
+        id: 2,
+        label: "Public Books",
+        children: [{
+          id: 3,
+          label: "Arabic",
+          children: [],
+          details: {
+            author: "slieman",
+            age: 26
+          },
+          parent: 1
+        }, {
+          id: 4,
+          label: "English",
+          children: [],
+          details: {
+            author: "slieman",
+            age: 26
+          },
+          parent: 1
+        }],
+        details: {
+          author: "slieman",
+          age: 26
+        },
+        parent: 0
+      }],
+      parent: null,
+      details: {
+        author: "slieman",
+        age: 26
+      }
+    }];
   }
 });
 
@@ -34098,10 +34204,6 @@ var render = function() {
           [_vm._v("\n            New data\n        ")]
         ),
         _vm._v(" "),
-        _c("i", { staticClass: "fa fa-plus", on: { click: _vm.append } }),
-        _vm._v(" "),
-        _c("i", { staticClass: "fa fa-trash", on: { click: _vm.remove } }),
-        _vm._v(" "),
         _c("br"),
         _c("br"),
         _vm._v(" "),
@@ -34153,11 +34255,47 @@ var render = function() {
                       ? _c("span", [_vm._v("Save")])
                       : _c("span", [_vm._v("Update")])
                   ]
-                )
+                ),
+                _vm._v(" "),
+                _vm.selectedData
+                  ? [
+                      _c(
+                        "el-button",
+                        {
+                          attrs: { type: "success" },
+                          on: { click: _vm.append }
+                        },
+                        [_vm._v("Save As a Child")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "el-button",
+                        {
+                          attrs: { type: "danger" },
+                          on: { click: _vm.remove }
+                        },
+                        [_vm._v("Remove")]
+                      )
+                    ]
+                  : _vm._e()
               ],
-              1
+              2
             )
           : _vm._e(),
+        _vm._v(" "),
+        _c("br"),
+        _c("br"),
+        _vm._v(" "),
+        _c("el-input", {
+          attrs: { placeholder: "Filter keyword" },
+          model: {
+            value: _vm.filterText,
+            callback: function($$v) {
+              _vm.filterText = $$v
+            },
+            expression: "filterText"
+          }
+        }),
         _vm._v(" "),
         _c("br"),
         _c("br"),
@@ -34168,7 +34306,12 @@ var render = function() {
             data: _vm.data,
             "node-key": "id",
             "expand-on-click-node": false,
-            "empty-text": "No data found ... "
+            "empty-text": "No data found ... ",
+            draggable: true,
+            accordion: false,
+            props: _vm.defaultProps,
+            "default-expand-all": true,
+            "filter-node-method": _vm.filterNode
           },
           on: { "node-click": _vm.handleNodeClick }
         })

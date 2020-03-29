@@ -2439,9 +2439,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 var id = 0;
 /* harmony default export */ __webpack_exports__["default"] = ({
   watch: {
@@ -2456,25 +2453,24 @@ var id = 0;
       tree: {
         node: ''
       },
+      selectedData: null,
       defaultProps: {
         children: 'children',
         label: 'label'
       },
-      data: [] // data: [{
-      //   id: 1,
-      //   label: 'Level one 1',
-      //   children: [{
-      //     id: 4,
-      //     label: 'Level two 1-1',
-      //   }]
-      // }]
-
+      data: []
     };
   },
   methods: {
     filterNode: function filterNode(value, data) {
       if (!value) return true;
       return data.label.indexOf(value) !== -1;
+    },
+    handleNodeClick: function handleNodeClick(data) {
+      this.selectedData = data; // eslint-disable-next-line no-console
+
+      console.log(this.selectedData);
+      this.tree.node = data.label;
     },
     addRoot: function addRoot() {
       var root = {
@@ -2496,6 +2492,19 @@ var id = 0;
 
       data.children.push(newChild);
     },
+    // remove(){
+    //   // eslint-disable-next-line no-console
+    //   // console.log(this.data);
+    //   // // eslint-disable-next-line no-console
+    //   // console.log(this.selectedData);
+    //   // this.selectedData.children = [];
+    //   let i = this.data.findIndex(e=>e.id == this.selectedData.id);
+    //   // eslint-disable-next-line no-console
+    //   console.log(i);
+    //   // eslint-disable-next-line no-console
+    //   console.log(this.data);
+    //   if(i!== -1) this.data.splice(i,1);
+    // },
     remove: function remove(node, data) {
       var parent = node.parent;
       var children = parent.data.children || parent.data;
@@ -2504,20 +2513,21 @@ var id = 0;
       });
       children.splice(index, 1);
     },
-    allowDrop: function allowDrop(draggingNode, dropNode, type) {
-      if (dropNode.data.label === 'Level two 3-1') {
-        return type !== 'inner';
-      } else {
-        return true;
+    addChild: function addChild() {
+      var data = this.selectedData;
+      var newChild = {
+        id: id++,
+        label: this.tree.node,
+        children: []
+      };
+
+      if (!data.children) {
+        this.$set(data, 'children', []);
       }
+
+      data.children.push(newChild);
     },
-    allowDrag: function allowDrag(draggingNode) {
-      return draggingNode.data.label.indexOf('Level three 3-1-1') === -1;
-    },
-    edit: function edit(node) {
-      // eslint-disable-next-line no-console
-      console.log(node);
-    }
+    update: function update() {}
   },
   mounted: function mounted() {// let parentNode = {
     //   id:1,
@@ -33902,57 +33912,87 @@ var render = function() {
       _c("br"),
       _c("br"),
       _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c(
-          "div",
-          { staticClass: "col-lg-4" },
-          [
-            _c("el-tree", {
-              ref: "tree",
-              staticClass: "filter-tree",
-              staticStyle: { width: "200px" },
-              attrs: {
-                data: _vm.data,
-                props: _vm.defaultProps,
-                "show-checkbox": false,
-                "default-expand-all": true,
-                "expand-on-click-node": false,
-                "filter-node-method": _vm.filterNode,
-                draggable: "",
-                "allow-drop": _vm.allowDrop,
-                "allow-drag": _vm.allowDrag
-              },
-              on: {
-                click: function($event) {
-                  return _vm.edit(_vm.node)
-                }
+      _c(
+        "div",
+        {
+          staticClass: "row",
+          scopedSlots: _vm._u([
+            {
+              key: "default",
+              fn: function(ref) {
+                var node = ref.node
+                var data = ref.data
+                return _c(
+                  "div",
+                  { staticClass: "col-lg-8" },
+                  [
+                    _c("el-input", {
+                      staticStyle: { width: "200px" },
+                      attrs: { placeholder: "Add Tree Node" },
+                      model: {
+                        value: _vm.tree.node,
+                        callback: function($$v) {
+                          _vm.$set(_vm.tree, "node", $$v)
+                        },
+                        expression: "tree.node"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("i", {
+                      staticClass: "fa fa-plus",
+                      on: { click: _vm.addRoot }
+                    }),
+                    _vm._v(" "),
+                    _c("i", {
+                      staticClass: "fa fa-trash",
+                      on: {
+                        click: function($event) {
+                          return _vm.remove(node, data)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("i", {
+                      staticClass: "fa fa-plus",
+                      on: { click: _vm.addChild }
+                    }),
+                    _vm._v(" "),
+                    _c("i", {
+                      staticClass: "fa fa-pen",
+                      on: { click: _vm.update }
+                    })
+                  ],
+                  1
+                )
               }
-            })
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col-lg-8" },
-          [
-            _c("el-input", {
-              staticStyle: { width: "200px" },
-              attrs: { placeholder: "Add Tree Node" },
-              model: {
-                value: _vm.tree.node,
-                callback: function($$v) {
-                  _vm.$set(_vm.tree, "node", $$v)
+            }
+          ])
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "col-lg-4" },
+            [
+              _c("el-tree", {
+                ref: "tree",
+                staticClass: "filter-tree",
+                staticStyle: { width: "200px" },
+                attrs: {
+                  data: _vm.data,
+                  props: _vm.defaultProps,
+                  "show-checkbox": false,
+                  "default-expand-all": true,
+                  "expand-on-click-node": false,
+                  "filter-node-method": _vm.filterNode,
+                  draggable: ""
                 },
-                expression: "tree.node"
-              }
-            }),
-            _vm._v(" "),
-            _c("i", { staticClass: "fa fa-plus", on: { click: _vm.addRoot } })
-          ],
-          1
-        )
-      ])
+                on: { "node-click": _vm.handleNodeClick }
+              })
+            ],
+            1
+          )
+        ]
+      )
     ],
     1
   )

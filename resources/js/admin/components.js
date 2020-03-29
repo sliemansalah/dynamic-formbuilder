@@ -77,6 +77,7 @@ import PRating from 'primevue/rating';
 import PTabView from 'primevue/tabview';
 import PTabPanel from 'primevue/tabpanel';
 import PButton from 'primevue/button';
+import Tree from 'primevue/tree';
 
 Vue.component('layout', Layout)
 
@@ -136,7 +137,7 @@ Vue.component('PRating',PRating)
 Vue.component('PTabView',PTabView)
 Vue.component('PTabPanel',PTabPanel)
 Vue.component('PButton',PButton)
-
+Vue.component('Tree',Tree);
 
 
 /*  Form Elements */

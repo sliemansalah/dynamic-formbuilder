@@ -101,9 +101,8 @@ export default {
                 this.data.push(this.node);
                 this.clearData();
             } else {
-                // update me
                 // eslint-disable-next-line no-console
-                // console.log(this.$refs.tree);
+                console.log(this.data)
             }
         },
         clearData() {

@@ -6041,6 +6041,7 @@ __webpack_require__.r(__webpack_exports__);
       this.getLanguage();
     },
     getLanguage: function getLanguage() {
+      // eslint-disable-next-line no-console
       var brtl = document.getElementById('brtl');
       var srtl = document.getElementById('srtl');
 
@@ -6048,11 +6049,13 @@ __webpack_require__.r(__webpack_exports__);
         brtl.href = "/vendors/general/base-vendors/css/vendors.bundle.rtl.css";
         srtl.href = "/vendors/general/base-vendors/css/style.bundle.rtl.css";
         localStorage.setItem("lang", this.lang);
+        this.$root.$i18n.locale = 'ar';
         this.lang = 'english';
       } else {
         brtl.href = "";
         srtl.href = "";
         localStorage.setItem("lang", this.lang);
+        this.$root.$i18n.locale = 'en';
         this.lang = 'arabic';
       }
     }
@@ -39349,7 +39352,68 @@ var render = function() {
               [
                 _vm._m(1),
                 _vm._v(" "),
-                _vm._m(2),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "m-header-menu m-aside-header-menu-mobile m-aside-header-menu-mobile--offcanvas  m-header-menu--skin-light m-header-menu--submenu-skin-light m-aside-header-menu-mobile--skin-dark m-aside-header-menu-mobile--submenu-skin-dark ",
+                    attrs: { id: "m_header_menu" }
+                  },
+                  [
+                    _c(
+                      "ul",
+                      {
+                        staticClass: "m-menu__nav  m-menu__nav--submenu-arrow "
+                      },
+                      [
+                        _c(
+                          "li",
+                          {
+                            staticClass:
+                              "m-menu__item  m-menu__item--submenu m-menu__item--rel",
+                            attrs: {
+                              "m-menu-submenu-toggle": "click",
+                              "m-menu-link-redirect": "1",
+                              "aria-haspopup": "true"
+                            }
+                          },
+                          [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "m-menu__link m-menu__toggle",
+                                attrs: {
+                                  href: "javascript:;",
+                                  title: "Non functional dummy link"
+                                }
+                              },
+                              [
+                                _c("i", {
+                                  staticClass: "m-menu__link-icon flaticon-add"
+                                }),
+                                _c(
+                                  "span",
+                                  { staticClass: "m-menu__link-text" },
+                                  [_vm._v(_vm._s(_vm.$t("actions")))]
+                                ),
+                                _c("i", {
+                                  staticClass:
+                                    "m-menu__hor-arrow la la-angle-down"
+                                }),
+                                _c("i", {
+                                  staticClass:
+                                    "m-menu__ver-arrow la la-angle-right"
+                                })
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _vm._m(2)
+                          ]
+                        )
+                      ]
+                    )
+                  ]
+                ),
                 _vm._v(" "),
                 _c(
                   "div",
@@ -39623,18 +39687,78 @@ var staticRenderFns = [
       "div",
       {
         staticClass:
-          "m-header-menu m-aside-header-menu-mobile m-aside-header-menu-mobile--offcanvas  m-header-menu--skin-light m-header-menu--submenu-skin-light m-aside-header-menu-mobile--skin-dark m-aside-header-menu-mobile--submenu-skin-dark ",
-        attrs: { id: "m_header_menu" }
+          "m-menu__submenu m-menu__submenu--classic m-menu__submenu--left"
       },
       [
-        _c("ul", { staticClass: "m-menu__nav  m-menu__nav--submenu-arrow " }, [
+        _c("span", { staticClass: "m-menu__arrow m-menu__arrow--adjust" }),
+        _vm._v(" "),
+        _c("ul", { staticClass: "m-menu__subnav" }, [
           _c(
             "li",
             {
-              staticClass:
-                "m-menu__item  m-menu__item--submenu m-menu__item--rel",
+              staticClass: "m-menu__item ",
+              attrs: { "aria-haspopup": "true" }
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass: "m-menu__link ",
+                  attrs: { href: "header/actions.html" }
+                },
+                [
+                  _c("i", { staticClass: "m-menu__link-icon flaticon-file" }),
+                  _c("span", { staticClass: "m-menu__link-text" }, [
+                    _vm._v("Create New Post")
+                  ])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "li",
+            {
+              staticClass: "m-menu__item ",
+              attrs: { "m-menu-link-redirect": "1", "aria-haspopup": "true" }
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass: "m-menu__link ",
+                  attrs: { href: "header/actions.html" }
+                },
+                [
+                  _c("i", {
+                    staticClass: "m-menu__link-icon flaticon-diagram"
+                  }),
+                  _c("span", { staticClass: "m-menu__link-title" }, [
+                    _c("span", { staticClass: "m-menu__link-wrap" }, [
+                      _c("span", { staticClass: "m-menu__link-text" }, [
+                        _vm._v("Generate Reports")
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "m-menu__link-badge" }, [
+                        _c(
+                          "span",
+                          { staticClass: "m-badge m-badge--success" },
+                          [_vm._v("2")]
+                        )
+                      ])
+                    ])
+                  ])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "li",
+            {
+              staticClass: "m-menu__item  m-menu__item--submenu",
               attrs: {
-                "m-menu-submenu-toggle": "click",
+                "m-menu-submenu-toggle": "hover",
                 "m-menu-link-redirect": "1",
                 "aria-haspopup": "true"
               }
@@ -39650,12 +39774,14 @@ var staticRenderFns = [
                   }
                 },
                 [
-                  _c("i", { staticClass: "m-menu__link-icon flaticon-add" }),
+                  _c("i", {
+                    staticClass: "m-menu__link-icon flaticon-business"
+                  }),
                   _c("span", { staticClass: "m-menu__link-text" }, [
-                    _vm._v("Actions")
+                    _vm._v("Manage Orders")
                   ]),
                   _c("i", {
-                    staticClass: "m-menu__hor-arrow la la-angle-down"
+                    staticClass: "m-menu__hor-arrow la la-angle-right"
                   }),
                   _c("i", {
                     staticClass: "m-menu__ver-arrow la la-angle-right"
@@ -39667,19 +39793,20 @@ var staticRenderFns = [
                 "div",
                 {
                   staticClass:
-                    "m-menu__submenu m-menu__submenu--classic m-menu__submenu--left"
+                    "m-menu__submenu m-menu__submenu--classic m-menu__submenu--right"
                 },
                 [
-                  _c("span", {
-                    staticClass: "m-menu__arrow m-menu__arrow--adjust"
-                  }),
+                  _c("span", { staticClass: "m-menu__arrow " }),
                   _vm._v(" "),
                   _c("ul", { staticClass: "m-menu__subnav" }, [
                     _c(
                       "li",
                       {
                         staticClass: "m-menu__item ",
-                        attrs: { "aria-haspopup": "true" }
+                        attrs: {
+                          "m-menu-link-redirect": "1",
+                          "aria-haspopup": "true"
+                        }
                       },
                       [
                         _c(
@@ -39689,11 +39816,8 @@ var staticRenderFns = [
                             attrs: { href: "header/actions.html" }
                           },
                           [
-                            _c("i", {
-                              staticClass: "m-menu__link-icon flaticon-file"
-                            }),
                             _c("span", { staticClass: "m-menu__link-text" }, [
-                              _vm._v("Create New Post")
+                              _vm._v("Latest Orders")
                             ])
                           ]
                         )
@@ -39717,169 +39841,36 @@ var staticRenderFns = [
                             attrs: { href: "header/actions.html" }
                           },
                           [
-                            _c("i", {
-                              staticClass: "m-menu__link-icon flaticon-diagram"
-                            }),
-                            _c("span", { staticClass: "m-menu__link-title" }, [
-                              _c("span", { staticClass: "m-menu__link-wrap" }, [
-                                _c(
-                                  "span",
-                                  { staticClass: "m-menu__link-text" },
-                                  [_vm._v("Generate Reports")]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "span",
-                                  { staticClass: "m-menu__link-badge" },
-                                  [
-                                    _c(
-                                      "span",
-                                      {
-                                        staticClass: "m-badge m-badge--success"
-                                      },
-                                      [_vm._v("2")]
-                                    )
-                                  ]
-                                )
-                              ])
-                            ])
-                          ]
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "li",
-                      {
-                        staticClass: "m-menu__item  m-menu__item--submenu",
-                        attrs: {
-                          "m-menu-submenu-toggle": "hover",
-                          "m-menu-link-redirect": "1",
-                          "aria-haspopup": "true"
-                        }
-                      },
-                      [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "m-menu__link m-menu__toggle",
-                            attrs: {
-                              href: "javascript:;",
-                              title: "Non functional dummy link"
-                            }
-                          },
-                          [
-                            _c("i", {
-                              staticClass: "m-menu__link-icon flaticon-business"
-                            }),
                             _c("span", { staticClass: "m-menu__link-text" }, [
-                              _vm._v("Manage Orders")
-                            ]),
-                            _c("i", {
-                              staticClass: "m-menu__hor-arrow la la-angle-right"
-                            }),
-                            _c("i", {
-                              staticClass: "m-menu__ver-arrow la la-angle-right"
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "m-menu__submenu m-menu__submenu--classic m-menu__submenu--right"
-                          },
-                          [
-                            _c("span", { staticClass: "m-menu__arrow " }),
-                            _vm._v(" "),
-                            _c("ul", { staticClass: "m-menu__subnav" }, [
-                              _c(
-                                "li",
-                                {
-                                  staticClass: "m-menu__item ",
-                                  attrs: {
-                                    "m-menu-link-redirect": "1",
-                                    "aria-haspopup": "true"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "m-menu__link ",
-                                      attrs: { href: "header/actions.html" }
-                                    },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "m-menu__link-text" },
-                                        [_vm._v("Latest Orders")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "li",
-                                {
-                                  staticClass: "m-menu__item ",
-                                  attrs: {
-                                    "m-menu-link-redirect": "1",
-                                    "aria-haspopup": "true"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "m-menu__link ",
-                                      attrs: { href: "header/actions.html" }
-                                    },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "m-menu__link-text" },
-                                        [_vm._v("Customers")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "li",
-                      {
-                        staticClass: "m-menu__item ",
-                        attrs: {
-                          "m-menu-link-redirect": "1",
-                          "aria-haspopup": "true"
-                        }
-                      },
-                      [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "m-menu__link ",
-                            attrs: { href: "header/actions.html" }
-                          },
-                          [
-                            _c("i", {
-                              staticClass: "m-menu__link-icon flaticon-users"
-                            }),
-                            _c("span", { staticClass: "m-menu__link-text" }, [
-                              _vm._v("Register Member")
+                              _vm._v("Customers")
                             ])
                           ]
                         )
                       ]
                     )
+                  ])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "li",
+            {
+              staticClass: "m-menu__item ",
+              attrs: { "m-menu-link-redirect": "1", "aria-haspopup": "true" }
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass: "m-menu__link ",
+                  attrs: { href: "header/actions.html" }
+                },
+                [
+                  _c("i", { staticClass: "m-menu__link-icon flaticon-users" }),
+                  _c("span", { staticClass: "m-menu__link-text" }, [
+                    _vm._v("Register Member")
                   ])
                 ]
               )
@@ -40310,7 +40301,7 @@ var render = function() {
                         _c("span", { staticClass: "m-menu__link-title" }, [
                           _c("span", { staticClass: "m-menu__link-wrap" }, [
                             _c("span", { staticClass: "m-menu__link-text" }, [
-                              _vm._v("Dashboard")
+                              _vm._v(_vm._s(_vm.$t("dashboard")))
                             ]),
                             _vm._v(" "),
                             _c("span", { staticClass: "m-menu__link-badge" })
@@ -41285,19 +41276,7 @@ var staticRenderFns = [
               "data-placement": "left"
             }
           },
-          [
-            _c(
-              "a",
-              {
-                attrs: {
-                  href:
-                    "https://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes",
-                  target: "_blank"
-                }
-              },
-              [_c("i", { staticClass: "la la-cart-arrow-down" })]
-            )
-          ]
+          [_c("a", [_c("i", { staticClass: "la la-cart-arrow-down" })])]
         ),
         _vm._v(" "),
         _c(
@@ -41310,18 +41289,7 @@ var staticRenderFns = [
               "data-placement": "left"
             }
           },
-          [
-            _c(
-              "a",
-              {
-                attrs: {
-                  href: "https://keenthemes.com/metronic/documentation.html",
-                  target: "_blank"
-                }
-              },
-              [_c("i", { staticClass: "la la-code-fork" })]
-            )
-          ]
+          [_c("a", [_c("i", { staticClass: "la la-code-fork" })])]
         ),
         _vm._v(" "),
         _c(
@@ -41334,19 +41302,7 @@ var staticRenderFns = [
               "data-placement": "left"
             }
           },
-          [
-            _c(
-              "a",
-              {
-                attrs: {
-                  href:
-                    "https://keenthemes.com/forums/forum/support/metronic5/",
-                  target: "_blank"
-                }
-              },
-              [_c("i", { staticClass: "la la-life-ring" })]
-            )
-          ]
+          [_c("a", [_c("i", { staticClass: "la la-life-ring" })])]
         )
       ]
     )

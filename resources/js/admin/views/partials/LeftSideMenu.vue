@@ -20,7 +20,7 @@
               <i class="m-menu__link-icon flaticon-line-graph"></i>
               <span class="m-menu__link-title">
                 <span class="m-menu__link-wrap">
-                  <span class="m-menu__link-text">Dashboard</span>
+                  <span class="m-menu__link-text">{{$t('dashboard')}}</span>
                   <span class="m-menu__link-badge">
                   </span>
                 </span>
@@ -344,19 +344,24 @@ export default {
       this.getLanguage();
     },
     getLanguage() {
+      // eslint-disable-next-line no-console
     let brtl= document.getElementById('brtl');
      let srtl = document.getElementById('srtl');
      if(this.lang == 'arabic') {
      brtl.href="/vendors/general/base-vendors/css/vendors.bundle.rtl.css";
      srtl.href="/vendors/general/base-vendors/css/style.bundle.rtl.css";
       localStorage.setItem("lang",this.lang);
+      this.$root.$i18n.locale = 'ar'
      this.lang = 'english';
       } else {
         brtl.href="";
      srtl.href="";
         localStorage.setItem("lang",this.lang);
+        this.$root.$i18n.locale = 'en'
+
      this.lang='arabic';
       }
+      
   }
   },
   mounted() {

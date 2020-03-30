@@ -341,21 +341,30 @@ export default {
   },
   methods: {
     changeLanguage() {
-              let brtl= document.getElementById('brtl');
+      this.getLanguage();
+    },
+    getLanguage() {
+    let brtl= document.getElementById('brtl');
      let srtl = document.getElementById('srtl');
-      if(this.lang == 'arabic') {
+     if(this.lang == 'arabic') {
      brtl.href="/vendors/general/base-vendors/css/vendors.bundle.rtl.css";
      srtl.href="/vendors/general/base-vendors/css/style.bundle.rtl.css";
+      localStorage.setItem("lang",this.lang);
      this.lang = 'english';
       } else {
         brtl.href="";
      srtl.href="";
+        localStorage.setItem("lang",this.lang);
      this.lang='arabic';
       }
-     
-    }
   }
-};
+  },
+  mounted() {
+    this.lang = localStorage.getItem('lang');
+        this.getLanguage();
+  },
+  
+}
 </script>
 
 <style>

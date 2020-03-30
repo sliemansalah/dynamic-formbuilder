@@ -6038,19 +6038,28 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     changeLanguage: function changeLanguage() {
+      this.getLanguage();
+    },
+    getLanguage: function getLanguage() {
       var brtl = document.getElementById('brtl');
       var srtl = document.getElementById('srtl');
 
       if (this.lang == 'arabic') {
         brtl.href = "/vendors/general/base-vendors/css/vendors.bundle.rtl.css";
         srtl.href = "/vendors/general/base-vendors/css/style.bundle.rtl.css";
+        localStorage.setItem("lang", this.lang);
         this.lang = 'english';
       } else {
         brtl.href = "";
         srtl.href = "";
+        localStorage.setItem("lang", this.lang);
         this.lang = 'arabic';
       }
     }
+  },
+  mounted: function mounted() {
+    this.lang = localStorage.getItem('lang');
+    this.getLanguage();
   }
 });
 

@@ -1,4 +1,5 @@
 <template>
+
   <p-carousel :value="cars" 
   :numVisible="3" 
   :numScroll="1" 
@@ -7,11 +8,10 @@
 	<template #header>
 		<h2>Our Carousel</h2>
 	</template>
-    <!-- start item card -->
+
 	<template #item="slotProps">
 	<item-card :slotProps="slotProps"></item-card>
 	</template>
-
 
 </p-carousel>
 

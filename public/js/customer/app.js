@@ -6477,6 +6477,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["displayModal", "imgLoading"],
   methods: {
@@ -42899,7 +42900,8 @@ var render = function() {
           attrs: {
             header: "Image Preview",
             visible: _vm.displayModal,
-            modal: true
+            modal: true,
+            closable: false
           },
           on: {
             "update:visible": function($event) {

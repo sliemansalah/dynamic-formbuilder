@@ -3,7 +3,8 @@
       <Dialog header="Image Preview" 
       :visible.sync="displayModal" 
       :style="{width: '30vw'}" 
-      :modal="true">
+      :modal="true"
+      :closable="false">
       <div class="text-center">
               <img width="250px" :src="imgLoading" alt="">
       </div>

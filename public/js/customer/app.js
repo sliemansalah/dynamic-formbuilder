@@ -5666,22 +5666,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       user: {
         email: ''
-      }
+      },
+      lang: 'arabic'
     };
   },
   methods: {
     logout: function logout() {
       localStorage.removeItem('user');
       this.$router.go(0);
+    },
+    changeLanguage: function changeLanguage() {
+      // eslint-disable-next-line no-console
+      var brtl = document.getElementById('brtl');
+      var srtl = document.getElementById('srtl');
+
+      if (this.lang == 'arabic') {
+        brtl.href = "/vendors/general/base-vendors/css/vendors.bundle.rtl.css";
+        srtl.href = "/vendors/general/base-vendors/css/style.bundle.rtl.css";
+        localStorage.setItem("lang", this.lang);
+        this.$root.$i18n.locale = 'ar';
+        this.lang = 'english';
+      } else {
+        brtl.href = "";
+        srtl.href = "";
+        localStorage.setItem("lang", this.lang);
+        this.$root.$i18n.locale = 'en';
+        this.lang = 'arabic';
+      }
     }
   },
   mounted: function mounted() {
     this.user.email = localStorage.getItem('user');
+    this.lang = localStorage.getItem('lang');
+    this.changeLanguage();
   }
 });
 
@@ -39515,7 +39538,143 @@ var render = function() {
                           [
                             _vm._m(3),
                             _vm._v(" "),
-                            _vm._m(4),
+                            _c(
+                              "li",
+                              {
+                                staticClass:
+                                  "m-nav__item m-topbar__languages m-dropdown m-dropdown--small m-dropdown--header-bg-fill m-dropdown--arrow m-dropdown--align-right m-dropdown--mobile-full-width",
+                                attrs: { "m-dropdown-toggle": "click" }
+                              },
+                              [
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass:
+                                      "m-nav__link m-dropdown__toggle",
+                                    attrs: { href: "#" }
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      { staticClass: "m-nav__link-text" },
+                                      [
+                                        _c("img", {
+                                          staticClass:
+                                            "m-topbar__language-selected-img",
+                                          attrs: {
+                                            src:
+                                              _vm.lang == "arabic"
+                                                ? "/images/en.svg"
+                                                : "/images/ar.svg"
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "m-dropdown__wrapper" },
+                                  [
+                                    _c("span", {
+                                      staticClass:
+                                        "m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "m-dropdown__inner" },
+                                      [
+                                        _vm._m(4),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          { staticClass: "m-dropdown__body" },
+                                          [
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  "m-dropdown__content"
+                                              },
+                                              [
+                                                _c(
+                                                  "ul",
+                                                  {
+                                                    staticClass:
+                                                      "m-nav m-nav--skin-light"
+                                                  },
+                                                  [
+                                                    _c(
+                                                      "li",
+                                                      {
+                                                        staticClass:
+                                                          "m-nav__item m-nav__item--active"
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "a",
+                                                          {
+                                                            staticClass:
+                                                              "m-nav__link m-nav__link--active",
+                                                            on: {
+                                                              click:
+                                                                _vm.changeLanguage
+                                                            }
+                                                          },
+                                                          [
+                                                            _c(
+                                                              "span",
+                                                              {
+                                                                staticClass:
+                                                                  "m-nav__link-icon"
+                                                              },
+                                                              [
+                                                                _c("img", {
+                                                                  staticClass:
+                                                                    "m-topbar__language-img",
+                                                                  attrs: {
+                                                                    src:
+                                                                      _vm.lang ==
+                                                                      "arabic"
+                                                                        ? "/images/ar.svg"
+                                                                        : "/images/en.svg"
+                                                                  }
+                                                                })
+                                                              ]
+                                                            ),
+                                                            _vm._v(" "),
+                                                            _c(
+                                                              "span",
+                                                              {
+                                                                staticClass:
+                                                                  "m-nav__link-title m-topbar__language-text m-nav__link-text"
+                                                              },
+                                                              [
+                                                                _vm._v(
+                                                                  _vm._s(
+                                                                    _vm.lang
+                                                                  )
+                                                                )
+                                                              ]
+                                                            )
+                                                          ]
+                                                        )
+                                                      ]
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            ),
                             _vm._v(" "),
                             _c(
                               "li",
@@ -40149,87 +40308,17 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c(
-      "li",
+      "div",
       {
-        staticClass:
-          "m-nav__item m-topbar__languages m-dropdown m-dropdown--small m-dropdown--header-bg-fill m-dropdown--arrow m-dropdown--align-right m-dropdown--mobile-full-width",
-        attrs: { "m-dropdown-toggle": "click" }
+        staticClass: "m-dropdown__header m--align-center",
+        staticStyle: {
+          background: "url(../../assets/img/misc/quick_actions_bg.jpg)",
+          "background-size": "cover"
+        }
       },
       [
-        _c(
-          "a",
-          {
-            staticClass: "m-nav__link m-dropdown__toggle",
-            attrs: { href: "#" }
-          },
-          [
-            _c("span", { staticClass: "m-nav__link-text" }, [
-              _c("img", {
-                staticClass: "m-topbar__language-selected-img",
-                attrs: { src: __webpack_require__(/*! ../../assets/img/flags/020-flag.svg */ "./resources/js/admin/assets/img/flags/020-flag.svg") }
-              })
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "m-dropdown__wrapper" }, [
-          _c("span", {
-            staticClass:
-              "m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "m-dropdown__inner" }, [
-            _c(
-              "div",
-              {
-                staticClass: "m-dropdown__header m--align-center",
-                staticStyle: {
-                  background: "url(../../assets/img/misc/quick_actions_bg.jpg)",
-                  "background-size": "cover"
-                }
-              },
-              [
-                _c("span", { staticClass: "m-dropdown__header-subtitle" }, [
-                  _vm._v("Select your language")
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "m-dropdown__body" }, [
-              _c("div", { staticClass: "m-dropdown__content" }, [
-                _c("ul", { staticClass: "m-nav m-nav--skin-light" }, [
-                  _c("li", { staticClass: "m-nav__item m-nav__item--active" }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "m-nav__link m-nav__link--active",
-                        attrs: { href: "#" }
-                      },
-                      [
-                        _c("span", { staticClass: "m-nav__link-icon" }, [
-                          _c("img", {
-                            staticClass: "m-topbar__language-img",
-                            attrs: {
-                              src: __webpack_require__(/*! ../../assets/img/flags/020-flag.svg */ "./resources/js/admin/assets/img/flags/020-flag.svg")
-                            }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          {
-                            staticClass:
-                              "m-nav__link-title m-topbar__language-text m-nav__link-text"
-                          },
-                          [_vm._v("USA")]
-                        )
-                      ]
-                    )
-                  ])
-                ])
-              ])
-            ])
-          ])
+        _c("span", { staticClass: "m-dropdown__header-subtitle" }, [
+          _vm._v("Select your language")
         ])
       ]
     )
@@ -54030,17 +54119,6 @@ module.exports = function(module) {
 	return module;
 };
 
-
-/***/ }),
-
-/***/ "./resources/js/admin/assets/img/flags/020-flag.svg":
-/*!**********************************************************!*\
-  !*** ./resources/js/admin/assets/img/flags/020-flag.svg ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/020-flag.svg?1566642f3fb99319165f47e173951f95";
 
 /***/ }),
 

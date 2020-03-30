@@ -156,7 +156,7 @@
 										<li class="m-nav__item m-topbar__languages m-dropdown m-dropdown--small m-dropdown--header-bg-fill m-dropdown--arrow m-dropdown--align-right m-dropdown--mobile-full-width" m-dropdown-toggle="click">
 											<a href="#" class="m-nav__link m-dropdown__toggle">
 												<span class="m-nav__link-text">
-													<img class="m-topbar__language-selected-img" src="../../assets/img/flags/020-flag.svg">
+													<img class="m-topbar__language-selected-img" :src="lang=='arabic'?'/images/en.svg':'/images/ar.svg'">
 												</span>
 											</a>
 											<div class="m-dropdown__wrapper">
@@ -169,9 +169,10 @@
 														<div class="m-dropdown__content">
 															<ul class="m-nav m-nav--skin-light">
 																<li class="m-nav__item m-nav__item--active">
-																	<a href="#" class="m-nav__link m-nav__link--active">
-																		<span class="m-nav__link-icon"><img class="m-topbar__language-img" src="../../assets/img/flags/020-flag.svg"></span>
-																		<span class="m-nav__link-title m-topbar__language-text m-nav__link-text">USA</span>
+																	<a @click="changeLanguage" class="m-nav__link m-nav__link--active">
+																		<span class="m-nav__link-icon"><img class="m-topbar__language-img" 
+																		:src="lang=='arabic'?'/images/ar.svg': '/images/en.svg'"></span>
+																		<span class="m-nav__link-title m-topbar__language-text m-nav__link-text">{{ lang }}</span>
 																	</a>
 																</li>
 	
@@ -238,17 +239,38 @@ export default {
 		return {
 			user:{
 				email:''
-			}
+			},
+			lang:'arabic',
 		}
 	},
 methods:{
 	logout(){
 		localStorage.removeItem('user');
 		this.$router.go(0)
+	},
+	changeLanguage() {
+      // eslint-disable-next-line no-console
+    let brtl= document.getElementById('brtl');
+     let srtl = document.getElementById('srtl');
+     if(this.lang == 'arabic') {
+     brtl.href="/vendors/general/base-vendors/css/vendors.bundle.rtl.css";
+     srtl.href="/vendors/general/base-vendors/css/style.bundle.rtl.css";
+      localStorage.setItem("lang",this.lang);
+      this.$root.$i18n.locale = 'ar'
+     this.lang = 'english';
+      } else {
+        brtl.href="";
+     srtl.href="";
+        localStorage.setItem("lang",this.lang);
+        this.$root.$i18n.locale = 'en'
+     this.lang='arabic';
+  }
 	}
 },
 mounted(){
-	this.user.email = localStorage.getItem('user')
+	this.user.email = localStorage.getItem('user');
+	this.lang = localStorage.getItem('lang');
+    this.changeLanguage();
 }
 }
 </script>

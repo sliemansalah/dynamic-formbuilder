@@ -23,11 +23,11 @@
       
         <!-- RTL --> 
 
-        <link href="{{asset('/')}}vendors/general/base-vendors/css/vendors.bundle.rtl.css" rel="stylesheet" type="text/css" />
+        <link id="brtl" href="" rel="stylesheet" type="text/css" />
 
         <link href="{{asset('/')}}vendors/general/base-vendors/css/style.bundle.css" rel="stylesheet" type="text/css" />
           
-        <link href="{{asset('/')}}vendors/general/base-vendors/css/style.bundle.rtl.css" rel="stylesheet" type="text/css" />
+        <link id="srtl" href="" rel="stylesheet" type="text/css" />
 
         <!-- For DataTable -->
         <link href="{{asset('/')}}vendors/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />

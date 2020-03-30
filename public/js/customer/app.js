@@ -5999,8 +5999,60 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 // import axios from 'axios'
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      lang: 'arabic'
+    };
+  },
+  methods: {
+    changeLanguage: function changeLanguage() {
+      var brtl = document.getElementById('brtl');
+      var srtl = document.getElementById('srtl');
+
+      if (this.lang == 'arabic') {
+        brtl.href = "/vendors/general/base-vendors/css/vendors.bundle.rtl.css";
+        srtl.href = "/vendors/general/base-vendors/css/style.bundle.rtl.css";
+        this.lang = 'english';
+      } else {
+        brtl.href = "";
+        srtl.href = "";
+        this.lang = 'arabic';
+      }
+    }
+  }
+});
 
 /***/ }),
 
@@ -40917,6 +40969,52 @@ var render = function() {
                       ])
                     ])
                   ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    staticClass: "m-menu__item m-menu__item--submenu",
+                    attrs: {
+                      "aria-haspopup": "true",
+                      "m-menu-submenu-toggle": "hover"
+                    }
+                  },
+                  [
+                    _vm._m(10),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "m-menu__submenu" }, [
+                      _c("span", { staticClass: "m-menu__arrow" }),
+                      _vm._v(" "),
+                      _c("ul", { staticClass: "m-menu__subnav" }, [
+                        _c(
+                          "li",
+                          {
+                            staticClass: "m-menu__item",
+                            attrs: { "aria-haspopup": "true" }
+                          },
+                          [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "m-menu__link",
+                                on: { click: _vm.changeLanguage }
+                              },
+                              [
+                                _vm._m(11),
+                                _vm._v(" "),
+                                _c(
+                                  "span",
+                                  { staticClass: "m-menu__link-text" },
+                                  [_vm._v(_vm._s(_vm.lang))]
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ])
+                    ])
+                  ]
                 )
               ]
             )
@@ -41104,6 +41202,35 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("i", { staticClass: "m-menu__ver-arrow la la-angle-right" })
       ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "m-menu__link m-menu__toggle",
+        attrs: { href: "javascript:;" }
+      },
+      [
+        _c("i", { staticClass: "m-menu__link-icon fa fa-flag" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "m-menu__link-text" }, [_vm._v("Languages")]),
+        _vm._v(" "),
+        _c("i", { staticClass: "m-menu__ver-arrow la la-angle-right" })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "i",
+      { staticClass: "m-menu__link-bullet m-menu__link-bullet--dot" },
+      [_c("span")]
     )
   }
 ]

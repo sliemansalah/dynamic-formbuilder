@@ -293,6 +293,36 @@
               </ul>
             </div>
  </li>
+
+ 
+
+ <li
+            class="m-menu__item m-menu__item--submenu"
+            aria-haspopup="true"
+            m-menu-submenu-toggle="hover"
+          >
+            <a href="javascript:;" class="m-menu__link m-menu__toggle">
+              <i class="m-menu__link-icon fa fa-flag"></i>
+              <span class="m-menu__link-text">Languages</span>
+              <i class="m-menu__ver-arrow la la-angle-right"></i>
+            </a>
+            <div class="m-menu__submenu">
+              <span class="m-menu__arrow"></span>
+              <ul class="m-menu__subnav">
+
+                <li class="m-menu__item"
+                 aria-haspopup="true">
+                  <a @click="changeLanguage" class="m-menu__link">
+                    <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                      <span></span>
+                    </i>
+                    <span class="m-menu__link-text">{{lang}}</span>
+                  </a>
+                </li>
+
+              </ul>
+            </div>
+ </li>
         </ul>
       </div>
 
@@ -304,6 +334,27 @@
 <script>
 // import axios from 'axios'
 export default {
+  data(){
+   return {
+      lang:'arabic'
+   }
+  },
+  methods: {
+    changeLanguage() {
+              let brtl= document.getElementById('brtl');
+     let srtl = document.getElementById('srtl');
+      if(this.lang == 'arabic') {
+     brtl.href="/vendors/general/base-vendors/css/vendors.bundle.rtl.css";
+     srtl.href="/vendors/general/base-vendors/css/style.bundle.rtl.css";
+     this.lang = 'english';
+      } else {
+        brtl.href="";
+     srtl.href="";
+     this.lang='arabic';
+      }
+     
+    }
+  }
 };
 </script>
 

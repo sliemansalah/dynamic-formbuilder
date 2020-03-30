@@ -2,13 +2,13 @@
   <div class="row">
     <div class="card ml-15" style="width: 18rem;">
   <div class="card-body text-center">
-    <h5 class="card-title">Customers</h5>
+    <h5 class="card-title">{{$t('customers')}}</h5>
     <router-link to="/customers"><span class="fs-28">{{ customersCount }}</span></router-link>
   </div>
 </div>
  <div class="card ml-15" style="width: 18rem;">
   <div class="card-body text-center">
-    <h5 class="card-title">Users</h5>
+    <h5 class="card-title">{{$t('users')}}</h5>
     <router-link to="/users"><span class="fs-28">{{ usersCount }}</span></router-link>
   </div>
 </div>

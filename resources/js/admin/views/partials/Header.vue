@@ -8,8 +8,8 @@
 						<div class="m-stack__item m-brand  m-brand--skin-dark ">
 							<div class="m-stack m-stack--ver m-stack--general">
 								<div class="m-stack__item m-stack__item--middle m-brand__logo">
-									<a href="index.html" class="m-brand__logo-wrapper">
-										<img src="../../assets/img/logo/logo_default_dark.png" />
+									<a class="m-brand__logo-wrapper">
+										<h5 class="title">{{$t('learnVueJS')}}</h5>
 									</a>
 								</div>
 								<div class="m-stack__item m-stack__item--middle m-brand__tools">
@@ -254,5 +254,10 @@ mounted(){
 </script>
 
 <style>
-
+.title {
+	color: #EFE391;
+    font-size: 22px;
+    text-align: center;
+    width: 170px;
+}
 </style>

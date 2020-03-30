@@ -1,4 +1,27 @@
 {
     "dashboard": "Dashboard",
-    "actions": "Actions"
+    "actions": "Actions",
+    "components": "Components",
+    "customers": "Customers",
+    "viewAll": "View All",
+    "users": "Users",
+    "base" : "Base",
+    "prime": "Prime",
+    "custom": "Custom",
+    "tabsPrime": "Tabs Prime",
+    "tabsElementUI": "Tabs Element UI",
+    "calanderElementUI": "Calander Element UI",
+    "wizardElementUI": "Wizard Element UI",
+    "forms": "Forms",
+    "validationForm": "Validation Form",
+    "dynamicForm": "Dynamic Form",
+    "slots": "Slots",
+    "slot": "Slot",
+    "tree": "Tree",
+    "treeControl": "Tree Control",
+    "slider": "Slider",
+    "languages": "Languages",
+    "english": "English",
+    "arabic": "Arabic",
+    "learnVueJS": "Learn Vue JS"
 }

@@ -28,7 +28,7 @@
             </router-link>
           </li>
           <li class="m-menu__section">
-            <h4 class="m-menu__section-text">Components</h4>
+            <h4 class="m-menu__section-text">{{$t('components')}}</h4>
             <i class="m-menu__section-icon flaticon-more-v2"></i>
           </li>
           <li
@@ -38,7 +38,7 @@
           >
             <a href="javascript:;" class="m-menu__link m-menu__toggle">
               <i class="m-menu__link-icon flaticon-layers"></i>
-              <span class="m-menu__link-text">Customers</span>
+              <span class="m-menu__link-text">{{$t('customers')}}</span>
               <i class="m-menu__ver-arrow la la-angle-right"></i>
             </a>
             <div class="m-menu__submenu">
@@ -50,7 +50,7 @@
                     <i class="m-menu__link-bullet m-menu__link-bullet--dot">
                       <span></span>
                     </i>
-                    <span class="m-menu__link-text">View All</span>
+                    <span class="m-menu__link-text">{{$t('viewAll')}}</span>
                   </router-link>
                 </li>
               </ul>
@@ -64,7 +64,7 @@
           >
             <a href="javascript:;" class="m-menu__link m-menu__toggle">
               <i class="m-menu__link-icon fa fa-users"></i>
-              <span class="m-menu__link-text">Users</span>
+              <span class="m-menu__link-text">{{$t('users')}}</span>
               <i class="m-menu__ver-arrow la la-angle-right"></i>
             </a>
             <div class="m-menu__submenu">
@@ -76,7 +76,7 @@
                     <i class="m-menu__link-bullet m-menu__link-bullet--dot">
                       <span></span>
                     </i>
-                    <span class="m-menu__link-text">View All</span>
+                    <span class="m-menu__link-text">{{$t('viewAll')}}</span>
                   </router-link>
                 </li>
               </ul>
@@ -91,7 +91,7 @@
           >
             <a href="javascript:;" class="m-menu__link m-menu__toggle">
               <i class="m-menu__link-icon fa fa-list"></i>
-              <span class="m-menu__link-text">Components</span>
+              <span class="m-menu__link-text">{{$t('components')}}</span>
               <i class="m-menu__ver-arrow la la-angle-right"></i>
             </a>
             <div class="m-menu__submenu">
@@ -103,7 +103,7 @@
                     <i class="m-menu__link-bullet m-menu__link-bullet--dot">
                       <span></span>
                     </i>
-                    <span class="m-menu__link-text">Base</span>
+                    <span class="m-menu__link-text">{{$t('base')}}</span>
                   </router-link>
                 </li>
                   <li :class="$route.path=='/components/prime'? 'm-menu__item m-menu__item--active': 'm-menu__item'"
@@ -112,12 +112,12 @@
                     <i class="m-menu__link-bullet m-menu__link-bullet--dot">
                       <span></span>
                     </i>
-                    <span class="m-menu__link-text">Prime</span>
+                    <span class="m-menu__link-text">{{$t('prime')}}</span>
                   </router-link>
                 </li>
 
                 <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="javascript:;" class="m-menu__link m-menu__toggle"><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span
-												class="m-menu__link-text">Custom</span><i class="m-menu__ver-arrow la la-angle-right"></i></a>
+												class="m-menu__link-text">{{$t('custom')}}</span><i class="m-menu__ver-arrow la la-angle-right"></i></a>
 											<div class="m-menu__submenu "><span class="m-menu__arrow"></span>
 												<ul class="m-menu__subnav">
                            <li :class="$route.path=='/components/custom/tabs-prime'? 'm-menu__item m-menu__item--active': 'm-menu__item'"
@@ -126,7 +126,7 @@
                     <i class="m-menu__link-bullet m-menu__link-bullet--dot">
                       <span></span>
                     </i>
-                    <span class="m-menu__link-text">Tabs Prime</span>
+                    <span class="m-menu__link-text">{{$t('tabsPrime')}}</span>
                   </router-link>
                 </li>
 
@@ -136,7 +136,7 @@
                     <i class="m-menu__link-bullet m-menu__link-bullet--dot">
                       <span></span>
                     </i>
-                    <span class="m-menu__link-text">Tabs Element UI</span>
+                    <span class="m-menu__link-text">{{$t('tabsElementUI')}}</span>
                   </router-link>
                 </li>
 
@@ -146,7 +146,7 @@
                     <i class="m-menu__link-bullet m-menu__link-bullet--dot">
                       <span></span>
                     </i>
-                    <span class="m-menu__link-text">Calander Element UI</span>
+                    <span class="m-menu__link-text">{{$t('calanderElementUI')}}</span>
                   </router-link>
                 </li>
 
@@ -156,7 +156,7 @@
                     <i class="m-menu__link-bullet m-menu__link-bullet--dot">
                       <span></span>
                     </i>
-                    <span class="m-menu__link-text">Wizard Element UI</span>
+                    <span class="m-menu__link-text">{{$t('wizardElementUI')}}</span>
                   </router-link>
                 </li>
 
@@ -176,7 +176,7 @@
           >
             <a href="javascript:;" class="m-menu__link m-menu__toggle">
               <i class="m-menu__link-icon fa fa-building"></i>
-              <span class="m-menu__link-text">Forms</span>
+              <span class="m-menu__link-text">{{$t('forms')}}</span>
               <i class="m-menu__ver-arrow la la-angle-right"></i>
             </a>
             <div class="m-menu__submenu">
@@ -189,7 +189,7 @@
                     <i class="m-menu__link-bullet m-menu__link-bullet--dot">
                       <span></span>
                     </i>
-                    <span class="m-menu__link-text">Validation Form</span>
+                    <span class="m-menu__link-text">{{$t('validationForm')}}</span>
                   </router-link>
                 </li>
 
@@ -199,7 +199,7 @@
                     <i class="m-menu__link-bullet m-menu__link-bullet--dot">
                       <span></span>
                     </i>
-                    <span class="m-menu__link-text">Dynamic Form</span>
+                    <span class="m-menu__link-text">{{$t('dynamicForm')}}</span>
                   </router-link>
                 </li>
 
@@ -214,7 +214,7 @@
           >
             <a href="javascript:;" class="m-menu__link m-menu__toggle">
               <i class="m-menu__link-icon fa fa-asterisk"></i>
-              <span class="m-menu__link-text">Slots</span>
+              <span class="m-menu__link-text">{{$t('slots')}}</span>
               <i class="m-menu__ver-arrow la la-angle-right"></i>
             </a>
             <div class="m-menu__submenu">
@@ -227,7 +227,7 @@
                     <i class="m-menu__link-bullet m-menu__link-bullet--dot">
                       <span></span>
                     </i>
-                    <span class="m-menu__link-text">Slot</span>
+                    <span class="m-menu__link-text">{{$t('slot')}}</span>
                   </router-link>
                 </li>
 
@@ -243,7 +243,7 @@
           >
             <a href="javascript:;" class="m-menu__link m-menu__toggle">
               <i class="m-menu__link-icon fa fa-tree"></i>
-              <span class="m-menu__link-text">Tree</span>
+              <span class="m-menu__link-text">{{$t('tree')}}</span>
               <i class="m-menu__ver-arrow la la-angle-right"></i>
             </a>
             <div class="m-menu__submenu">
@@ -256,7 +256,7 @@
                     <i class="m-menu__link-bullet m-menu__link-bullet--dot">
                       <span></span>
                     </i>
-                    <span class="m-menu__link-text">Tree Control</span>
+                    <span class="m-menu__link-text">{{$t('treeControl')}}</span>
                   </router-link>
                 </li>
 
@@ -273,7 +273,7 @@
           >
             <a href="javascript:;" class="m-menu__link m-menu__toggle">
               <i class="m-menu__link-icon fa fa-signal"></i>
-              <span class="m-menu__link-text">Slider</span>
+              <span class="m-menu__link-text">{{$t('slider')}}</span>
               <i class="m-menu__ver-arrow la la-angle-right"></i>
             </a>
             <div class="m-menu__submenu">
@@ -286,7 +286,7 @@
                     <i class="m-menu__link-bullet m-menu__link-bullet--dot">
                       <span></span>
                     </i>
-                    <span class="m-menu__link-text">Slider</span>
+                    <span class="m-menu__link-text">{{$t('slider')}}</span>
                   </router-link>
                 </li>
 
@@ -303,7 +303,7 @@
           >
             <a href="javascript:;" class="m-menu__link m-menu__toggle">
               <i class="m-menu__link-icon fa fa-flag"></i>
-              <span class="m-menu__link-text">Languages</span>
+              <span class="m-menu__link-text">{{$t('languages')}}</span>
               <i class="m-menu__ver-arrow la la-angle-right"></i>
             </a>
             <div class="m-menu__submenu">
@@ -316,7 +316,7 @@
                     <i class="m-menu__link-bullet m-menu__link-bullet--dot">
                       <span></span>
                     </i>
-                    <span class="m-menu__link-text">{{lang}}</span>
+                    <span class="m-menu__link-text">{{$t(lang)}}</span>
                   </a>
                 </li>
 

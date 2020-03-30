@@ -1,4 +1,27 @@
 {
     "dashboard": "الرئيسية",
-    "actions": "خيارات"
+    "actions": "خيارات",
+    "components": "الأدوات",
+    "customers": "الزبائن",
+    "viewAll": "عرض الكل",
+    "users": "المستخدمين",
+    "base" : "الأساسية",
+    "prime": "برايم",
+    "custom": "خاصة",
+    "tabsPrime": "تابات برايم",
+    "tabsElementUI": "تابات اليمينت يو اي",
+    "calanderElementUI": "كالاندر اليمنت يو اي",
+    "wizardElementUI": "ويزرد اليمنت يو اي",
+    "forms": "نماذج",
+    "validationForm": "نموذج التحقق",
+    "dynamicForm": "نموذج ديناميكي",
+    "slots": "سلوتس",
+    "slot": "سلوت",
+    "tree": "الشجرة",
+    "treeControl": "شجرة التحكم",
+    "slider": "السلايدر",
+    "languages": "اللغات",
+    "english": "الإنجليزية",
+    "arabic": "العربية",
+    "learnVueJS": "تعلم فيو جي اس"
 }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 class="m-subheader__title">Users</h3>
+    <h3 class="m-subheader__title">{{$t('users')}}</h3>
        <vue-good-table
       :columns="columns"
       :rows="rows"

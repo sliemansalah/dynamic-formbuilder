@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 class="m-subheader__title">Customers</h3>
+    <h3 class="m-subheader__title">{{$t('customers')}}</h3>
       <button @click="filterShown=true" class="btn btn-success" v-if="!filterShown">Show Filters</button>
         <button @click="filterShown=false;" class="btn btn-danger" v-else>Hide Filters</button>
         <br><br>

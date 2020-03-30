@@ -83,6 +83,13 @@ import PTabPanel from 'primevue/tabpanel';
 import PButton from 'primevue/button';
 import PCarousel from 'primevue/carousel';
 import Tree from 'primevue/tree';
+import OverlayPanel from 'primevue/overlaypanel';
+import Dialog  from 'primevue/dialog';
+
+import ImagePreview from './views/users/ImagePreview.vue';
+
+Vue.component('ImagePreview', ImagePreview)
+Vue.component('Dialog', Dialog)
 
 Vue.component('layout', Layout)
 
@@ -146,7 +153,7 @@ Vue.component('PTabPanel',PTabPanel)
 Vue.component('PButton',PButton)
 Vue.component('Tree',Tree);
 Vue.component('PCarousel',PCarousel);
-
+Vue.component('OverlayPanel',OverlayPanel);
 
 
 /*  Form Elements */

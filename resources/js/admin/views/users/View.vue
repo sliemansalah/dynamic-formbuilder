@@ -7,6 +7,7 @@
       styleClass="vgt-table striped bordered condensed"
       :search-options="search"
       :pagination-options="page"
+       @on-cell-click="onCellClick"
     >
     
       <div @click="add" slot="table-actions">
@@ -22,6 +23,12 @@
                    </component>
         </template>
     </vue-good-table>
+    
+    <image-preview 
+    :displayModal="displayModal"
+    :imgLoading="imgLoading"
+    @close="displayModal=false;"
+    ></image-preview>
   </div>
 </template>
 <script>
@@ -32,7 +39,10 @@ export default {
   
   },
   data() {
+    
     return {
+      displayModal:false,
+      imgLoading:'',
       filterShown:false,
       search: {
         enabled: true,
@@ -113,13 +123,20 @@ export default {
     },
      tableRowComponent (column){
       return column.component
-    } ,
-    retrieveImage(obj){
-      return `<a 
-              href="${obj.avatar}"
-              target="_blank">
-              <img
-              src="${obj.avatar}">
+    },
+    open(data) {
+      this.imgLoading = data.avatar;
+      this.displayModal = true;
+    },
+    onCellClick(params){
+      if(params.column.label == 'Image') {
+      this.open(params.row)
+      }
+    },
+    retrieveImage(){
+      return `<a>
+              <img width="40px;"
+              src="/images/eye.png">  
               </img>
               </a>`;
     },
@@ -128,11 +145,11 @@ export default {
     },
     details(row){
       this.$router.push('/users/'+row.id+'/details');
-    }
+    },
   },
   mounted() {
     this.getUsers();    
-  }
+  },
 };
 </script>
 

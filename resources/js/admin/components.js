@@ -81,6 +81,7 @@ import PRating from 'primevue/rating';
 import PTabView from 'primevue/tabview';
 import PTabPanel from 'primevue/tabpanel';
 import PButton from 'primevue/button';
+import PCarousel from 'primevue/carousel';
 import Tree from 'primevue/tree';
 
 Vue.component('layout', Layout)
@@ -144,6 +145,8 @@ Vue.component('PTabView',PTabView)
 Vue.component('PTabPanel',PTabPanel)
 Vue.component('PButton',PButton)
 Vue.component('Tree',Tree);
+Vue.component('PCarousel',PCarousel);
+
 
 
 /*  Form Elements */

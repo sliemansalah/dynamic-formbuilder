@@ -25,6 +25,8 @@ import DynamicForm from "../views/forms/DynamicForm";
 import TreeIndex from "../views/tree/Index";
 import TreeView from "../views/tree/View";
 
+import SliderIndex from "../views/slider/Index";
+import SliderView from "../views/slider/View";
 
 export default  [
     { path: '/', component: Dashboard },
@@ -54,5 +56,8 @@ export default  [
     ] },
     { path: '/tree', component: TreeIndex, children:[
         { path: '', component: TreeView },
+    ] },
+    { path: '/slider', component: SliderIndex, children:[
+        { path: '', component: SliderView },
     ] },
 ]

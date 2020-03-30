@@ -9,6 +9,9 @@ import Footer from './views/partials/Footer'
 import Customers from './views/customers/Index'
 import ViewCustomers from './views/customers/View'
 
+import SliderIndex from './views/slider/Index'
+import SliderView from './views/slider/View'
+
 import DataTable from './components/metronic/DataTable.vue'
 import VAction from './components/metronic/goodtable/VAction.vue'
 import VAction2 from './components/metronic/goodtable/VAction2.vue'
@@ -121,6 +124,8 @@ Vue.component('DynamicForm', DynamicForm)
 
 Vue.component('FormBuilder', FormBuilder)
 
+Vue.component('SliderIndex', SliderIndex)
+Vue.component('SliderView', SliderView)
 
 
 /* Prime Component */

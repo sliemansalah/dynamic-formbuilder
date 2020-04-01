@@ -7,15 +7,7 @@ Vue.use(VueGoodTablePlugin);
 
 import VeeValidate from 'vee-validate';
 
-Vue.use(VeeValidate, {
-  classes: true,
-  classNames: {
-    valid: 'is-valid',
-    invalid: 'is-invalid'
-  }
-});
-
-
+Vue.use(VeeValidate);
 
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';

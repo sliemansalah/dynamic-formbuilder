@@ -20,7 +20,7 @@ import WizardElementUI from "../views/comps/custom/WizardElementUI";
 import FormsIndex from "../views/forms/Index";
 import ValidationForm from "../views/forms/ValidationForm";
 import DynamicForm from "../views/forms/DynamicForm";
-
+import VeeValidate from "../views/forms/VeeValidate";
 
 import TreeIndex from "../views/tree/Index";
 import TreeView from "../views/tree/View";
@@ -50,6 +50,9 @@ export default  [
         { path: '', component: ValidationForm },
         { path: 'validation', component: ValidationForm },
         { path: 'dynamic-form', component: DynamicForm },
+        { path: 'vee-validate', component: VeeValidate },
+
+        
     ] },
     { path: '/slot', component: SlotIndex, children:[
         { path: '', component: SlotPage },

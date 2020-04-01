@@ -203,6 +203,16 @@
                   </router-link>
                 </li>
 
+                 <li :class="$route.path=='/forms/vee-validate'? 'm-menu__item m-menu__item--active': 'm-menu__item'"
+                 aria-haspopup="true">
+                  <router-link to="/forms/vee-validate" class="m-menu__link">
+                    <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                      <span></span>
+                    </i>
+                    <span class="m-menu__link-text">{{$t('veeValidate')}}</span>
+                  </router-link>
+                </li>
+
               </ul>
             </div>
           </li>

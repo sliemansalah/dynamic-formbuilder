@@ -11,6 +11,8 @@ import ViewCustomers from './views/customers/View'
 
 import SliderIndex from './views/slider/Index'
 import SliderView from './views/slider/View'
+import ItemFavourite from './views/slider/ItemFavourite'
+import ItemCart from './views/slider/ItemCart'
 
 import DataTable from './components/metronic/DataTable.vue'
 import VAction from './components/metronic/goodtable/VAction.vue'
@@ -138,6 +140,8 @@ Vue.component('FormBuilder', FormBuilder)
 
 Vue.component('SliderIndex', SliderIndex)
 Vue.component('SliderView', SliderView)
+Vue.component('ItemFavourite', ItemFavourite)
+Vue.component('ItemCart', ItemCart)
 
 
 /* Prime Component */

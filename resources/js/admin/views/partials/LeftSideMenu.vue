@@ -300,6 +300,26 @@
                   </router-link>
                 </li>
 
+                   <li :class="$route.path=='/slider/fav'? 'm-menu__item m-menu__item--active': 'm-menu__item'"
+                 aria-haspopup="true">
+                  <router-link to="/slider/fav" class="m-menu__link">
+                    <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                      <span></span>
+                    </i>
+                    <span class="m-menu__link-text">Favourite</span>
+                  </router-link>
+                </li>
+
+                <li :class="$route.path=='/slider/cart'? 'm-menu__item m-menu__item--active': 'm-menu__item'"
+                 aria-haspopup="true">
+                  <router-link to="/slider/cart" class="m-menu__link">
+                    <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                      <span></span>
+                    </i>
+                    <span class="m-menu__link-text">Cart</span>
+                  </router-link>
+                </li>
+
               </ul>
             </div>
  </li>

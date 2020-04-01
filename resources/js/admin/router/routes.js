@@ -27,6 +27,8 @@ import TreeView from "../views/tree/View";
 
 import SliderIndex from "../views/slider/Index";
 import SliderView from "../views/slider/View";
+import ItemCart from "../views/slider/ItemCart";
+import ItemFav from "../views/slider/ItemFavourite";
 
 export default  [
     { path: '/', component: Dashboard },
@@ -62,5 +64,9 @@ export default  [
     ] },
     { path: '/slider', component: SliderIndex, children:[
         { path: '', component: SliderView },
+        { path: 'cart', component: ItemCart },
+        { path: 'fav', component: ItemFav },
+
+        
     ] },
 ]

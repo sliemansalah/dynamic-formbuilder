@@ -12,15 +12,17 @@
                     </div>
 					<div>
 						<br>
-						<el-button v-if="!slotProps.data.fav"
+						<el-button v-if="!slotProps.data.fav && $route.path !== '/slider/fav'"
 						@click="saveFav(slotProps)"
 						 type="success">Add to favourite</el-button>
-						 <el-button v-else
+						 <el-button v-else-if="slotProps.data.fav && $route.path !== '/slider/fav'"
 						@click="saveFav(slotProps)"
 						 type="danger">Remove from favourite</el-button>
 						 <br><br>
-						 <el-input-number style="width:140px;" :min="1" type="text" v-model="slotProps.data.items"></el-input-number>
-						<el-button @click="addToCart" type="primary">Add to cart</el-button>
+						<template v-if="$route.path !== '/slider/fav'">
+						<el-input-number style="width:140px;" :min="1" type="text" v-model="slotProps.data.items"></el-input-number>
+						<el-button  @click="addToCart" type="primary">Add to cart</el-button>
+						</template>
 					</div>
 				</div>
 			</div>
@@ -45,6 +47,8 @@ addToCart(){
 	if(itemExisit == false) {
 this.$parent.$parent.cart.push({
 	id: this.slotProps.data.id,
+	img:this.slotProps.data.img,
+	price:this.slotProps.data.price,
 	count:this.slotProps.data.items,
 })
 	}else {
@@ -55,6 +59,7 @@ this.$parent.$parent.cart.push({
 		});
 	}
 localStorage.setItem('cart',JSON.stringify(this.$parent.$parent.cart))
+alert('added');
 
 }
 }

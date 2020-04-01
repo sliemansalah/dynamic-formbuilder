@@ -6264,8 +6264,48 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["slotProps"]
+  props: ["slotProps"],
+  methods: {
+    saveFav: function saveFav(props) {
+      props.data.fav = !props.data.fav;
+      localStorage.setItem('products', JSON.stringify(this.$parent.$parent.products));
+    },
+    addToCart: function addToCart() {
+      var _this = this;
+
+      var itemExisit = false;
+      this.$parent.$parent.cart.forEach(function (data) {
+        if (data.id == _this.slotProps.data.id) {
+          itemExisit = true;
+        }
+      });
+
+      if (itemExisit == false) {
+        this.$parent.$parent.cart.push({
+          id: this.slotProps.data.id,
+          count: this.slotProps.data.items
+        });
+      } else {
+        this.$parent.$parent.cart.forEach(function (data) {
+          if (data.id == _this.slotProps.data.id) {
+            data.count += _this.slotProps.data.items;
+          }
+        });
+      }
+
+      localStorage.setItem('cart', JSON.stringify(this.$parent.$parent.cart));
+    }
+  }
 });
 
 /***/ }),
@@ -6298,48 +6338,60 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      cars: [{
-        brand: 'audi',
-        year: '2008',
-        color: 'blue',
+      products: [{
+        id: 1,
+        img: 'pizza',
         rate: 3,
-        slider: 50
+        price: 20,
+        cost: 10,
+        fav: false,
+        items: 1
       }, {
-        brand: 'fiat',
-        year: '2009',
-        color: 'red',
-        rate: 5,
-        slider: 70
+        id: 2,
+        img: 'pork',
+        rate: 3,
+        price: 15,
+        cost: 7,
+        fav: false,
+        items: 1
       }, {
-        brand: 'renault',
-        year: '2010',
-        color: 'yellow',
+        id: 3,
+        img: 'botatos',
         rate: 2,
-        slider: 20
+        price: 5,
+        cost: 2,
+        fav: false,
+        items: 1
       }, {
-        brand: 'bmw',
-        year: '2006',
-        color: 'brown',
+        id: 4,
+        img: 'khyar',
         rate: 1,
-        slider: 12
+        price: 4,
+        cost: 2,
+        fav: false,
+        items: 1
       }, {
-        brand: 'volvo',
-        year: '2005',
-        color: 'black',
-        rate: 2,
-        slider: 23
+        id: 5,
+        img: 'tomatos',
+        rate: 5,
+        price: 4,
+        cost: 2,
+        fav: false,
+        items: 1
       }, {
-        brand: 'honda',
-        year: '2009',
-        color: 'white',
-        rate: 4,
-        slider: 47
+        id: 6,
+        img: 'dora',
+        rate: 3,
+        price: 8,
+        cost: 5,
+        fav: false,
+        items: 1
       }],
+      cart: [],
       responsiveOptions: [{
         breakpoint: '1024px',
         numVisible: 3,
@@ -6357,6 +6409,61 @@ __webpack_require__.r(__webpack_exports__);
   },
   components: {
     ItemCard: _ItemCard__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  mounted: function mounted() {
+    var prods = [{
+      img: 'pizza',
+      rate: 3,
+      price: 20,
+      cost: 10,
+      fav: false,
+      items: 1
+    }, {
+      img: 'pork',
+      rate: 3,
+      price: 15,
+      cost: 7,
+      fav: false,
+      items: 1
+    }, {
+      img: 'botatos',
+      rate: 2,
+      price: 5,
+      cost: 2,
+      fav: false,
+      items: 1
+    }, {
+      img: 'khyar',
+      rate: 1,
+      price: 4,
+      cost: 2,
+      fav: false,
+      items: 1
+    }, {
+      img: 'tomatos',
+      rate: 5,
+      price: 4,
+      cost: 2,
+      fav: false,
+      items: 1
+    }, {
+      img: 'dora',
+      rate: 3,
+      price: 8,
+      cost: 5,
+      fav: false,
+      items: 1
+    }];
+    var prodJSON = JSON.parse(localStorage.getItem('products')) || [];
+    var cartJSON = JSON.parse(localStorage.getItem('cart')) || [];
+
+    if (prodJSON.length == 0) {
+      localStorage.setItem('products', JSON.stringify(prods));
+    } else {
+      this.products = prodJSON;
+    }
+
+    cartJSON.length == 0 ? this.cart = [] : this.cart = cartJSON;
   }
 });
 
@@ -54158,8 +54265,9 @@ var render = function() {
     _c("div", { staticClass: "p-grid p-nogutter" }, [
       _c("div", { staticClass: "p-col-12" }, [
         _c("img", {
+          staticStyle: { width: "220px", height: "200px" },
           attrs: {
-            src: "/images/car/" + _vm.slotProps.data.brand + ".png",
+            src: "/images/products/" + _vm.slotProps.data.img + ".png",
             alt: _vm.slotProps.data.brand
           }
         })
@@ -54167,15 +54275,11 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "p-col-12 car-data" }, [
         _c("div", { staticClass: "car-title" }, [
-          _vm._v(_vm._s(_vm.slotProps.data.brand))
+          _vm._v(_vm._s(_vm.slotProps.data.img))
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "car-subtitle" }, [
-          _vm._v(
-            _vm._s(_vm.slotProps.data.year) +
-              " | " +
-              _vm._s(_vm.slotProps.data.color)
-          )
+          _vm._v(_vm._s(_vm.slotProps.data.price) + " ₪")
         ]),
         _vm._v(" "),
         _c(
@@ -54197,15 +54301,54 @@ var render = function() {
         _c(
           "div",
           [
-            _c("el-slider", {
+            _c("br"),
+            _vm._v(" "),
+            !_vm.slotProps.data.fav
+              ? _c(
+                  "el-button",
+                  {
+                    attrs: { type: "success" },
+                    on: {
+                      click: function($event) {
+                        return _vm.saveFav(_vm.slotProps)
+                      }
+                    }
+                  },
+                  [_vm._v("Add to favourite")]
+                )
+              : _c(
+                  "el-button",
+                  {
+                    attrs: { type: "danger" },
+                    on: {
+                      click: function($event) {
+                        return _vm.saveFav(_vm.slotProps)
+                      }
+                    }
+                  },
+                  [_vm._v("Remove from favourite")]
+                ),
+            _vm._v(" "),
+            _c("br"),
+            _c("br"),
+            _vm._v(" "),
+            _c("el-input-number", {
+              staticStyle: { width: "140px" },
+              attrs: { min: 1, type: "text" },
               model: {
-                value: _vm.slotProps.data.slider,
+                value: _vm.slotProps.data.items,
                 callback: function($$v) {
-                  _vm.$set(_vm.slotProps.data, "slider", $$v)
+                  _vm.$set(_vm.slotProps.data, "items", $$v)
                 },
-                expression: "slotProps.data.slider"
+                expression: "slotProps.data.items"
               }
-            })
+            }),
+            _vm._v(" "),
+            _c(
+              "el-button",
+              { attrs: { type: "primary" }, on: { click: _vm.addToCart } },
+              [_vm._v("Add to cart")]
+            )
           ],
           1
         )
@@ -54237,10 +54380,9 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("p-carousel", {
     attrs: {
-      value: _vm.cars,
+      value: _vm.products,
       numVisible: 3,
       numScroll: 1,
-      circular: true,
       responsiveOptions: _vm.responsiveOptions
     },
     scopedSlots: _vm._u([

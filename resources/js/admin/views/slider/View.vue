@@ -1,9 +1,8 @@
 <template>
 
-  <p-carousel :value="cars" 
+  <p-carousel :value="products" 
   :numVisible="3" 
   :numScroll="1" 
-  :circular="true" 
   :responsiveOptions="responsiveOptions">
 	<template #header>
 		<h2>Our Carousel</h2>
@@ -22,14 +21,13 @@ import ItemCard from './ItemCard';
 export default {
 data() {
 		return {
-			cars: [
-                {brand:'audi',year:'2008',color:'blue',rate:3,slider:50},
-                 {brand:'fiat',year:'2009',color:'red',rate:5,slider:70},
-                 {brand:'renault',year:'2010',color:'yellow',rate:2,slider:20},
-                  {brand:'bmw',year:'2006',color:'brown',rate:1,slider:12},
-                   {brand:'volvo',year:'2005',color:'black',rate:2,slider:23},
-                   {brand:'honda',year:'2009',color:'white',rate:4,slider:47}
-            ],
+			products: [{id:1,img:'pizza',rate:3,price:20,cost:10,fav:false,items:1},
+				{id:2,img:'pork',rate:3,price:15,cost:7,fav:false,items:1},
+				{id:3,img:'botatos',rate:2,price:5,cost:2,fav:false,items:1},
+				{id:4,img:'khyar',rate:1,price:4,cost:2,fav:false,items:1},
+				{id:5,img:'tomatos',rate:5,price:4,cost:2,fav:false,items:1},
+				{id:6,img:'dora',rate:3,price:8,cost:5,fav:false,items:1}],
+				cart:[],
 			responsiveOptions: [
 				{
 					breakpoint: '1024px',
@@ -51,7 +49,25 @@ data() {
     },
     components:{
         ItemCard,
-    }
+	},
+	mounted() {
+		let prods =  [{img:'pizza',rate:3,price:20,cost:10,fav:false,items:1},
+				{img:'pork',rate:3,price:15,cost:7,fav:false,items:1},
+				{img:'botatos',rate:2,price:5,cost:2,fav:false,items:1},
+				{img:'khyar',rate:1,price:4,cost:2,fav:false,items:1},
+				{img:'tomatos',rate:5,price:4,cost:2,fav:false,items:1},
+				{img:'dora',rate:3,price:8,cost:5,fav:false,items:1}]
+		let prodJSON= JSON.parse(localStorage.getItem('products'))|| [];
+		let cartJSON =  JSON.parse(localStorage.getItem('cart'))|| [];
+		if(prodJSON.length==0) {
+			localStorage.setItem('products',JSON.stringify(prods));
+		}else {
+		this.products = prodJSON;
+		}
+
+cartJSON.length==0?this.cart=[]:this.cart=cartJSON;
+
+	}
 }
 </script>
 

@@ -6,6 +6,7 @@ import 'vue-good-table/dist/vue-good-table.css'
 Vue.use(VueGoodTablePlugin);
 
 import VeeValidate from 'vee-validate';
+
 Vue.use(VeeValidate, {
   classes: true,
   classNames: {

@@ -25,5 +25,11 @@
     "arabic": "العربية",
     "learnVueJS": "تعلم فيو جي اس",
     "veeValidate": "في فاليديت",
-    "enterEmail": "أدخل البريد الإلكتروني"
+    "email": "البريد الإلكتروني",
+    "name": "الاسم",
+    "phone": "الهاتف",
+    "website": "الموقع الإلكتروني",
+    "submit": "تحقق",
+    "correctErrors": "أصلح الأخطاء!",
+    "formSubmitted": "الفورم تحقق"
 }

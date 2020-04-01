@@ -5431,14 +5431,16 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     validateBeforeSubmit: function validateBeforeSubmit() {
+      var _this = this;
+
       this.$validator.validateAll().then(function (result) {
         if (result) {
           // eslint-disable-next-line
-          alert('Form Submitted!');
+          alert(_this.$t('formSubmitted'));
           return;
         }
 
-        alert('Correct them errors!');
+        alert(_this.$t('correctErrors'));
       });
     }
   }
@@ -7235,6 +7237,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 // module
 exports.push([module.i, "\n.w-200 {\r\n  width: 200px;\n}\n.mt-15 {\r\n  margin-top: 15px;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/views/forms/VeeValidate.vue?vue&type=style&index=0&lang=css&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin/views/forms/VeeValidate.vue?vue&type=style&index=0&lang=css& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.fs-16 {\r\n    font-size: 16px;\n}\n.fa-exclamation-triangle{\r\n    color:#DF0D1F;\n}\n.text-black{\r\n    color:#333;\n}\r\n", ""]);
 
 // exports
 
@@ -28874,6 +28895,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./DynamicForm.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/views/forms/DynamicForm.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/views/forms/VeeValidate.vue?vue&type=style&index=0&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin/views/forms/VeeValidate.vue?vue&type=style&index=0&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./VeeValidate.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/views/forms/VeeValidate.vue?vue&type=style&index=0&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -51497,52 +51548,42 @@ var render = function() {
     },
     [
       _c("div", { staticClass: "column is-12" }, [
-        _c("label", { staticClass: "label" }, [_vm._v("Email")]),
+        _c("label", { staticClass: "text-black fs-16" }, [
+          _vm._v(_vm._s(_vm.$t("email")))
+        ]),
         _vm._v(" "),
-        _c("p", { staticClass: "control has-icon has-icon-right" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.email,
-                expression: "email"
-              },
-              {
-                name: "validate",
-                rawName: "v-validate",
-                value: "required|email",
-                expression: "'required|email'"
-              }
-            ],
-            class: { input: true, "is-danger": _vm.errors.has("email") },
-            attrs: { name: "email", type: "text", placeholder: "Email" },
-            domProps: { value: _vm.email },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+        _c(
+          "p",
+          { staticClass: "control has-icon has-icon-right" },
+          [
+            _c("el-input", {
+              directives: [
+                {
+                  name: "validate",
+                  rawName: "v-validate",
+                  value: "required|email",
+                  expression: "'required|email'"
                 }
-                _vm.email = $event.target.value
+              ],
+              class: { input: true, "text-black": _vm.errors.has("email") },
+              style: _vm.errors.has("email")
+                ? "border:1px solid #DF0D1F;border-radius:5px;width:300px;"
+                : "width:300px;",
+              attrs: {
+                name: "email",
+                type: "text",
+                placeholder: _vm.$t("email")
+              },
+              model: {
+                value: _vm.email,
+                callback: function($$v) {
+                  _vm.email = $$v
+                },
+                expression: "email"
               }
-            }
-          }),
-          _vm._v(" "),
-          _c("i", {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.errors.has("email"),
-                expression: "errors.has('email')"
-              }
-            ],
-            staticClass: "fa fa-warning"
-          }),
-          _vm._v(" "),
-          _c(
-            "span",
-            {
+            }),
+            _vm._v(" "),
+            _c("i", {
               directives: [
                 {
                   name: "show",
@@ -51551,60 +51592,66 @@ var render = function() {
                   expression: "errors.has('email')"
                 }
               ],
-              staticClass: "help is-danger"
-            },
-            [_vm._v(_vm._s(_vm.errors.first("email")))]
-          )
-        ])
+              staticClass: "fa fa-exclamation-triangle"
+            }),
+            _vm._v(" "),
+            _c(
+              "span",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.errors.has("email"),
+                    expression: "errors.has('email')"
+                  }
+                ],
+                staticClass: "help text-danger"
+              },
+              [_vm._v(_vm._s(_vm.errors.first("email")))]
+            )
+          ],
+          1
+        )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "column is-12" }, [
-        _c("label", { staticClass: "label" }, [_vm._v("Name")]),
+        _c("label", { staticClass: "text-black fs-16" }, [
+          _vm._v(_vm._s(_vm.$t("name")))
+        ]),
         _vm._v(" "),
-        _c("p", { staticClass: "control has-icon has-icon-right" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.name,
-                expression: "name"
-              },
-              {
-                name: "validate",
-                rawName: "v-validate",
-                value: "required|alpha",
-                expression: "'required|alpha'"
-              }
-            ],
-            class: { input: true, "is-danger": _vm.errors.has("name") },
-            attrs: { name: "name", type: "text", placeholder: "Name" },
-            domProps: { value: _vm.name },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+        _c(
+          "p",
+          { staticClass: "control has-icon has-icon-right" },
+          [
+            _c("el-input", {
+              directives: [
+                {
+                  name: "validate",
+                  rawName: "v-validate",
+                  value: "required|alpha",
+                  expression: "'required|alpha'"
                 }
-                _vm.name = $event.target.value
+              ],
+              class: { input: true, "text-black": _vm.errors.has("name") },
+              style: _vm.errors.has("name")
+                ? "border:1px solid #DF0D1F;border-radius:5px;width:300px;"
+                : "width:300px;",
+              attrs: {
+                name: "name",
+                type: "text",
+                placeholder: _vm.$t("name")
+              },
+              model: {
+                value: _vm.name,
+                callback: function($$v) {
+                  _vm.name = $$v
+                },
+                expression: "name"
               }
-            }
-          }),
-          _vm._v(" "),
-          _c("i", {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.errors.has("name"),
-                expression: "errors.has('name')"
-              }
-            ],
-            staticClass: "fa fa-warning"
-          }),
-          _vm._v(" "),
-          _c(
-            "span",
-            {
+            }),
+            _vm._v(" "),
+            _c("i", {
               directives: [
                 {
                   name: "show",
@@ -51613,60 +51660,66 @@ var render = function() {
                   expression: "errors.has('name')"
                 }
               ],
-              staticClass: "help is-danger"
-            },
-            [_vm._v(_vm._s(_vm.errors.first("name")))]
-          )
-        ])
+              staticClass: "fa fa-exclamation-triangle"
+            }),
+            _vm._v(" "),
+            _c(
+              "span",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.errors.has("name"),
+                    expression: "errors.has('name')"
+                  }
+                ],
+                staticClass: "help text-danger"
+              },
+              [_vm._v(_vm._s(_vm.errors.first("name")))]
+            )
+          ],
+          1
+        )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "column is-12" }, [
-        _c("label", { staticClass: "label" }, [_vm._v("Phone")]),
+        _c("label", { staticClass: "text-black fs-16" }, [
+          _vm._v(_vm._s(_vm.$t("phone")))
+        ]),
         _vm._v(" "),
-        _c("p", { staticClass: "control has-icon has-icon-right" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.phone,
-                expression: "phone"
-              },
-              {
-                name: "validate",
-                rawName: "v-validate",
-                value: "required|numeric",
-                expression: "'required|numeric'"
-              }
-            ],
-            class: { input: true, "is-danger": _vm.errors.has("phone") },
-            attrs: { name: "phone", type: "text", placeholder: "Phone" },
-            domProps: { value: _vm.phone },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+        _c(
+          "p",
+          { staticClass: "control has-icon has-icon-right" },
+          [
+            _c("el-input", {
+              directives: [
+                {
+                  name: "validate",
+                  rawName: "v-validate",
+                  value: "required|numeric",
+                  expression: "'required|numeric'"
                 }
-                _vm.phone = $event.target.value
+              ],
+              class: { input: true, "text-black": _vm.errors.has("phone") },
+              style: _vm.errors.has("phone")
+                ? "border:1px solid #DF0D1F;border-radius:5px;width:300px;"
+                : "width:300px;",
+              attrs: {
+                name: "phone",
+                type: "text",
+                placeholder: _vm.$t("phone")
+              },
+              model: {
+                value: _vm.phone,
+                callback: function($$v) {
+                  _vm.phone = $$v
+                },
+                expression: "phone"
               }
-            }
-          }),
-          _vm._v(" "),
-          _c("i", {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.errors.has("phone"),
-                expression: "errors.has('phone')"
-              }
-            ],
-            staticClass: "fa fa-warning"
-          }),
-          _vm._v(" "),
-          _c(
-            "span",
-            {
+            }),
+            _vm._v(" "),
+            _c("i", {
               directives: [
                 {
                   name: "show",
@@ -51675,60 +51728,66 @@ var render = function() {
                   expression: "errors.has('phone')"
                 }
               ],
-              staticClass: "help is-danger"
-            },
-            [_vm._v(_vm._s(_vm.errors.first("phone")))]
-          )
-        ])
+              staticClass: "fa fa-exclamation-triangle"
+            }),
+            _vm._v(" "),
+            _c(
+              "span",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.errors.has("phone"),
+                    expression: "errors.has('phone')"
+                  }
+                ],
+                staticClass: "help text-danger"
+              },
+              [_vm._v(_vm._s(_vm.errors.first("phone")))]
+            )
+          ],
+          1
+        )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "column is-12" }, [
-        _c("label", { staticClass: "label" }, [_vm._v("Website")]),
+        _c("label", { staticClass: "text-black fs-16" }, [
+          _vm._v(_vm._s(_vm.$t("website")))
+        ]),
         _vm._v(" "),
-        _c("p", { staticClass: "control has-icon has-icon-right" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.url,
-                expression: "url"
-              },
-              {
-                name: "validate",
-                rawName: "v-validate",
-                value: "required|url",
-                expression: "'required|url'"
-              }
-            ],
-            class: { input: true, "is-danger": _vm.errors.has("url") },
-            attrs: { name: "url", type: "text", placeholder: "Website" },
-            domProps: { value: _vm.url },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+        _c(
+          "p",
+          { staticClass: "control has-icon has-icon-right" },
+          [
+            _c("el-input", {
+              directives: [
+                {
+                  name: "validate",
+                  rawName: "v-validate",
+                  value: "required|url",
+                  expression: "'required|url'"
                 }
-                _vm.url = $event.target.value
+              ],
+              class: { input: true, "text-black": _vm.errors.has("url") },
+              style: _vm.errors.has("url")
+                ? "border:1px solid #DF0D1F;border-radius:5px;width:300px;"
+                : "width:300px;",
+              attrs: {
+                name: "url",
+                type: "text",
+                placeholder: _vm.$t("website")
+              },
+              model: {
+                value: _vm.url,
+                callback: function($$v) {
+                  _vm.url = $$v
+                },
+                expression: "url"
               }
-            }
-          }),
-          _vm._v(" "),
-          _c("i", {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.errors.has("url"),
-                expression: "errors.has('url')"
-              }
-            ],
-            staticClass: "fa fa-warning"
-          }),
-          _vm._v(" "),
-          _c(
-            "span",
-            {
+            }),
+            _vm._v(" "),
+            _c("i", {
               directives: [
                 {
                   name: "show",
@@ -51737,33 +51796,45 @@ var render = function() {
                   expression: "errors.has('url')"
                 }
               ],
-              staticClass: "help is-danger"
-            },
-            [_vm._v(_vm._s(_vm.errors.first("url")))]
-          )
-        ])
+              staticClass: "fa fa-exclamation-triangle"
+            }),
+            _vm._v(" "),
+            _c(
+              "span",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.errors.has("url"),
+                    expression: "errors.has('url')"
+                  }
+                ],
+                staticClass: "help text-danger"
+              },
+              [_vm._v(_vm._s(_vm.errors.first("url")))]
+            )
+          ],
+          1
+        )
       ]),
       _vm._v(" "),
-      _vm._m(0)
+      _c("div", { staticClass: "column is-12" }, [
+        _c("p", { staticClass: "control" }, [
+          _c(
+            "button",
+            {
+              staticClass: "button btn btn-primary",
+              attrs: { type: "submit" }
+            },
+            [_vm._v(_vm._s(_vm.$t("submit")))]
+          )
+        ])
+      ])
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "column is-12" }, [
-      _c("p", { staticClass: "control" }, [
-        _c(
-          "button",
-          { staticClass: "button is-primary", attrs: { type: "submit" } },
-          [_vm._v("Submit")]
-        )
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -70407,7 +70478,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _VeeValidate_vue_vue_type_template_id_ee04ccc6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./VeeValidate.vue?vue&type=template&id=ee04ccc6& */ "./resources/js/admin/views/forms/VeeValidate.vue?vue&type=template&id=ee04ccc6&");
 /* harmony import */ var _VeeValidate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./VeeValidate.vue?vue&type=script&lang=js& */ "./resources/js/admin/views/forms/VeeValidate.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _VeeValidate_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./VeeValidate.vue?vue&type=style&index=0&lang=css& */ "./resources/js/admin/views/forms/VeeValidate.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -70415,7 +70488,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _VeeValidate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _VeeValidate_vue_vue_type_template_id_ee04ccc6___WEBPACK_IMPORTED_MODULE_0__["render"],
   _VeeValidate_vue_vue_type_template_id_ee04ccc6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -70444,6 +70517,22 @@ component.options.__file = "resources/js/admin/views/forms/VeeValidate.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VeeValidate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./VeeValidate.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/views/forms/VeeValidate.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VeeValidate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/admin/views/forms/VeeValidate.vue?vue&type=style&index=0&lang=css&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/admin/views/forms/VeeValidate.vue?vue&type=style&index=0&lang=css& ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_VeeValidate_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./VeeValidate.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/views/forms/VeeValidate.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_VeeValidate_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_VeeValidate_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_VeeValidate_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_VeeValidate_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_VeeValidate_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 

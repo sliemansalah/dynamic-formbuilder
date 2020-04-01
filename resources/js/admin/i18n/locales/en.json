@@ -25,5 +25,11 @@
     "arabic": "Arabic",
     "learnVueJS": "Learn Vue JS",
     "veeValidate": "Vee Validate",
-    "enterEmail": "Enter Email"
+    "email": "Email",
+    "name": "Name",
+    "phone": "Phone",
+    "website": "Website",
+    "submit": "Submit",
+    "correctErrors": "Correct them errors!",
+    "formSubmitted": "Form Submitted!"
 }

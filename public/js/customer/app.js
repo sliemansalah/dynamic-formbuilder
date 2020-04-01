@@ -5376,11 +5376,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vee_validate_dist_locale_ar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vee-validate/dist/locale/ar */ "./node_modules/vee-validate/dist/locale/ar.js");
-/* harmony import */ var vee_validate_dist_locale_ar__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vee_validate_dist_locale_ar__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vee_validate_dist_locale_en__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vee-validate/dist/locale/en */ "./node_modules/vee-validate/dist/locale/en.js");
-/* harmony import */ var vee_validate_dist_locale_en__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vee_validate_dist_locale_en__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var vee_validate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vee-validate */ "./node_modules/vee-validate/dist/vee-validate.esm.js");
 //
 //
 //
@@ -5388,17 +5383,63 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
-
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    var lang = localStorage.getItem('lang');
+  name: 'form-example',
+  data: function data() {
+    return {
+      email: '',
+      name: '',
+      phone: '',
+      url: ''
+    };
+  },
+  methods: {
+    validateBeforeSubmit: function validateBeforeSubmit() {
+      this.$validator.validateAll().then(function (result) {
+        if (result) {
+          // eslint-disable-next-line
+          alert('Form Submitted!');
+          return;
+        }
 
-    if (lang == 'arabic') {
-      vee_validate__WEBPACK_IMPORTED_MODULE_2__["Validator"].localize('ar', vee_validate_dist_locale_ar__WEBPACK_IMPORTED_MODULE_0___default.a);
-    } else {
-      vee_validate__WEBPACK_IMPORTED_MODULE_2__["Validator"].localize('en', vee_validate_dist_locale_en__WEBPACK_IMPORTED_MODULE_1___default.a);
+        alert('Correct them errors!');
+      });
     }
   }
 });
@@ -5757,6 +5798,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vee_validate_dist_locale_ar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vee-validate/dist/locale/ar */ "./node_modules/vee-validate/dist/locale/ar.js");
+/* harmony import */ var vee_validate_dist_locale_ar__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vee_validate_dist_locale_ar__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vee_validate_dist_locale_en__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vee-validate/dist/locale/en */ "./node_modules/vee-validate/dist/locale/en.js");
+/* harmony import */ var vee_validate_dist_locale_en__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vee_validate_dist_locale_en__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vee_validate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vee-validate */ "./node_modules/vee-validate/dist/vee-validate.esm.js");
 //
 //
 //
@@ -6100,7 +6146,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-// import axios from 'axios'
+
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -6121,12 +6169,14 @@ __webpack_require__.r(__webpack_exports__);
         srtl.href = "/vendors/general/base-vendors/css/style.bundle.rtl.css";
         localStorage.setItem("lang", this.lang);
         this.$root.$i18n.locale = 'ar';
+        vee_validate__WEBPACK_IMPORTED_MODULE_2__["Validator"].localize('ar', vee_validate_dist_locale_ar__WEBPACK_IMPORTED_MODULE_0___default.a);
         this.lang = 'english';
       } else {
         brtl.href = "";
         srtl.href = "";
         localStorage.setItem("lang", this.lang);
         this.$root.$i18n.locale = 'en';
+        vee_validate__WEBPACK_IMPORTED_MODULE_2__["Validator"].localize('en', vee_validate_dist_locale_en__WEBPACK_IMPORTED_MODULE_1___default.a);
         this.lang = 'arabic';
       }
     }
@@ -51435,23 +51485,285 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("input", {
-      directives: [
-        {
-          name: "validate",
-          rawName: "v-validate",
-          value: "required|email",
-          expression: "'required|email'"
+  return _c(
+    "form",
+    {
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.validateBeforeSubmit($event)
         }
-      ],
-      attrs: { name: "email", type: "text" }
-    }),
-    _vm._v(" "),
-    _c("span", [_vm._v(_vm._s(_vm.errors.first("email")))])
-  ])
+      }
+    },
+    [
+      _c("div", { staticClass: "column is-12" }, [
+        _c("label", { staticClass: "label" }, [_vm._v("Email")]),
+        _vm._v(" "),
+        _c("p", { staticClass: "control has-icon has-icon-right" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.email,
+                expression: "email"
+              },
+              {
+                name: "validate",
+                rawName: "v-validate",
+                value: "required|email",
+                expression: "'required|email'"
+              }
+            ],
+            class: { input: true, "is-danger": _vm.errors.has("email") },
+            attrs: { name: "email", type: "text", placeholder: "Email" },
+            domProps: { value: _vm.email },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.email = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("i", {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.errors.has("email"),
+                expression: "errors.has('email')"
+              }
+            ],
+            staticClass: "fa fa-warning"
+          }),
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.errors.has("email"),
+                  expression: "errors.has('email')"
+                }
+              ],
+              staticClass: "help is-danger"
+            },
+            [_vm._v(_vm._s(_vm.errors.first("email")))]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "column is-12" }, [
+        _c("label", { staticClass: "label" }, [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("p", { staticClass: "control has-icon has-icon-right" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.name,
+                expression: "name"
+              },
+              {
+                name: "validate",
+                rawName: "v-validate",
+                value: "required|alpha",
+                expression: "'required|alpha'"
+              }
+            ],
+            class: { input: true, "is-danger": _vm.errors.has("name") },
+            attrs: { name: "name", type: "text", placeholder: "Name" },
+            domProps: { value: _vm.name },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.name = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("i", {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.errors.has("name"),
+                expression: "errors.has('name')"
+              }
+            ],
+            staticClass: "fa fa-warning"
+          }),
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.errors.has("name"),
+                  expression: "errors.has('name')"
+                }
+              ],
+              staticClass: "help is-danger"
+            },
+            [_vm._v(_vm._s(_vm.errors.first("name")))]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "column is-12" }, [
+        _c("label", { staticClass: "label" }, [_vm._v("Phone")]),
+        _vm._v(" "),
+        _c("p", { staticClass: "control has-icon has-icon-right" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.phone,
+                expression: "phone"
+              },
+              {
+                name: "validate",
+                rawName: "v-validate",
+                value: "required|numeric",
+                expression: "'required|numeric'"
+              }
+            ],
+            class: { input: true, "is-danger": _vm.errors.has("phone") },
+            attrs: { name: "phone", type: "text", placeholder: "Phone" },
+            domProps: { value: _vm.phone },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.phone = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("i", {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.errors.has("phone"),
+                expression: "errors.has('phone')"
+              }
+            ],
+            staticClass: "fa fa-warning"
+          }),
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.errors.has("phone"),
+                  expression: "errors.has('phone')"
+                }
+              ],
+              staticClass: "help is-danger"
+            },
+            [_vm._v(_vm._s(_vm.errors.first("phone")))]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "column is-12" }, [
+        _c("label", { staticClass: "label" }, [_vm._v("Website")]),
+        _vm._v(" "),
+        _c("p", { staticClass: "control has-icon has-icon-right" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.url,
+                expression: "url"
+              },
+              {
+                name: "validate",
+                rawName: "v-validate",
+                value: "required|url",
+                expression: "'required|url'"
+              }
+            ],
+            class: { input: true, "is-danger": _vm.errors.has("url") },
+            attrs: { name: "url", type: "text", placeholder: "Website" },
+            domProps: { value: _vm.url },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.url = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("i", {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.errors.has("url"),
+                expression: "errors.has('url')"
+              }
+            ],
+            staticClass: "fa fa-warning"
+          }),
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.errors.has("url"),
+                  expression: "errors.has('url')"
+                }
+              ],
+              staticClass: "help is-danger"
+            },
+            [_vm._v(_vm._s(_vm.errors.first("url")))]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(0)
+    ]
+  )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "column is-12" }, [
+      _c("p", { staticClass: "control" }, [
+        _c(
+          "button",
+          { staticClass: "button is-primary", attrs: { type: "submit" } },
+          [_vm._v("Submit")]
+        )
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

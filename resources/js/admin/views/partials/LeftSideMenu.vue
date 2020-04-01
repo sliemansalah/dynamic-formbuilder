@@ -342,7 +342,10 @@
 </template>
 
 <script>
-// import axios from 'axios'
+import ar from 'vee-validate/dist/locale/ar';
+import en from 'vee-validate/dist/locale/en';
+import VeeValidate, { Validator } from 'vee-validate';
+
 export default {
   data(){
    return {
@@ -362,13 +365,14 @@ export default {
      srtl.href="/vendors/general/base-vendors/css/style.bundle.rtl.css";
       localStorage.setItem("lang",this.lang);
       this.$root.$i18n.locale = 'ar'
+      Validator.localize('ar', ar);
      this.lang = 'english';
       } else {
         brtl.href="";
      srtl.href="";
         localStorage.setItem("lang",this.lang);
         this.$root.$i18n.locale = 'en'
-
+        Validator.localize('en', en);
      this.lang='arabic';
       }
       

@@ -11,7 +11,7 @@
             <br><br>
       <el-button type="success" @click="decrypt()">Decrypt</el-button>
             <br><br>
-       <p>Encrypt val is: </p> <br>
+       <p>Decrypt val is: </p> <br>
       <p>{{valDec}}</p>
   </div>
 </template>

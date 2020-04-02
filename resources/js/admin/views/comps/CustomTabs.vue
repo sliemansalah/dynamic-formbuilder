@@ -1,12 +1,12 @@
 <template>
   <div>
       <el-tabs v-model="activeName" @tab-click="handleClick">
-    <el-tab-pane :label="$t('overview')" name="first">
+    <el-tab-pane :label="$t('overview')" name="1">
         <p style="color:#333;font-weight:bold;" class="fs-16 mt-30">
            {{$t('overviewData')}}
         </p>
     </el-tab-pane>
-    <el-tab-pane :label="$t('featuresAndAdvantages')" name="second">
+    <el-tab-pane :label="$t('featuresAndAdvantages')" name="2">
         <el-input class="mt-30" :placeholder="$t('red')" v-model="color">
     <template slot="prepend">{{$t('color')}} : </template>
   </el-input>
@@ -14,7 +14,7 @@
     <template slot="prepend">{{$t('size')}} :</template>
   </el-input>
     </el-tab-pane>
-    <el-tab-pane :label="getRateTitle" name="third">
+    <el-tab-pane :label="getRateTitle" name="3">
         <div class="container mt-30">
             <div class="row">
                 <div class="col-7">
@@ -37,34 +37,34 @@
                     <p-rating :class="lang=='arabic'? 'mr-15' : 'ml-15'" readonly v-model="getRateValue" :cancel="false" :stars="5"/>
            <div :class="lang=='arabic'? 'row fs-16' : 'row ml-20 fs-16'">
                <span class="starSpan">{{$t('stars5')}}</span>
-                <el-slider disabled :class="lang=='arabic'? 'mr-15' : 'ml-15'" style="width:200px;" :v-model="getRatePercent(5)"></el-slider>
+                <el-slider disabled :class="lang=='arabic'? 'mr-15 w-200' : 'ml-15 w-200'" :v-model="getRatePercent(5)"></el-slider>
                 <span :class="lang=='arabic'? 'mr-15' : 'ml-15'">{{getRatePercent(5)}}%</span>
            </div>
 
             <div :class="lang=='arabic'? 'row fs-16' : 'row ml-20 fs-16'">
                <span class="starSpan">{{$t('stars4')}}</span>
-                <el-slider disabled :class="lang=='arabic'? 'mr-15' : 'ml-15'" style="width:200px;" :v-model="getRatePercent(4)"></el-slider>
+                <el-slider disabled :class="lang=='arabic'? 'mr-15 w-200' : 'ml-15 w-200'" :v-model="getRatePercent(4)"></el-slider>
                  <span :class="lang=='arabic'? 'mr-15' : 'ml-15'">{{getRatePercent(4)}}%</span>
 
            </div>
 
             <div :class="lang=='arabic'? 'row fs-16' : 'row ml-20 fs-16'">
                <span class="starSpan">{{$t('stars3')}}</span>
-                <el-slider disabled :class="lang=='arabic'? 'mr-15' : 'ml-15'" style="width:200px;" :v-model="getRatePercent(3)"></el-slider>
+                <el-slider disabled :class="lang=='arabic'? 'mr-15 w-200' : 'ml-15 w-200'" :v-model="getRatePercent(3)"></el-slider>
                  <span :class="lang=='arabic'? 'mr-15' : 'ml-15'">{{getRatePercent(3)}}%</span>
 
            </div>
 
             <div :class="lang=='arabic'? 'row fs-16' : 'row ml-20 fs-16'">
                <span class="starSpan">{{$t('stars2')}}</span>
-                <el-slider disabled :class="lang=='arabic'? 'mr-15' : 'ml-15'" style="width:200px;" :v-model="getRatePercent(2)"></el-slider>
+                <el-slider disabled :class="lang=='arabic'? 'mr-15 w-200' : 'ml-15 w-200'" :v-model="getRatePercent(2)"></el-slider>
                 <span :class="lang=='arabic'? 'mr-15' : 'ml-15'">{{getRatePercent(2)}}%</span>
 
            </div>
 
             <div :class="lang=='arabic'? 'row fs-16' : 'row ml-20 fs-16'">
                <span class="starSpan">{{$t('stars5')}} </span>
-                <el-slider disabled :class="lang=='arabic'? 'mr-15' : 'ml-15'" style="width:200px;" :v-model="getRatePercent(1)"></el-slider>
+                <el-slider disabled :class="lang=='arabic'? 'mr-15 w-200' : 'ml-15 w-200'" :v-model="getRatePercent(1)"></el-slider>
                 <span :class="lang=='arabic'? 'mr-15' : 'ml-15'">{{getRatePercent(1)}}%</span>
 
            </div>
@@ -74,7 +74,7 @@
             </div>
         </div>
     </el-tab-pane>
-    <el-tab-pane :label="$t('comments')" name="fourth">
+    <el-tab-pane :label="$t('comments')" name="4">
 
          <div class="col-7 mt-30">
                     <el-card class="box-card">
@@ -101,6 +101,7 @@ export default {
         lang:'',
         rates:[],
         activeName: 'first',
+        selectedTab:1,
         color:'',
         size:'',
         rate_details:'',
@@ -141,7 +142,7 @@ export default {
            },
     methods: {
       handleClick(tab, event) {
-        console.log(tab, event);
+        this.selectedTab = parseInt(tab.name);
       },
        getRatePercent(id){
              let rate_val = 0;
@@ -174,14 +175,48 @@ export default {
       clearRate(){
           this.rate_val = 0;
           this.rate_details = ''
+      },
+      clear(y){
+        y[0].classList.remove('pr1');
+        y[0].classList.remove('pr2');
+        y[0].classList.remove('pr3');
+        y[0].classList.remove('pr4');
       }
     },
     mounted(){
     this.lang = localStorage.getItem('lang');
     this.rates = JSON.parse(localStorage.getItem('rates')) || [];
+    if(this.lang == 'arabic') {
+      let x = document.getElementsByClassName('el-tabs__nav');
+      for (var i = 0; i < x.length; i++) {
+         x[i].classList.add('fr');
+        }
+        let y =  document.getElementsByClassName('el-tabs__active-bar is-top');
+        this.clear(y);
+        y[0].classList.add('pr'+this.selectedTab);
+    }else {
+      let x = document.getElementsByClassName('el-tabs__nav');
+      for (var i = 0; i < x.length; i++) {
+         x[i].classList.remove('fr');
+        }
+    }
     },
     updated(){
     this.lang = localStorage.getItem('lang');
+     if(this.lang == 'arabic') {
+      let x = document.getElementsByClassName('el-tabs__nav');
+      for (var i = 0; i < x.length; i++) {
+         x[i].classList.add('fr');
+        }
+          let y =  document.getElementsByClassName('el-tabs__active-bar is-top');
+          this.clear(y);
+        y[0].classList.add('pr'+this.selectedTab);
+    }else {
+      let x = document.getElementsByClassName('el-tabs__nav');
+      for (var i = 0; i < x.length; i++) {
+         x[i].classList.remove('fr');
+        }
+    }
     }
   };
 </script>
@@ -211,5 +246,12 @@ export default {
     padding-top: 7px;
     width:60px
 }
+.fr{float:right !important}
+.w-200{width: 200px;}
+
+.pr1{right: 18px;}
+.pr2{right: 170px;}
+.pr3{right: 430px;}
+.pr4{right: 585px;}
 
 </style>

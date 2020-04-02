@@ -4139,6 +4139,7 @@ __webpack_require__.r(__webpack_exports__);
       lang: '',
       rates: [],
       activeName: 'first',
+      selectedTab: 1,
       color: '',
       size: '',
       rate_details: '',
@@ -4181,7 +4182,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     handleClick: function handleClick(tab, event) {
-      console.log(tab, event);
+      this.selectedTab = parseInt(tab.name);
     },
     getRatePercent: function getRatePercent(id) {
       var rate_val = 0;
@@ -4213,14 +4214,56 @@ __webpack_require__.r(__webpack_exports__);
     clearRate: function clearRate() {
       this.rate_val = 0;
       this.rate_details = '';
+    },
+    clear: function clear(y) {
+      y[0].classList.remove('pr1');
+      y[0].classList.remove('pr2');
+      y[0].classList.remove('pr3');
+      y[0].classList.remove('pr4');
     }
   },
   mounted: function mounted() {
     this.lang = localStorage.getItem('lang');
     this.rates = JSON.parse(localStorage.getItem('rates')) || [];
+
+    if (this.lang == 'arabic') {
+      var x = document.getElementsByClassName('el-tabs__nav');
+
+      for (var i = 0; i < x.length; i++) {
+        x[i].classList.add('fr');
+      }
+
+      var y = document.getElementsByClassName('el-tabs__active-bar is-top');
+      this.clear(y);
+      y[0].classList.add('pr' + this.selectedTab);
+    } else {
+      var _x = document.getElementsByClassName('el-tabs__nav');
+
+      for (var i = 0; i < _x.length; i++) {
+        _x[i].classList.remove('fr');
+      }
+    }
   },
   updated: function updated() {
     this.lang = localStorage.getItem('lang');
+
+    if (this.lang == 'arabic') {
+      var x = document.getElementsByClassName('el-tabs__nav');
+
+      for (var i = 0; i < x.length; i++) {
+        x[i].classList.add('fr');
+      }
+
+      var y = document.getElementsByClassName('el-tabs__active-bar is-top');
+      this.clear(y);
+      y[0].classList.add('pr' + this.selectedTab);
+    } else {
+      var _x2 = document.getElementsByClassName('el-tabs__nav');
+
+      for (var i = 0; i < _x2.length; i++) {
+        _x2[i].classList.remove('fr');
+      }
+    }
   }
 });
 
@@ -7778,7 +7821,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.el-input-group__prepend{\r\n    width: 90px !important;\n}\n.ml-15 {\r\n    margin-left: 15px;\n}\n.ml-20 {\r\n    margin-left: 20px;\n}\n.mr-15 {\r\n    margin-right: 15px;\n}\n.fs-16 {\r\n    font-size: 16px;\n}\n.mt-30{margin-top: 30px;}\n.p-rating-icon {\r\n    color: #409EFF !important;\n}\n.starSpan {\r\n    padding-top: 7px;\r\n    width:60px\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.el-input-group__prepend{\r\n    width: 90px !important;\n}\n.ml-15 {\r\n    margin-left: 15px;\n}\n.ml-20 {\r\n    margin-left: 20px;\n}\n.mr-15 {\r\n    margin-right: 15px;\n}\n.fs-16 {\r\n    font-size: 16px;\n}\n.mt-30{margin-top: 30px;}\n.p-rating-icon {\r\n    color: #409EFF !important;\n}\n.starSpan {\r\n    padding-top: 7px;\r\n    width:60px\n}\n.fr{float:right !important}\n.w-200{width: 200px;}\n.pr1{right: 18px;}\n.pr2{right: 170px;}\n.pr3{right: 430px;}\n.pr4{right: 585px;}\r\n\r\n", ""]);
 
 // exports
 
@@ -50413,7 +50456,7 @@ var render = function() {
         [
           _c(
             "el-tab-pane",
-            { attrs: { label: _vm.$t("overview"), name: "first" } },
+            { attrs: { label: _vm.$t("overview"), name: "1" } },
             [
               _c(
                 "p",
@@ -50432,9 +50475,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "el-tab-pane",
-            {
-              attrs: { label: _vm.$t("featuresAndAdvantages"), name: "second" }
-            },
+            { attrs: { label: _vm.$t("featuresAndAdvantages"), name: "2" } },
             [
               _c(
                 "el-input",
@@ -50480,286 +50521,282 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c(
-            "el-tab-pane",
-            { attrs: { label: _vm.getRateTitle, name: "third" } },
-            [
-              _c("div", { staticClass: "container mt-30" }, [
-                _c("div", { staticClass: "row" }, [
+          _c("el-tab-pane", { attrs: { label: _vm.getRateTitle, name: "3" } }, [
+            _c("div", { staticClass: "container mt-30" }, [
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-7" },
+                  [
+                    _c(
+                      "el-card",
+                      { staticClass: "box-card" },
+                      [
+                        _c("div", { staticClass: "containter" }, [
+                          _c(
+                            "div",
+                            { staticClass: "row" },
+                            [
+                              _c(
+                                "h5",
+                                {
+                                  class:
+                                    _vm.lang == "arabic" ? "mr-15" : "ml-15"
+                                },
+                                [_vm._v(_vm._s(_vm.$t("sendRate")))]
+                              ),
+                              _vm._v(" "),
+                              _c("p-rating", {
+                                staticClass: "ml-15",
+                                attrs: { cancel: false, stars: 5 },
+                                model: {
+                                  value: _vm.rate_val,
+                                  callback: function($$v) {
+                                    _vm.rate_val = $$v
+                                  },
+                                  expression: "rate_val"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("el-input", {
+                          attrs: { type: "textarea", rows: "5" },
+                          model: {
+                            value: _vm.rate_details,
+                            callback: function($$v) {
+                              _vm.rate_details = $$v
+                            },
+                            expression: "rate_details"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("br"),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c(
+                          "el-button",
+                          {
+                            staticStyle: {
+                              backgroundColor: "#409Eff",
+                              color: "#fff"
+                            },
+                            on: { click: _vm.sendRate }
+                          },
+                          [_vm._v(" " + _vm._s(_vm.$t("sendRate")) + " ")]
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-5" }, [
                   _c(
                     "div",
-                    { staticClass: "col-7" },
+                    { staticClass: "containter" },
                     [
                       _c(
-                        "el-card",
-                        { staticClass: "box-card" },
+                        "h1",
+                        {
+                          class: _vm.lang == "arabic" ? "mr-15" : "ml-15",
+                          staticStyle: { color: "green" }
+                        },
+                        [_vm._v(_vm._s(_vm.getRateValue))]
+                      ),
+                      _vm._v(" "),
+                      _c("p-rating", {
+                        class: _vm.lang == "arabic" ? "mr-15" : "ml-15",
+                        attrs: { readonly: "", cancel: false, stars: 5 },
+                        model: {
+                          value: _vm.getRateValue,
+                          callback: function($$v) {
+                            _vm.getRateValue = $$v
+                          },
+                          expression: "getRateValue"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          class:
+                            _vm.lang == "arabic"
+                              ? "row fs-16"
+                              : "row ml-20 fs-16"
+                        },
                         [
-                          _c("div", { staticClass: "containter" }, [
-                            _c(
-                              "div",
-                              { staticClass: "row" },
-                              [
-                                _c(
-                                  "h5",
-                                  {
-                                    class:
-                                      _vm.lang == "arabic" ? "mr-15" : "ml-15"
-                                  },
-                                  [_vm._v(_vm._s(_vm.$t("sendRate")))]
-                                ),
-                                _vm._v(" "),
-                                _c("p-rating", {
-                                  staticClass: "ml-15",
-                                  attrs: { cancel: false, stars: 5 },
-                                  model: {
-                                    value: _vm.rate_val,
-                                    callback: function($$v) {
-                                      _vm.rate_val = $$v
-                                    },
-                                    expression: "rate_val"
-                                  }
-                                })
-                              ],
-                              1
-                            )
+                          _c("span", { staticClass: "starSpan" }, [
+                            _vm._v(_vm._s(_vm.$t("stars5")))
                           ]),
                           _vm._v(" "),
-                          _c("br"),
-                          _vm._v(" "),
-                          _c("el-input", {
-                            attrs: { type: "textarea", rows: "5" },
-                            model: {
-                              value: _vm.rate_details,
-                              callback: function($$v) {
-                                _vm.rate_details = $$v
-                              },
-                              expression: "rate_details"
+                          _c("el-slider", {
+                            class:
+                              _vm.lang == "arabic"
+                                ? "mr-15 w-200"
+                                : "ml-15 w-200",
+                            attrs: {
+                              disabled: "",
+                              "v-model": _vm.getRatePercent(5)
                             }
                           }),
                           _vm._v(" "),
-                          _c("br"),
-                          _c("br"),
+                          _c(
+                            "span",
+                            { class: _vm.lang == "arabic" ? "mr-15" : "ml-15" },
+                            [_vm._v(_vm._s(_vm.getRatePercent(5)) + "%")]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          class:
+                            _vm.lang == "arabic"
+                              ? "row fs-16"
+                              : "row ml-20 fs-16"
+                        },
+                        [
+                          _c("span", { staticClass: "starSpan" }, [
+                            _vm._v(_vm._s(_vm.$t("stars4")))
+                          ]),
+                          _vm._v(" "),
+                          _c("el-slider", {
+                            class:
+                              _vm.lang == "arabic"
+                                ? "mr-15 w-200"
+                                : "ml-15 w-200",
+                            attrs: {
+                              disabled: "",
+                              "v-model": _vm.getRatePercent(4)
+                            }
+                          }),
                           _vm._v(" "),
                           _c(
-                            "el-button",
-                            {
-                              staticStyle: {
-                                backgroundColor: "#409Eff",
-                                color: "#fff"
-                              },
-                              on: { click: _vm.sendRate }
-                            },
-                            [_vm._v(" " + _vm._s(_vm.$t("sendRate")) + " ")]
+                            "span",
+                            { class: _vm.lang == "arabic" ? "mr-15" : "ml-15" },
+                            [_vm._v(_vm._s(_vm.getRatePercent(4)) + "%")]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          class:
+                            _vm.lang == "arabic"
+                              ? "row fs-16"
+                              : "row ml-20 fs-16"
+                        },
+                        [
+                          _c("span", { staticClass: "starSpan" }, [
+                            _vm._v(_vm._s(_vm.$t("stars3")))
+                          ]),
+                          _vm._v(" "),
+                          _c("el-slider", {
+                            class:
+                              _vm.lang == "arabic"
+                                ? "mr-15 w-200"
+                                : "ml-15 w-200",
+                            attrs: {
+                              disabled: "",
+                              "v-model": _vm.getRatePercent(3)
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            { class: _vm.lang == "arabic" ? "mr-15" : "ml-15" },
+                            [_vm._v(_vm._s(_vm.getRatePercent(3)) + "%")]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          class:
+                            _vm.lang == "arabic"
+                              ? "row fs-16"
+                              : "row ml-20 fs-16"
+                        },
+                        [
+                          _c("span", { staticClass: "starSpan" }, [
+                            _vm._v(_vm._s(_vm.$t("stars2")))
+                          ]),
+                          _vm._v(" "),
+                          _c("el-slider", {
+                            class:
+                              _vm.lang == "arabic"
+                                ? "mr-15 w-200"
+                                : "ml-15 w-200",
+                            attrs: {
+                              disabled: "",
+                              "v-model": _vm.getRatePercent(2)
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            { class: _vm.lang == "arabic" ? "mr-15" : "ml-15" },
+                            [_vm._v(_vm._s(_vm.getRatePercent(2)) + "%")]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          class:
+                            _vm.lang == "arabic"
+                              ? "row fs-16"
+                              : "row ml-20 fs-16"
+                        },
+                        [
+                          _c("span", { staticClass: "starSpan" }, [
+                            _vm._v(_vm._s(_vm.$t("stars5")) + " ")
+                          ]),
+                          _vm._v(" "),
+                          _c("el-slider", {
+                            class:
+                              _vm.lang == "arabic"
+                                ? "mr-15 w-200"
+                                : "ml-15 w-200",
+                            attrs: {
+                              disabled: "",
+                              "v-model": _vm.getRatePercent(1)
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            { class: _vm.lang == "arabic" ? "mr-15" : "ml-15" },
+                            [_vm._v(_vm._s(_vm.getRatePercent(1)) + "%")]
                           )
                         ],
                         1
                       )
                     ],
                     1
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-5" }, [
-                    _c(
-                      "div",
-                      { staticClass: "containter" },
-                      [
-                        _c(
-                          "h1",
-                          {
-                            class: _vm.lang == "arabic" ? "mr-15" : "ml-15",
-                            staticStyle: { color: "green" }
-                          },
-                          [_vm._v(_vm._s(_vm.getRateValue))]
-                        ),
-                        _vm._v(" "),
-                        _c("p-rating", {
-                          class: _vm.lang == "arabic" ? "mr-15" : "ml-15",
-                          attrs: { readonly: "", cancel: false, stars: 5 },
-                          model: {
-                            value: _vm.getRateValue,
-                            callback: function($$v) {
-                              _vm.getRateValue = $$v
-                            },
-                            expression: "getRateValue"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            class:
-                              _vm.lang == "arabic"
-                                ? "row fs-16"
-                                : "row ml-20 fs-16"
-                          },
-                          [
-                            _c("span", { staticClass: "starSpan" }, [
-                              _vm._v(_vm._s(_vm.$t("stars5")))
-                            ]),
-                            _vm._v(" "),
-                            _c("el-slider", {
-                              class: _vm.lang == "arabic" ? "mr-15" : "ml-15",
-                              staticStyle: { width: "200px" },
-                              attrs: {
-                                disabled: "",
-                                "v-model": _vm.getRatePercent(5)
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "span",
-                              {
-                                class: _vm.lang == "arabic" ? "mr-15" : "ml-15"
-                              },
-                              [_vm._v(_vm._s(_vm.getRatePercent(5)) + "%")]
-                            )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            class:
-                              _vm.lang == "arabic"
-                                ? "row fs-16"
-                                : "row ml-20 fs-16"
-                          },
-                          [
-                            _c("span", { staticClass: "starSpan" }, [
-                              _vm._v(_vm._s(_vm.$t("stars4")))
-                            ]),
-                            _vm._v(" "),
-                            _c("el-slider", {
-                              class: _vm.lang == "arabic" ? "mr-15" : "ml-15",
-                              staticStyle: { width: "200px" },
-                              attrs: {
-                                disabled: "",
-                                "v-model": _vm.getRatePercent(4)
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "span",
-                              {
-                                class: _vm.lang == "arabic" ? "mr-15" : "ml-15"
-                              },
-                              [_vm._v(_vm._s(_vm.getRatePercent(4)) + "%")]
-                            )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            class:
-                              _vm.lang == "arabic"
-                                ? "row fs-16"
-                                : "row ml-20 fs-16"
-                          },
-                          [
-                            _c("span", { staticClass: "starSpan" }, [
-                              _vm._v(_vm._s(_vm.$t("stars3")))
-                            ]),
-                            _vm._v(" "),
-                            _c("el-slider", {
-                              class: _vm.lang == "arabic" ? "mr-15" : "ml-15",
-                              staticStyle: { width: "200px" },
-                              attrs: {
-                                disabled: "",
-                                "v-model": _vm.getRatePercent(3)
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "span",
-                              {
-                                class: _vm.lang == "arabic" ? "mr-15" : "ml-15"
-                              },
-                              [_vm._v(_vm._s(_vm.getRatePercent(3)) + "%")]
-                            )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            class:
-                              _vm.lang == "arabic"
-                                ? "row fs-16"
-                                : "row ml-20 fs-16"
-                          },
-                          [
-                            _c("span", { staticClass: "starSpan" }, [
-                              _vm._v(_vm._s(_vm.$t("stars2")))
-                            ]),
-                            _vm._v(" "),
-                            _c("el-slider", {
-                              class: _vm.lang == "arabic" ? "mr-15" : "ml-15",
-                              staticStyle: { width: "200px" },
-                              attrs: {
-                                disabled: "",
-                                "v-model": _vm.getRatePercent(2)
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "span",
-                              {
-                                class: _vm.lang == "arabic" ? "mr-15" : "ml-15"
-                              },
-                              [_vm._v(_vm._s(_vm.getRatePercent(2)) + "%")]
-                            )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            class:
-                              _vm.lang == "arabic"
-                                ? "row fs-16"
-                                : "row ml-20 fs-16"
-                          },
-                          [
-                            _c("span", { staticClass: "starSpan" }, [
-                              _vm._v(_vm._s(_vm.$t("stars5")) + " ")
-                            ]),
-                            _vm._v(" "),
-                            _c("el-slider", {
-                              class: _vm.lang == "arabic" ? "mr-15" : "ml-15",
-                              staticStyle: { width: "200px" },
-                              attrs: {
-                                disabled: "",
-                                "v-model": _vm.getRatePercent(1)
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "span",
-                              {
-                                class: _vm.lang == "arabic" ? "mr-15" : "ml-15"
-                              },
-                              [_vm._v(_vm._s(_vm.getRatePercent(1)) + "%")]
-                            )
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    )
-                  ])
+                  )
                 ])
               ])
-            ]
-          ),
+            ])
+          ]),
           _vm._v(" "),
           _c(
             "el-tab-pane",
-            { attrs: { label: _vm.$t("comments"), name: "fourth" } },
+            { attrs: { label: _vm.$t("comments"), name: "4" } },
             [
               _c(
                 "div",

@@ -50647,7 +50647,7 @@ var render = function() {
                                 : "ml-15 w-200",
                             attrs: {
                               disabled: "",
-                              "v-model": _vm.getRatePercent(5)
+                              value: _vm.getRatePercent(5)
                             }
                           }),
                           _vm._v(" "),
@@ -50680,7 +50680,7 @@ var render = function() {
                                 : "ml-15 w-200",
                             attrs: {
                               disabled: "",
-                              "v-model": _vm.getRatePercent(4)
+                              value: _vm.getRatePercent(4)
                             }
                           }),
                           _vm._v(" "),
@@ -50713,7 +50713,7 @@ var render = function() {
                                 : "ml-15 w-200",
                             attrs: {
                               disabled: "",
-                              "v-model": _vm.getRatePercent(3)
+                              value: _vm.getRatePercent(3)
                             }
                           }),
                           _vm._v(" "),
@@ -50746,7 +50746,7 @@ var render = function() {
                                 : "ml-15 w-200",
                             attrs: {
                               disabled: "",
-                              "v-model": _vm.getRatePercent(2)
+                              value: _vm.getRatePercent(2)
                             }
                           }),
                           _vm._v(" "),
@@ -50779,7 +50779,7 @@ var render = function() {
                                 : "ml-15 w-200",
                             attrs: {
                               disabled: "",
-                              "v-model": _vm.getRatePercent(1)
+                              value: _vm.getRatePercent(1)
                             }
                           }),
                           _vm._v(" "),

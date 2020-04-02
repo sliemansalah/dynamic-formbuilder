@@ -37,34 +37,34 @@
                     <p-rating :class="lang=='arabic'? '' : 'ml-15'" readonly v-model="getRateValue" :cancel="false" :stars="5"/>
            <div :class="lang=='arabic'? 'row fs-16' : 'row ml-20 fs-16'">
                <span class="starSpan">{{$t('stars5')}}</span>
-                <el-slider disabled :class="lang=='arabic'? 'mr-15 w-200' : 'ml-15 w-200'" :v-model="getRatePercent(5)"></el-slider>
+                <el-slider disabled :class="lang=='arabic'? 'mr-15 w-200' : 'ml-15 w-200'" :value="getRatePercent(5)"></el-slider>
                 <span :class="lang=='arabic'? 'mr-15' : 'ml-15'">{{getRatePercent(5)}}%</span>
            </div>
 
             <div :class="lang=='arabic'? 'row fs-16' : 'row ml-20 fs-16'">
                <span class="starSpan">{{$t('stars4')}}</span>
-                <el-slider disabled :class="lang=='arabic'? 'mr-15 w-200' : 'ml-15 w-200'" :v-model="getRatePercent(4)"></el-slider>
+                <el-slider disabled :class="lang=='arabic'? 'mr-15 w-200' : 'ml-15 w-200'" :value="getRatePercent(4)"></el-slider>
                  <span :class="lang=='arabic'? 'mr-15' : 'ml-15'">{{getRatePercent(4)}}%</span>
 
            </div>
 
             <div :class="lang=='arabic'? 'row fs-16' : 'row ml-20 fs-16'">
                <span class="starSpan">{{$t('stars3')}}</span>
-                <el-slider disabled :class="lang=='arabic'? 'mr-15 w-200' : 'ml-15 w-200'" :v-model="getRatePercent(3)"></el-slider>
+                <el-slider disabled :class="lang=='arabic'? 'mr-15 w-200' : 'ml-15 w-200'" :value="getRatePercent(3)"></el-slider>
                  <span :class="lang=='arabic'? 'mr-15' : 'ml-15'">{{getRatePercent(3)}}%</span>
 
            </div>
 
             <div :class="lang=='arabic'? 'row fs-16' : 'row ml-20 fs-16'">
                <span class="starSpan">{{$t('stars2')}}</span>
-                <el-slider disabled :class="lang=='arabic'? 'mr-15 w-200' : 'ml-15 w-200'" :v-model="getRatePercent(2)"></el-slider>
+                <el-slider disabled :class="lang=='arabic'? 'mr-15 w-200' : 'ml-15 w-200'" :value="getRatePercent(2)"></el-slider>
                 <span :class="lang=='arabic'? 'mr-15' : 'ml-15'">{{getRatePercent(2)}}%</span>
 
            </div>
 
             <div :class="lang=='arabic'? 'row fs-16' : 'row ml-20 fs-16'">
                <span class="starSpan">{{$t('stars5')}} </span>
-                <el-slider disabled :class="lang=='arabic'? 'mr-15 w-200' : 'ml-15 w-200'" :v-model="getRatePercent(1)"></el-slider>
+                <el-slider disabled :class="lang=='arabic'? 'mr-15 w-200' : 'ml-15 w-200'" :value="getRatePercent(1)"></el-slider>
                 <span :class="lang=='arabic'? 'mr-15' : 'ml-15'">{{getRatePercent(1)}}%</span>
 
            </div>

@@ -1,23 +1,17 @@
 <template>
   <div>
       <el-tabs v-model="activeName" @tab-click="handleClick">
-    <el-tab-pane label="Overview" name="first">
-        <p>
-            Handcrafted pen in rose wood,
-             comes with a handcrafted box of Maronite leather and German-made inks
+    <el-tab-pane :label="$t('overview')" name="first">
+        <p style="color:#333;font-weight:bold;" class="fs-16 mt-30">
+           {{$t('overviewData')}}
         </p>
-
-        <!-- <p>
-            قلم مصنوع يدويًا من خشب الورد،
-             يأتي مع صندوق مصنع يدويًا من الجلد الماروني وأحبار ألمانية الصنع
-        </p> -->
     </el-tab-pane>
-    <el-tab-pane label="Features and advantages" name="second">
-        <el-input placeholder="red" v-model="color">
-    <template slot="prepend">Color: </template>
+    <el-tab-pane :label="$t('featuresAndAdvantages')" name="second">
+        <el-input class="mt-30" :placeholder="$t('red')" v-model="color">
+    <template slot="prepend">{{$t('color')}} : </template>
   </el-input>
-  <el-input placeholder="large" v-model="size">
-    <template slot="prepend">Size:</template>
+  <el-input :placeholder="$t('large')" v-model="size">
+    <template slot="prepend">{{$t('size')}} :</template>
   </el-input>
     </el-tab-pane>
     <el-tab-pane :label="getRateTitle" name="third">
@@ -27,14 +21,14 @@
                     <el-card class="box-card">
           <div class="containter">
                <div class="row">
-                <h5 class="ml-15">Send Rate</h5>
+                <h5 class="ml-15">{{$t('sendRate')}}</h5>
                 <p-rating class="ml-15" v-model="rate_val" :cancel="false" :stars="5"/>
            </div>
           </div>
                 <br>
                 <el-input type="textarea" rows="5" v-model="rate_details"></el-input>
                 <br><br>
-                <el-button @click="sendRate" style="backgroundColor:#409Eff;color:#fff;"> Send Rate</el-button>
+                <el-button @click="sendRate" style="backgroundColor:#409Eff;color:#fff;"> {{$t('sendRate')}} </el-button>
         </el-card>
                 </div>
                 <div class="col-5">
@@ -42,34 +36,34 @@
                     <h1 class="ml-15" style="color:green;">{{getRateValue}}</h1>
                     <p-rating class="ml-15" readonly v-model="getRateValue" :cancel="false" :stars="5"/>
            <div class="row ml-20 fs-16">
-               <span class="starSpan">5 Stars</span>
+               <span class="starSpan">{{$t('stars5')}}</span>
                 <el-slider disabled class="ml-15" style="width:200px;" :v-model="getRatePercent(5)"></el-slider>
                 <span class="ml-15">{{getRatePercent(5)}}%</span>
            </div>
 
             <div class="row ml-20 fs-16">
-               <span class="starSpan">4 Stars</span>
+               <span class="starSpan">{{$t('stars4')}}</span>
                 <el-slider disabled class="ml-15" style="width:200px;" :v-model="getRatePercent(4)"></el-slider>
                  <span class="ml-15">{{getRatePercent(4)}}%</span>
 
            </div>
 
             <div class="row ml-20 fs-16">
-               <span class="starSpan">3 Stars</span>
+               <span class="starSpan">{{$t('stars3')}}</span>
                 <el-slider disabled class="ml-15" style="width:200px;" :v-model="getRatePercent(3)"></el-slider>
                  <span class="ml-15">{{getRatePercent(3)}}%</span>
 
            </div>
 
             <div class="row ml-20 fs-16">
-               <span class="starSpan">2 Stars</span>
+               <span class="starSpan">{{$t('stars2')}}</span>
                 <el-slider disabled class="ml-15" style="width:200px;" :v-model="getRatePercent(2)"></el-slider>
                 <span class="ml-15">{{getRatePercent(2)}}%</span>
 
            </div>
 
             <div class="row ml-20 fs-16">
-               <span class="starSpan">1 Star </span>
+               <span class="starSpan">{{$t('stars5')}} </span>
                 <el-slider disabled class="ml-15" style="width:200px;" :v-model="getRatePercent(1)"></el-slider>
                 <span class="ml-15">{{getRatePercent(1)}}%</span>
 
@@ -80,13 +74,13 @@
             </div>
         </div>
     </el-tab-pane>
-    <el-tab-pane label="Comments" name="fourth">
+    <el-tab-pane :label="$t('comments')" name="fourth">
 
          <div class="col-7 mt-30">
                     <el-card class="box-card">
           <div class="containter">
                <div class="row">
-                <h5 class="ml-15">Send Comment</h5>
+                <h5 class="ml-15">{{ $t('sendComments') }}</h5>
            </div>
           </div>
                 <br>
@@ -130,7 +124,7 @@ export default {
             if(this.rates.length >0) {
             rate_val = parseInt(rate_val/this.rates.length)
             }
-            return 'Rate ' + '('+rate_val+')';
+            return this.$t('rate') + ' ('+rate_val+')';
         },
          getRateValue(){
             let rate_val = 0;
@@ -189,7 +183,7 @@ export default {
 
 <style scope>
 .el-input-group__prepend{
-    width: 80px !important;
+    width: 90px !important;
 }
 .ml-15 {
     margin-left: 15px;

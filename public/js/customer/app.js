@@ -4133,12 +4133,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4169,7 +4163,7 @@ __webpack_require__.r(__webpack_exports__);
         rate_val = parseInt(rate_val / this.rates.length);
       }
 
-      return 'Rate ' + '(' + rate_val + ')';
+      return this.$t('rate') + ' (' + rate_val + ')';
     },
     getRateValue: function getRateValue() {
       var rate_val = 0;
@@ -7779,7 +7773,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.el-input-group__prepend{\r\n    width: 80px !important;\n}\n.ml-15 {\r\n    margin-left: 15px;\n}\n.ml-20 {\r\n    margin-left: 20px;\n}\n.fs-16 {\r\n    font-size: 16px;\n}\n.mt-30{margin-top: 30px;}\n.p-rating-icon {\r\n    color: #409EFF !important;\n}\n.starSpan {\r\n    padding-top: 7px;\r\n    width:60px\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.el-input-group__prepend{\r\n    width: 90px !important;\n}\n.ml-15 {\r\n    margin-left: 15px;\n}\n.ml-20 {\r\n    margin-left: 20px;\n}\n.fs-16 {\r\n    font-size: 16px;\n}\n.mt-30{margin-top: 30px;}\n.p-rating-icon {\r\n    color: #409EFF !important;\n}\n.starSpan {\r\n    padding-top: 7px;\r\n    width:60px\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -50412,22 +50406,36 @@ var render = function() {
           }
         },
         [
-          _c("el-tab-pane", { attrs: { label: "Overview", name: "first" } }, [
-            _c("p", [
-              _vm._v(
-                "\n          Handcrafted pen in rose wood,\n           comes with a handcrafted box of Maronite leather and German-made inks\n      "
+          _c(
+            "el-tab-pane",
+            { attrs: { label: _vm.$t("overview"), name: "first" } },
+            [
+              _c(
+                "p",
+                {
+                  staticClass: "fs-16 mt-30",
+                  staticStyle: { color: "#333", "font-weight": "bold" }
+                },
+                [
+                  _vm._v(
+                    "\n         " + _vm._s(_vm.$t("overviewData")) + "\n      "
+                  )
+                ]
               )
-            ])
-          ]),
+            ]
+          ),
           _vm._v(" "),
           _c(
             "el-tab-pane",
-            { attrs: { label: "Features and advantages", name: "second" } },
+            {
+              attrs: { label: _vm.$t("featuresAndAdvantages"), name: "second" }
+            },
             [
               _c(
                 "el-input",
                 {
-                  attrs: { placeholder: "red" },
+                  staticClass: "mt-30",
+                  attrs: { placeholder: _vm.$t("red") },
                   model: {
                     value: _vm.color,
                     callback: function($$v) {
@@ -50436,14 +50444,18 @@ var render = function() {
                     expression: "color"
                   }
                 },
-                [_c("template", { slot: "prepend" }, [_vm._v("Color: ")])],
+                [
+                  _c("template", { slot: "prepend" }, [
+                    _vm._v(_vm._s(_vm.$t("color")) + " : ")
+                  ])
+                ],
                 2
               ),
               _vm._v(" "),
               _c(
                 "el-input",
                 {
-                  attrs: { placeholder: "large" },
+                  attrs: { placeholder: _vm.$t("large") },
                   model: {
                     value: _vm.size,
                     callback: function($$v) {
@@ -50452,7 +50464,11 @@ var render = function() {
                     expression: "size"
                   }
                 },
-                [_c("template", { slot: "prepend" }, [_vm._v("Size:")])],
+                [
+                  _c("template", { slot: "prepend" }, [
+                    _vm._v(_vm._s(_vm.$t("size")) + " :")
+                  ])
+                ],
                 2
               )
             ],
@@ -50479,7 +50495,7 @@ var render = function() {
                               { staticClass: "row" },
                               [
                                 _c("h5", { staticClass: "ml-15" }, [
-                                  _vm._v("Send Rate")
+                                  _vm._v(_vm._s(_vm.$t("sendRate")))
                                 ]),
                                 _vm._v(" "),
                                 _c("p-rating", {
@@ -50523,7 +50539,7 @@ var render = function() {
                               },
                               on: { click: _vm.sendRate }
                             },
-                            [_vm._v(" Send Rate")]
+                            [_vm._v(" " + _vm._s(_vm.$t("sendRate")) + " ")]
                           )
                         ],
                         1
@@ -50563,7 +50579,7 @@ var render = function() {
                           { staticClass: "row ml-20 fs-16" },
                           [
                             _c("span", { staticClass: "starSpan" }, [
-                              _vm._v("5 Stars")
+                              _vm._v(_vm._s(_vm.$t("stars5")))
                             ]),
                             _vm._v(" "),
                             _c("el-slider", {
@@ -50587,7 +50603,7 @@ var render = function() {
                           { staticClass: "row ml-20 fs-16" },
                           [
                             _c("span", { staticClass: "starSpan" }, [
-                              _vm._v("4 Stars")
+                              _vm._v(_vm._s(_vm.$t("stars4")))
                             ]),
                             _vm._v(" "),
                             _c("el-slider", {
@@ -50611,7 +50627,7 @@ var render = function() {
                           { staticClass: "row ml-20 fs-16" },
                           [
                             _c("span", { staticClass: "starSpan" }, [
-                              _vm._v("3 Stars")
+                              _vm._v(_vm._s(_vm.$t("stars3")))
                             ]),
                             _vm._v(" "),
                             _c("el-slider", {
@@ -50635,7 +50651,7 @@ var render = function() {
                           { staticClass: "row ml-20 fs-16" },
                           [
                             _c("span", { staticClass: "starSpan" }, [
-                              _vm._v("2 Stars")
+                              _vm._v(_vm._s(_vm.$t("stars2")))
                             ]),
                             _vm._v(" "),
                             _c("el-slider", {
@@ -50659,7 +50675,7 @@ var render = function() {
                           { staticClass: "row ml-20 fs-16" },
                           [
                             _c("span", { staticClass: "starSpan" }, [
-                              _vm._v("1 Star ")
+                              _vm._v(_vm._s(_vm.$t("stars5")) + " ")
                             ]),
                             _vm._v(" "),
                             _c("el-slider", {
@@ -50686,56 +50702,60 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _c("el-tab-pane", { attrs: { label: "Comments", name: "fourth" } }, [
-            _c(
-              "div",
-              { staticClass: "col-7 mt-30" },
-              [
-                _c(
-                  "el-card",
-                  { staticClass: "box-card" },
-                  [
-                    _c("div", { staticClass: "containter" }, [
-                      _c("div", { staticClass: "row" }, [
-                        _c("h5", { staticClass: "ml-15" }, [
-                          _vm._v("Send Comment")
+          _c(
+            "el-tab-pane",
+            { attrs: { label: _vm.$t("comments"), name: "fourth" } },
+            [
+              _c(
+                "div",
+                { staticClass: "col-7 mt-30" },
+                [
+                  _c(
+                    "el-card",
+                    { staticClass: "box-card" },
+                    [
+                      _c("div", { staticClass: "containter" }, [
+                        _c("div", { staticClass: "row" }, [
+                          _c("h5", { staticClass: "ml-15" }, [
+                            _vm._v(_vm._s(_vm.$t("sendComments")))
+                          ])
                         ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("br"),
-                    _vm._v(" "),
-                    _c("el-input", {
-                      attrs: { type: "textarea", rows: "5" },
-                      model: {
-                        value: _vm.comment_details,
-                        callback: function($$v) {
-                          _vm.comment_details = $$v
-                        },
-                        expression: "comment_details"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("br"),
-                    _c("br"),
-                    _vm._v(" "),
-                    _c(
-                      "el-button",
-                      {
-                        staticStyle: {
-                          backgroundColor: "#409Eff",
-                          color: "#fff"
+                      ]),
+                      _vm._v(" "),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("el-input", {
+                        attrs: { type: "textarea", rows: "5" },
+                        model: {
+                          value: _vm.comment_details,
+                          callback: function($$v) {
+                            _vm.comment_details = $$v
+                          },
+                          expression: "comment_details"
                         }
-                      },
-                      [_vm._v(" Send Comment")]
-                    )
-                  ],
-                  1
-                )
-              ],
-              1
-            )
-          ])
+                      }),
+                      _vm._v(" "),
+                      _c("br"),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c(
+                        "el-button",
+                        {
+                          staticStyle: {
+                            backgroundColor: "#409Eff",
+                            color: "#fff"
+                          }
+                        },
+                        [_vm._v(" Send Comment")]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ]
+          )
         ],
         1
       )

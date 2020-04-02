@@ -31,5 +31,20 @@
     "website": "Website",
     "submit": "Submit",
     "correctErrors": "Correct them errors!",
-    "formSubmitted": "Form Submitted!"
+    "formSubmitted": "Form Submitted!",
+    "overview":"Overview",
+    "featuresAndAdvantages":"Features and advantages",
+    "rate":"Rate",
+    "comments":"Comments",
+    "overviewData":"Handcrafted pen in rose wood, comes with a handcrafted box of Maronite leather and German-made inks",
+    "color":"Color",
+    "size": "Size",
+    "red": "Red",
+    "large": "Large",
+    "sendRate": "Send Rate",
+    "stars1":"1 Star",
+    "stars2":"2 Stars",
+    "stars3":"3 Stars",
+    "stars4":"4 Stars",
+    "stars5":"5 Stars"
 }

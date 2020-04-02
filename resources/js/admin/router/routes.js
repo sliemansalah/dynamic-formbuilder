@@ -14,6 +14,8 @@ import ComponentsBase from "../views/comps/Base";
 import ComponentsPrime from "../views/comps/Prime";
 import ComponentsTabsPrime from "../views/comps/custom/TabsPrime";
 import ComponentsTabsElementUI from "../views/comps/custom/TabsElementUI";
+import CustomTabs from "../views/comps/CustomTabs";
+
 import CalanderElementUI from "../views/comps/custom/CalanderElementUI";
 import WizardElementUI from "../views/comps/custom/WizardElementUI";
 
@@ -47,6 +49,9 @@ export default  [
         { path: 'custom/tabs-elementui', component: ComponentsTabsElementUI },
         { path: 'custom/calander-elementui', component: CalanderElementUI },
         { path: 'custom/wizard-elementui', component: WizardElementUI },
+        { path: 'custom-tabs', component: CustomTabs },
+
+        
     ] },
     { path: '/forms', component: FormsIndex, children:[
         { path: '', component: ValidationForm },
@@ -66,7 +71,5 @@ export default  [
         { path: '', component: SliderView },
         { path: 'cart', component: ItemCart },
         { path: 'fav', component: ItemFav },
-
-        
     ] },
 ]

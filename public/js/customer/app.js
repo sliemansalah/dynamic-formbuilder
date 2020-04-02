@@ -4048,10 +4048,98 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      activeName: 'first'
+      activeName: 'first',
+      color: '',
+      size: '',
+      rate_details: '',
+      rate_val: 0,
+      getRateVal: 0,
+      sliderVal: {
+        five: 0,
+        four: 0,
+        three: 0,
+        two: 0,
+        one: 0
+      }
     };
   },
   methods: {
@@ -7597,6 +7685,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, "\n.fs-28{\r\n  font-size: 28px;\n}\n.ml-15{\r\n  margin-left: 15px;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/views/comps/CustomTabs.vue?vue&type=style&index=0&scope=true&lang=css&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin/views/comps/CustomTabs.vue?vue&type=style&index=0&scope=true&lang=css& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.el-input-group__prepend{\r\n    width: 80px !important;\n}\n.ml-15 {\r\n    margin-left: 15px;\n}\n.ml-20 {\r\n    margin-left: 20px;\n}\n.fs-16 {\r\n    font-size: 16px;\n}\n.mt-30{margin-top: 30px;}\n.p-rating-icon {\r\n    color: #409EFF !important;\n}\n.starSpan {\r\n    padding-top: 7px;\r\n    width:60px\n}\r\n", ""]);
 
 // exports
 
@@ -29281,6 +29388,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/views/comps/CustomTabs.vue?vue&type=style&index=0&scope=true&lang=css&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin/views/comps/CustomTabs.vue?vue&type=style&index=0&scope=true&lang=css& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CustomTabs.vue?vue&type=style&index=0&scope=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/views/comps/CustomTabs.vue?vue&type=style&index=0&scope=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/views/comps/Prime.vue?vue&type=style&index=0&lang=css&":
 /*!**********************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin/views/comps/Prime.vue?vue&type=style&index=0&lang=css& ***!
@@ -50199,19 +50336,296 @@ var render = function() {
           }
         },
         [
-          _c("el-tab-pane", { attrs: { label: "User", name: "first" } }, [
-            _vm._v("User")
+          _c("el-tab-pane", { attrs: { label: "Overview", name: "first" } }, [
+            _c("p", [
+              _vm._v(
+                "\n          Handcrafted pen in rose wood,\n           comes with a handcrafted box of Maronite leather and German-made inks\n      "
+              )
+            ])
           ]),
           _vm._v(" "),
-          _c("el-tab-pane", { attrs: { label: "Config", name: "second" } }, [
-            _vm._v("Config")
+          _c(
+            "el-tab-pane",
+            { attrs: { label: "Features and advantages", name: "second" } },
+            [
+              _c(
+                "el-input",
+                {
+                  attrs: { placeholder: "red" },
+                  model: {
+                    value: _vm.color,
+                    callback: function($$v) {
+                      _vm.color = $$v
+                    },
+                    expression: "color"
+                  }
+                },
+                [_c("template", { slot: "prepend" }, [_vm._v("Color: ")])],
+                2
+              ),
+              _vm._v(" "),
+              _c(
+                "el-input",
+                {
+                  attrs: { placeholder: "large" },
+                  model: {
+                    value: _vm.size,
+                    callback: function($$v) {
+                      _vm.size = $$v
+                    },
+                    expression: "size"
+                  }
+                },
+                [_c("template", { slot: "prepend" }, [_vm._v("Size:")])],
+                2
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("el-tab-pane", { attrs: { label: "Rate (0)", name: "third" } }, [
+            _c("div", { staticClass: "container mt-30" }, [
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-7" },
+                  [
+                    _c(
+                      "el-card",
+                      { staticClass: "box-card" },
+                      [
+                        _c("div", { staticClass: "containter" }, [
+                          _c(
+                            "div",
+                            { staticClass: "row" },
+                            [
+                              _c("h5", { staticClass: "ml-15" }, [
+                                _vm._v("Send Rate")
+                              ]),
+                              _vm._v(" "),
+                              _c("p-rating", {
+                                staticClass: "ml-15",
+                                attrs: { cancel: false, stars: 5 },
+                                model: {
+                                  value: _vm.rate_val,
+                                  callback: function($$v) {
+                                    _vm.rate_val = $$v
+                                  },
+                                  expression: "rate_val"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("el-input", {
+                          attrs: { type: "textarea", rows: "5" },
+                          model: {
+                            value: _vm.rate_details,
+                            callback: function($$v) {
+                              _vm.rate_details = $$v
+                            },
+                            expression: "rate_details"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("br"),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c(
+                          "el-button",
+                          {
+                            staticStyle: {
+                              backgroundColor: "#409Eff",
+                              color: "#fff"
+                            }
+                          },
+                          [_vm._v(" Send Rate")]
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-5" }, [
+                  _c(
+                    "div",
+                    { staticClass: "containter" },
+                    [
+                      _c(
+                        "h1",
+                        {
+                          staticClass: "ml-15",
+                          staticStyle: { color: "green" }
+                        },
+                        [_vm._v("0")]
+                      ),
+                      _vm._v(" "),
+                      _c("p-rating", {
+                        staticClass: "ml-15",
+                        attrs: { readonly: "", cancel: false, stars: 5 },
+                        model: {
+                          value: _vm.getRateVal,
+                          callback: function($$v) {
+                            _vm.getRateVal = $$v
+                          },
+                          expression: "getRateVal"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "row ml-20 fs-16" },
+                        [
+                          _c("span", { staticClass: "starSpan" }, [
+                            _vm._v("5 Stars")
+                          ]),
+                          _vm._v(" "),
+                          _c("el-slider", {
+                            staticClass: "ml-15",
+                            staticStyle: { width: "200px" },
+                            attrs: { disabled: "" },
+                            model: {
+                              value: _vm.sliderVal.five,
+                              callback: function($$v) {
+                                _vm.$set(_vm.sliderVal, "five", $$v)
+                              },
+                              expression: "sliderVal.five"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "ml-15" }, [
+                            _vm._v(_vm._s(_vm.sliderVal.five) + "%")
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "row ml-20 fs-16" },
+                        [
+                          _c("span", { staticClass: "starSpan" }, [
+                            _vm._v("4 Stars")
+                          ]),
+                          _vm._v(" "),
+                          _c("el-slider", {
+                            staticClass: "ml-15",
+                            staticStyle: { width: "200px" },
+                            attrs: { disabled: "" },
+                            model: {
+                              value: _vm.sliderVal.four,
+                              callback: function($$v) {
+                                _vm.$set(_vm.sliderVal, "four", $$v)
+                              },
+                              expression: "sliderVal.four"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "ml-15" }, [
+                            _vm._v(_vm._s(_vm.sliderVal.four) + "%")
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "row ml-20 fs-16" },
+                        [
+                          _c("span", { staticClass: "starSpan" }, [
+                            _vm._v("3 Stars")
+                          ]),
+                          _vm._v(" "),
+                          _c("el-slider", {
+                            staticClass: "ml-15",
+                            staticStyle: { width: "200px" },
+                            attrs: { disabled: "" },
+                            model: {
+                              value: _vm.sliderVal.three,
+                              callback: function($$v) {
+                                _vm.$set(_vm.sliderVal, "three", $$v)
+                              },
+                              expression: "sliderVal.three"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "ml-15" }, [
+                            _vm._v(_vm._s(_vm.sliderVal.three) + "%")
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "row ml-20 fs-16" },
+                        [
+                          _c("span", { staticClass: "starSpan" }, [
+                            _vm._v("2 Stars")
+                          ]),
+                          _vm._v(" "),
+                          _c("el-slider", {
+                            staticClass: "ml-15",
+                            staticStyle: { width: "200px" },
+                            attrs: { disabled: "" },
+                            model: {
+                              value: _vm.sliderVal.two,
+                              callback: function($$v) {
+                                _vm.$set(_vm.sliderVal, "two", $$v)
+                              },
+                              expression: "sliderVal.two"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "ml-15" }, [
+                            _vm._v(_vm._s(_vm.sliderVal.two) + "%")
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "row ml-20 fs-16" },
+                        [
+                          _c("span", { staticClass: "starSpan" }, [
+                            _vm._v("1 Star ")
+                          ]),
+                          _vm._v(" "),
+                          _c("el-slider", {
+                            staticClass: "ml-15",
+                            staticStyle: { width: "200px" },
+                            attrs: { disabled: "" },
+                            model: {
+                              value: _vm.sliderVal.one,
+                              callback: function($$v) {
+                                _vm.$set(_vm.sliderVal, "one", $$v)
+                              },
+                              expression: "sliderVal.one"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "ml-15" }, [
+                            _vm._v(_vm._s(_vm.sliderVal.one) + "%")
+                          ])
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ])
+              ])
+            ])
           ]),
           _vm._v(" "),
-          _c("el-tab-pane", { attrs: { label: "Role", name: "third" } }, [
-            _vm._v("Role")
-          ]),
-          _vm._v(" "),
-          _c("el-tab-pane", { attrs: { label: "Task", name: "fourth" } }, [
+          _c("el-tab-pane", { attrs: { label: "Comments", name: "fourth" } }, [
             _vm._v("Task")
           ])
         ],
@@ -70530,7 +70944,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CustomTabs_vue_vue_type_template_id_7410eece___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CustomTabs.vue?vue&type=template&id=7410eece& */ "./resources/js/admin/views/comps/CustomTabs.vue?vue&type=template&id=7410eece&");
 /* harmony import */ var _CustomTabs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CustomTabs.vue?vue&type=script&lang=js& */ "./resources/js/admin/views/comps/CustomTabs.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _CustomTabs_vue_vue_type_style_index_0_scope_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CustomTabs.vue?vue&type=style&index=0&scope=true&lang=css& */ "./resources/js/admin/views/comps/CustomTabs.vue?vue&type=style&index=0&scope=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -70538,7 +70954,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _CustomTabs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _CustomTabs_vue_vue_type_template_id_7410eece___WEBPACK_IMPORTED_MODULE_0__["render"],
   _CustomTabs_vue_vue_type_template_id_7410eece___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -70567,6 +70983,22 @@ component.options.__file = "resources/js/admin/views/comps/CustomTabs.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomTabs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CustomTabs.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/views/comps/CustomTabs.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomTabs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/admin/views/comps/CustomTabs.vue?vue&type=style&index=0&scope=true&lang=css&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/admin/views/comps/CustomTabs.vue?vue&type=style&index=0&scope=true&lang=css& ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomTabs_vue_vue_type_style_index_0_scope_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CustomTabs.vue?vue&type=style&index=0&scope=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/views/comps/CustomTabs.vue?vue&type=style&index=0&scope=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomTabs_vue_vue_type_style_index_0_scope_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomTabs_vue_vue_type_style_index_0_scope_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomTabs_vue_vue_type_style_index_0_scope_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomTabs_vue_vue_type_style_index_0_scope_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomTabs_vue_vue_type_style_index_0_scope_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 

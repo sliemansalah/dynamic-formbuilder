@@ -4164,84 +4164,42 @@ __webpack_require__.r(__webpack_exports__);
       this.rates.forEach(function (r) {
         rate_val += r.val;
       });
-      return 'Rate ' + '(' + parseInt(rate_val / this.rates.length) + ')';
+
+      if (this.rates.length > 0) {
+        rate_val = parseInt(rate_val / this.rates.length);
+      }
+
+      return 'Rate ' + '(' + rate_val + ')';
     },
     getRateValue: function getRateValue() {
       var rate_val = 0;
       this.rates.forEach(function (r) {
         rate_val += r.val;
       });
-      return parseInt(rate_val / this.rates.length);
-    },
-    getRateFivePercent: function getRateFivePercent() {
-      var rate_val = 0;
-      var rate_all = 0;
-      this.rates.forEach(function (r) {
-        if (r.val == 5) {
-          rate_val++;
-          rate_all++;
-        } else {
-          rate_all++;
-        }
-      });
-      return parseInt(rate_val * 100 / rate_all);
-    },
-    getRateFourPercent: function getRateFourPercent() {
-      var rate_val = 0;
-      var rate_all = 0;
-      this.rates.forEach(function (r) {
-        if (r.val == 4) {
-          rate_val++;
-          rate_all++;
-        } else {
-          rate_all++;
-        }
-      });
-      return parseInt(rate_val * 100 / rate_all);
-    },
-    getRateThreePercent: function getRateThreePercent() {
-      var rate_val = 0;
-      var rate_all = 0;
-      this.rates.forEach(function (r) {
-        if (r.val == 3) {
-          rate_val++;
-          rate_all++;
-        } else {
-          rate_all++;
-        }
-      });
-      return parseInt(rate_val * 100 / rate_all);
-    },
-    getRateTwoPercent: function getRateTwoPercent() {
-      var rate_val = 0;
-      var rate_all = 0;
-      this.rates.forEach(function (r) {
-        if (r.val == 2) {
-          rate_val++;
-          rate_all++;
-        } else {
-          rate_all++;
-        }
-      });
-      return parseInt(rate_val * 100 / rate_all);
-    },
-    getRateOnePercent: function getRateOnePercent() {
-      var rate_val = 0;
-      var rate_all = 0;
-      this.rates.forEach(function (r) {
-        if (r.val == 1) {
-          rate_val++;
-          rate_all++;
-        } else {
-          rate_all++;
-        }
-      });
-      return parseInt(rate_val * 100 / rate_all);
+
+      if (this.rates.length > 0) {
+        rate_val = parseInt(rate_val / this.rates.length);
+      }
+
+      return rate_val;
     }
   },
   methods: {
     handleClick: function handleClick(tab, event) {
       console.log(tab, event);
+    },
+    getRatePercent: function getRatePercent(id) {
+      var rate_val = 0;
+      var rate_all = 0;
+      this.rates.forEach(function (r) {
+        if (r.val == id) {
+          rate_val++;
+          rate_all++;
+        } else {
+          rate_all++;
+        }
+      });
+      return parseInt(rate_val * 100 / rate_all);
     },
     sendRate: function sendRate() {
       var rate = {
@@ -50611,18 +50569,14 @@ var render = function() {
                             _c("el-slider", {
                               staticClass: "ml-15",
                               staticStyle: { width: "200px" },
-                              attrs: { disabled: "" },
-                              model: {
-                                value: _vm.getRateFivePercent,
-                                callback: function($$v) {
-                                  _vm.getRateFivePercent = $$v
-                                },
-                                expression: "getRateFivePercent"
+                              attrs: {
+                                disabled: "",
+                                "v-model": _vm.getRatePercent(5)
                               }
                             }),
                             _vm._v(" "),
                             _c("span", { staticClass: "ml-15" }, [
-                              _vm._v(_vm._s(_vm.getRateFivePercent) + "%")
+                              _vm._v(_vm._s(_vm.getRatePercent(5)) + "%")
                             ])
                           ],
                           1
@@ -50639,18 +50593,14 @@ var render = function() {
                             _c("el-slider", {
                               staticClass: "ml-15",
                               staticStyle: { width: "200px" },
-                              attrs: { disabled: "" },
-                              model: {
-                                value: _vm.getRateFourPercent,
-                                callback: function($$v) {
-                                  _vm.getRateFourPercent = $$v
-                                },
-                                expression: "getRateFourPercent"
+                              attrs: {
+                                disabled: "",
+                                "v-model": _vm.getRatePercent(4)
                               }
                             }),
                             _vm._v(" "),
                             _c("span", { staticClass: "ml-15" }, [
-                              _vm._v(_vm._s(_vm.getRateFourPercent) + "%")
+                              _vm._v(_vm._s(_vm.getRatePercent(4)) + "%")
                             ])
                           ],
                           1
@@ -50667,18 +50617,14 @@ var render = function() {
                             _c("el-slider", {
                               staticClass: "ml-15",
                               staticStyle: { width: "200px" },
-                              attrs: { disabled: "" },
-                              model: {
-                                value: _vm.getRateThreePercent,
-                                callback: function($$v) {
-                                  _vm.getRateThreePercent = $$v
-                                },
-                                expression: "getRateThreePercent"
+                              attrs: {
+                                disabled: "",
+                                "v-model": _vm.getRatePercent(3)
                               }
                             }),
                             _vm._v(" "),
                             _c("span", { staticClass: "ml-15" }, [
-                              _vm._v(_vm._s(_vm.getRateThreePercent) + "%")
+                              _vm._v(_vm._s(_vm.getRatePercent(3)) + "%")
                             ])
                           ],
                           1
@@ -50695,18 +50641,14 @@ var render = function() {
                             _c("el-slider", {
                               staticClass: "ml-15",
                               staticStyle: { width: "200px" },
-                              attrs: { disabled: "" },
-                              model: {
-                                value: _vm.getRateTwoPercent,
-                                callback: function($$v) {
-                                  _vm.getRateTwoPercent = $$v
-                                },
-                                expression: "getRateTwoPercent"
+                              attrs: {
+                                disabled: "",
+                                "v-model": _vm.getRatePercent(2)
                               }
                             }),
                             _vm._v(" "),
                             _c("span", { staticClass: "ml-15" }, [
-                              _vm._v(_vm._s(_vm.getRateTwoPercent) + "%")
+                              _vm._v(_vm._s(_vm.getRatePercent(2)) + "%")
                             ])
                           ],
                           1
@@ -50723,18 +50665,14 @@ var render = function() {
                             _c("el-slider", {
                               staticClass: "ml-15",
                               staticStyle: { width: "200px" },
-                              attrs: { disabled: "" },
-                              model: {
-                                value: _vm.getRateOnePercent,
-                                callback: function($$v) {
-                                  _vm.getRateOnePercent = $$v
-                                },
-                                expression: "getRateOnePercent"
+                              attrs: {
+                                disabled: "",
+                                "v-model": _vm.getRatePercent(1)
                               }
                             }),
                             _vm._v(" "),
                             _c("span", { staticClass: "ml-15" }, [
-                              _vm._v(_vm._s(_vm.getRateOnePercent) + "%")
+                              _vm._v(_vm._s(_vm.getRatePercent(1)) + "%")
                             ])
                           ],
                           1

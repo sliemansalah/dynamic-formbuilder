@@ -43,35 +43,35 @@
                     <p-rating class="ml-15" readonly v-model="getRateValue" :cancel="false" :stars="5"/>
            <div class="row ml-20 fs-16">
                <span class="starSpan">5 Stars</span>
-                <el-slider disabled class="ml-15" style="width:200px;" v-model="getRateFivePercent"></el-slider>
-                <span class="ml-15">{{getRateFivePercent}}%</span>
+                <el-slider disabled class="ml-15" style="width:200px;" :v-model="getRatePercent(5)"></el-slider>
+                <span class="ml-15">{{getRatePercent(5)}}%</span>
            </div>
 
             <div class="row ml-20 fs-16">
                <span class="starSpan">4 Stars</span>
-                <el-slider disabled class="ml-15" style="width:200px;" v-model="getRateFourPercent"></el-slider>
-                 <span class="ml-15">{{getRateFourPercent}}%</span>
+                <el-slider disabled class="ml-15" style="width:200px;" :v-model="getRatePercent(4)"></el-slider>
+                 <span class="ml-15">{{getRatePercent(4)}}%</span>
 
            </div>
 
             <div class="row ml-20 fs-16">
                <span class="starSpan">3 Stars</span>
-                <el-slider disabled class="ml-15" style="width:200px;" v-model="getRateThreePercent"></el-slider>
-                 <span class="ml-15">{{getRateThreePercent}}%</span>
+                <el-slider disabled class="ml-15" style="width:200px;" :v-model="getRatePercent(3)"></el-slider>
+                 <span class="ml-15">{{getRatePercent(3)}}%</span>
 
            </div>
 
             <div class="row ml-20 fs-16">
                <span class="starSpan">2 Stars</span>
-                <el-slider disabled class="ml-15" style="width:200px;" v-model="getRateTwoPercent"></el-slider>
-                <span class="ml-15">{{getRateTwoPercent}}%</span>
+                <el-slider disabled class="ml-15" style="width:200px;" :v-model="getRatePercent(2)"></el-slider>
+                <span class="ml-15">{{getRatePercent(2)}}%</span>
 
            </div>
 
             <div class="row ml-20 fs-16">
                <span class="starSpan">1 Star </span>
-                <el-slider disabled class="ml-15" style="width:200px;" v-model="getRateOnePercent"></el-slider>
-                <span class="ml-15">{{getRateOnePercent}}%</span>
+                <el-slider disabled class="ml-15" style="width:200px;" :v-model="getRatePercent(1)"></el-slider>
+                <span class="ml-15">{{getRatePercent(1)}}%</span>
 
            </div>
 
@@ -127,90 +127,41 @@ export default {
             this.rates.forEach(r => {
                 rate_val+=r.val;
             });
-            return 'Rate ' + '('+parseInt(rate_val/this.rates.length)+')';
+            if(this.rates.length >0) {
+            rate_val = parseInt(rate_val/this.rates.length)
+            }
+            return 'Rate ' + '('+rate_val+')';
         },
          getRateValue(){
             let rate_val = 0;
             this.rates.forEach(r => {
                 rate_val+=r.val;
             });
-            return parseInt(rate_val/this.rates.length);
+              if(this.rates.length >0) {
+            rate_val = parseInt(rate_val/this.rates.length)
+            }
+            return rate_val;
         },
-        getRateFivePercent(){
-             let rate_val = 0;
-            let rate_all=0;
-            this.rates.forEach(r => {
-                if(r.val ==5) {
-                    rate_val++;
-                    rate_all++;
-                }else {
-                    rate_all++;
-                }
-                
-            });
-            return parseInt(rate_val*100/rate_all);
-        },
-         getRateFourPercent(){
-            let rate_val = 0;
-            let rate_all=0;
-            this.rates.forEach(r => {
-                if(r.val ==4) {
-                    rate_val++;
-                    rate_all++;
-                }else {
-                    rate_all++;
-                }
-                
-            });
-            return parseInt(rate_val*100/rate_all);
-        },
-         getRateThreePercent(){
-            let rate_val = 0;
-            let rate_all=0;
-            this.rates.forEach(r => {
-                if(r.val ==3) {
-                    rate_val++;
-                    rate_all++;
-                }else {
-                    rate_all++;
-                }
-                
-            });
-            return parseInt(rate_val*100/rate_all);
-        },
-         getRateTwoPercent(){
-            let rate_val = 0;
-            let rate_all=0;
-            this.rates.forEach(r => {
-                if(r.val ==2) {
-                    rate_val++;
-                    rate_all++;
-                }else {
-                    rate_all++;
-                }
-                
-            });
-            return parseInt(rate_val*100/rate_all);
-        },
-         getRateOnePercent(){
-            let rate_val = 0;
-            let rate_all=0;
-            this.rates.forEach(r => {
-                if(r.val ==1) {
-                    rate_val++;
-                    rate_all++;
-                }else {
-                    rate_all++;
-                }
-                
-            });
-            return parseInt(rate_val*100/rate_all);
-        }
-    },
+       
+           },
     methods: {
       handleClick(tab, event) {
         console.log(tab, event);
       },
+       getRatePercent(id){
+             let rate_val = 0;
+            let rate_all=0;
+            this.rates.forEach(r => {
+                if(r.val == id) {
+                    rate_val++;
+                    rate_all++;
+                }else {
+                    rate_all++;
+                }
+                
+            });
+            return parseInt(rate_val*100/rate_all);
+        },
       sendRate() {
           let rate = {
               val:this.rate_val,

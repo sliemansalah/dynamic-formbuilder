@@ -48,5 +48,7 @@
     "stars4":"4 Stars",
     "stars5":"5 Stars",
     "sendComments": "Send Comments",
-    "sendComment": "Send Comment"
+    "sendComment": "Send Comment",
+    "customTabs":"Custom Tabs",
+    "encryption": "Encryption"
 }

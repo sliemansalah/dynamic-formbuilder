@@ -15,6 +15,7 @@ import ComponentsPrime from "../views/comps/Prime";
 import ComponentsTabsPrime from "../views/comps/custom/TabsPrime";
 import ComponentsTabsElementUI from "../views/comps/custom/TabsElementUI";
 import CustomTabs from "../views/comps/CustomTabs";
+import Encryption from "../views/comps/Encryption";
 
 import CalanderElementUI from "../views/comps/custom/CalanderElementUI";
 import WizardElementUI from "../views/comps/custom/WizardElementUI";
@@ -50,7 +51,9 @@ export default  [
         { path: 'custom/calander-elementui', component: CalanderElementUI },
         { path: 'custom/wizard-elementui', component: WizardElementUI },
         { path: 'custom-tabs', component: CustomTabs },
+        { path: 'encryption', component: Encryption },
 
+        
         
     ] },
     { path: '/forms', component: FormsIndex, children:[

@@ -13,8 +13,6 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import locale from 'element-ui/lib/locale';
 import en_lang from 'element-ui/lib/locale/lang/en';
-// import ar_lang from 'element-ui/lib/locale/lang/ar';
-
 Vue.use(ElementUI);
 locale.use(en_lang)
 import {i18n} from './i18n/i18n';

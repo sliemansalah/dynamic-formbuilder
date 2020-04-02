@@ -34,7 +34,7 @@
                 <div class="col-5">
                      <div class="containter">
                     <h1 :class="lang=='arabic'? 'mr-15' : 'ml-15'" style="color:green;">{{getRateValue}}</h1>
-                    <p-rating :class="lang=='arabic'? 'mr-15' : 'ml-15'" readonly v-model="getRateValue" :cancel="false" :stars="5"/>
+                    <p-rating :class="lang=='arabic'? '' : 'ml-15'" readonly v-model="getRateValue" :cancel="false" :stars="5"/>
            <div :class="lang=='arabic'? 'row fs-16' : 'row ml-20 fs-16'">
                <span class="starSpan">{{$t('stars5')}}</span>
                 <el-slider disabled :class="lang=='arabic'? 'mr-15 w-200' : 'ml-15 w-200'" :v-model="getRatePercent(5)"></el-slider>
@@ -156,7 +156,11 @@ export default {
                 }
                 
             });
-            return parseInt(rate_val*100/rate_all);
+            if(this.rates.length > 0) {
+                return parseInt(rate_val*100/rate_all);
+            } else {
+                return 0;
+            }
         },
       sendRate() {
           let rate = {

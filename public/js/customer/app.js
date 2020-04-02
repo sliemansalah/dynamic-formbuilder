@@ -4195,7 +4195,12 @@ __webpack_require__.r(__webpack_exports__);
           rate_all++;
         }
       });
-      return parseInt(rate_val * 100 / rate_all);
+
+      if (this.rates.length > 0) {
+        return parseInt(rate_val * 100 / rate_all);
+      } else {
+        return 0;
+      }
     },
     sendRate: function sendRate() {
       var rate = {
@@ -50611,7 +50616,7 @@ var render = function() {
                       ),
                       _vm._v(" "),
                       _c("p-rating", {
-                        class: _vm.lang == "arabic" ? "mr-15" : "ml-15",
+                        class: _vm.lang == "arabic" ? "" : "ml-15",
                         attrs: { readonly: "", cancel: false, stars: 5 },
                         model: {
                           value: _vm.getRateValue,

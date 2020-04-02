@@ -4136,6 +4136,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      lang: '',
       rates: [],
       activeName: 'first',
       color: '',
@@ -4215,7 +4216,11 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
+    this.lang = localStorage.getItem('lang');
     this.rates = JSON.parse(localStorage.getItem('rates')) || [];
+  },
+  updated: function updated() {
+    this.lang = localStorage.getItem('lang');
   }
 });
 
@@ -7773,7 +7778,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.el-input-group__prepend{\r\n    width: 90px !important;\n}\n.ml-15 {\r\n    margin-left: 15px;\n}\n.ml-20 {\r\n    margin-left: 20px;\n}\n.fs-16 {\r\n    font-size: 16px;\n}\n.mt-30{margin-top: 30px;}\n.p-rating-icon {\r\n    color: #409EFF !important;\n}\n.starSpan {\r\n    padding-top: 7px;\r\n    width:60px\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.el-input-group__prepend{\r\n    width: 90px !important;\n}\n.ml-15 {\r\n    margin-left: 15px;\n}\n.ml-20 {\r\n    margin-left: 20px;\n}\n.mr-15 {\r\n    margin-right: 15px;\n}\n.fs-16 {\r\n    font-size: 16px;\n}\n.mt-30{margin-top: 30px;}\n.p-rating-icon {\r\n    color: #409EFF !important;\n}\n.starSpan {\r\n    padding-top: 7px;\r\n    width:60px\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -50494,9 +50499,14 @@ var render = function() {
                               "div",
                               { staticClass: "row" },
                               [
-                                _c("h5", { staticClass: "ml-15" }, [
-                                  _vm._v(_vm._s(_vm.$t("sendRate")))
-                                ]),
+                                _c(
+                                  "h5",
+                                  {
+                                    class:
+                                      _vm.lang == "arabic" ? "mr-15" : "ml-15"
+                                  },
+                                  [_vm._v(_vm._s(_vm.$t("sendRate")))]
+                                ),
                                 _vm._v(" "),
                                 _c("p-rating", {
                                   staticClass: "ml-15",
@@ -50556,14 +50566,14 @@ var render = function() {
                         _c(
                           "h1",
                           {
-                            staticClass: "ml-15",
+                            class: _vm.lang == "arabic" ? "mr-15" : "ml-15",
                             staticStyle: { color: "green" }
                           },
                           [_vm._v(_vm._s(_vm.getRateValue))]
                         ),
                         _vm._v(" "),
                         _c("p-rating", {
-                          staticClass: "ml-15",
+                          class: _vm.lang == "arabic" ? "mr-15" : "ml-15",
                           attrs: { readonly: "", cancel: false, stars: 5 },
                           model: {
                             value: _vm.getRateValue,
@@ -50576,14 +50586,19 @@ var render = function() {
                         _vm._v(" "),
                         _c(
                           "div",
-                          { staticClass: "row ml-20 fs-16" },
+                          {
+                            class:
+                              _vm.lang == "arabic"
+                                ? "row fs-16"
+                                : "row ml-20 fs-16"
+                          },
                           [
                             _c("span", { staticClass: "starSpan" }, [
                               _vm._v(_vm._s(_vm.$t("stars5")))
                             ]),
                             _vm._v(" "),
                             _c("el-slider", {
-                              staticClass: "ml-15",
+                              class: _vm.lang == "arabic" ? "mr-15" : "ml-15",
                               staticStyle: { width: "200px" },
                               attrs: {
                                 disabled: "",
@@ -50591,23 +50606,32 @@ var render = function() {
                               }
                             }),
                             _vm._v(" "),
-                            _c("span", { staticClass: "ml-15" }, [
-                              _vm._v(_vm._s(_vm.getRatePercent(5)) + "%")
-                            ])
+                            _c(
+                              "span",
+                              {
+                                class: _vm.lang == "arabic" ? "mr-15" : "ml-15"
+                              },
+                              [_vm._v(_vm._s(_vm.getRatePercent(5)) + "%")]
+                            )
                           ],
                           1
                         ),
                         _vm._v(" "),
                         _c(
                           "div",
-                          { staticClass: "row ml-20 fs-16" },
+                          {
+                            class:
+                              _vm.lang == "arabic"
+                                ? "row fs-16"
+                                : "row ml-20 fs-16"
+                          },
                           [
                             _c("span", { staticClass: "starSpan" }, [
                               _vm._v(_vm._s(_vm.$t("stars4")))
                             ]),
                             _vm._v(" "),
                             _c("el-slider", {
-                              staticClass: "ml-15",
+                              class: _vm.lang == "arabic" ? "mr-15" : "ml-15",
                               staticStyle: { width: "200px" },
                               attrs: {
                                 disabled: "",
@@ -50615,23 +50639,32 @@ var render = function() {
                               }
                             }),
                             _vm._v(" "),
-                            _c("span", { staticClass: "ml-15" }, [
-                              _vm._v(_vm._s(_vm.getRatePercent(4)) + "%")
-                            ])
+                            _c(
+                              "span",
+                              {
+                                class: _vm.lang == "arabic" ? "mr-15" : "ml-15"
+                              },
+                              [_vm._v(_vm._s(_vm.getRatePercent(4)) + "%")]
+                            )
                           ],
                           1
                         ),
                         _vm._v(" "),
                         _c(
                           "div",
-                          { staticClass: "row ml-20 fs-16" },
+                          {
+                            class:
+                              _vm.lang == "arabic"
+                                ? "row fs-16"
+                                : "row ml-20 fs-16"
+                          },
                           [
                             _c("span", { staticClass: "starSpan" }, [
                               _vm._v(_vm._s(_vm.$t("stars3")))
                             ]),
                             _vm._v(" "),
                             _c("el-slider", {
-                              staticClass: "ml-15",
+                              class: _vm.lang == "arabic" ? "mr-15" : "ml-15",
                               staticStyle: { width: "200px" },
                               attrs: {
                                 disabled: "",
@@ -50639,23 +50672,32 @@ var render = function() {
                               }
                             }),
                             _vm._v(" "),
-                            _c("span", { staticClass: "ml-15" }, [
-                              _vm._v(_vm._s(_vm.getRatePercent(3)) + "%")
-                            ])
+                            _c(
+                              "span",
+                              {
+                                class: _vm.lang == "arabic" ? "mr-15" : "ml-15"
+                              },
+                              [_vm._v(_vm._s(_vm.getRatePercent(3)) + "%")]
+                            )
                           ],
                           1
                         ),
                         _vm._v(" "),
                         _c(
                           "div",
-                          { staticClass: "row ml-20 fs-16" },
+                          {
+                            class:
+                              _vm.lang == "arabic"
+                                ? "row fs-16"
+                                : "row ml-20 fs-16"
+                          },
                           [
                             _c("span", { staticClass: "starSpan" }, [
                               _vm._v(_vm._s(_vm.$t("stars2")))
                             ]),
                             _vm._v(" "),
                             _c("el-slider", {
-                              staticClass: "ml-15",
+                              class: _vm.lang == "arabic" ? "mr-15" : "ml-15",
                               staticStyle: { width: "200px" },
                               attrs: {
                                 disabled: "",
@@ -50663,23 +50705,32 @@ var render = function() {
                               }
                             }),
                             _vm._v(" "),
-                            _c("span", { staticClass: "ml-15" }, [
-                              _vm._v(_vm._s(_vm.getRatePercent(2)) + "%")
-                            ])
+                            _c(
+                              "span",
+                              {
+                                class: _vm.lang == "arabic" ? "mr-15" : "ml-15"
+                              },
+                              [_vm._v(_vm._s(_vm.getRatePercent(2)) + "%")]
+                            )
                           ],
                           1
                         ),
                         _vm._v(" "),
                         _c(
                           "div",
-                          { staticClass: "row ml-20 fs-16" },
+                          {
+                            class:
+                              _vm.lang == "arabic"
+                                ? "row fs-16"
+                                : "row ml-20 fs-16"
+                          },
                           [
                             _c("span", { staticClass: "starSpan" }, [
                               _vm._v(_vm._s(_vm.$t("stars5")) + " ")
                             ]),
                             _vm._v(" "),
                             _c("el-slider", {
-                              staticClass: "ml-15",
+                              class: _vm.lang == "arabic" ? "mr-15" : "ml-15",
                               staticStyle: { width: "200px" },
                               attrs: {
                                 disabled: "",
@@ -50687,9 +50738,13 @@ var render = function() {
                               }
                             }),
                             _vm._v(" "),
-                            _c("span", { staticClass: "ml-15" }, [
-                              _vm._v(_vm._s(_vm.getRatePercent(1)) + "%")
-                            ])
+                            _c(
+                              "span",
+                              {
+                                class: _vm.lang == "arabic" ? "mr-15" : "ml-15"
+                              },
+                              [_vm._v(_vm._s(_vm.getRatePercent(1)) + "%")]
+                            )
                           ],
                           1
                         )
@@ -50716,9 +50771,11 @@ var render = function() {
                     [
                       _c("div", { staticClass: "containter" }, [
                         _c("div", { staticClass: "row" }, [
-                          _c("h5", { staticClass: "ml-15" }, [
-                            _vm._v(_vm._s(_vm.$t("sendComments")))
-                          ])
+                          _c(
+                            "h5",
+                            { class: _vm.lang == "arabic" ? "mr-15" : "ml-15" },
+                            [_vm._v(_vm._s(_vm.$t("sendComments")))]
+                          )
                         ])
                       ]),
                       _vm._v(" "),
@@ -50746,7 +50803,7 @@ var render = function() {
                             color: "#fff"
                           }
                         },
-                        [_vm._v(" Send Comment")]
+                        [_vm._v(" " + _vm._s(_vm.$t("sendComment")))]
                       )
                     ],
                     1

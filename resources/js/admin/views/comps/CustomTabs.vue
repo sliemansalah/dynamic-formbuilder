@@ -21,7 +21,7 @@
                     <el-card class="box-card">
           <div class="containter">
                <div class="row">
-                <h5 class="ml-15">{{$t('sendRate')}}</h5>
+                <h5 :class="lang=='arabic'? 'mr-15' : 'ml-15'">{{$t('sendRate')}}</h5>
                 <p-rating class="ml-15" v-model="rate_val" :cancel="false" :stars="5"/>
            </div>
           </div>
@@ -33,39 +33,39 @@
                 </div>
                 <div class="col-5">
                      <div class="containter">
-                    <h1 class="ml-15" style="color:green;">{{getRateValue}}</h1>
-                    <p-rating class="ml-15" readonly v-model="getRateValue" :cancel="false" :stars="5"/>
-           <div class="row ml-20 fs-16">
+                    <h1 :class="lang=='arabic'? 'mr-15' : 'ml-15'" style="color:green;">{{getRateValue}}</h1>
+                    <p-rating :class="lang=='arabic'? 'mr-15' : 'ml-15'" readonly v-model="getRateValue" :cancel="false" :stars="5"/>
+           <div :class="lang=='arabic'? 'row fs-16' : 'row ml-20 fs-16'">
                <span class="starSpan">{{$t('stars5')}}</span>
-                <el-slider disabled class="ml-15" style="width:200px;" :v-model="getRatePercent(5)"></el-slider>
-                <span class="ml-15">{{getRatePercent(5)}}%</span>
+                <el-slider disabled :class="lang=='arabic'? 'mr-15' : 'ml-15'" style="width:200px;" :v-model="getRatePercent(5)"></el-slider>
+                <span :class="lang=='arabic'? 'mr-15' : 'ml-15'">{{getRatePercent(5)}}%</span>
            </div>
 
-            <div class="row ml-20 fs-16">
+            <div :class="lang=='arabic'? 'row fs-16' : 'row ml-20 fs-16'">
                <span class="starSpan">{{$t('stars4')}}</span>
-                <el-slider disabled class="ml-15" style="width:200px;" :v-model="getRatePercent(4)"></el-slider>
-                 <span class="ml-15">{{getRatePercent(4)}}%</span>
+                <el-slider disabled :class="lang=='arabic'? 'mr-15' : 'ml-15'" style="width:200px;" :v-model="getRatePercent(4)"></el-slider>
+                 <span :class="lang=='arabic'? 'mr-15' : 'ml-15'">{{getRatePercent(4)}}%</span>
 
            </div>
 
-            <div class="row ml-20 fs-16">
+            <div :class="lang=='arabic'? 'row fs-16' : 'row ml-20 fs-16'">
                <span class="starSpan">{{$t('stars3')}}</span>
-                <el-slider disabled class="ml-15" style="width:200px;" :v-model="getRatePercent(3)"></el-slider>
-                 <span class="ml-15">{{getRatePercent(3)}}%</span>
+                <el-slider disabled :class="lang=='arabic'? 'mr-15' : 'ml-15'" style="width:200px;" :v-model="getRatePercent(3)"></el-slider>
+                 <span :class="lang=='arabic'? 'mr-15' : 'ml-15'">{{getRatePercent(3)}}%</span>
 
            </div>
 
-            <div class="row ml-20 fs-16">
+            <div :class="lang=='arabic'? 'row fs-16' : 'row ml-20 fs-16'">
                <span class="starSpan">{{$t('stars2')}}</span>
-                <el-slider disabled class="ml-15" style="width:200px;" :v-model="getRatePercent(2)"></el-slider>
-                <span class="ml-15">{{getRatePercent(2)}}%</span>
+                <el-slider disabled :class="lang=='arabic'? 'mr-15' : 'ml-15'" style="width:200px;" :v-model="getRatePercent(2)"></el-slider>
+                <span :class="lang=='arabic'? 'mr-15' : 'ml-15'">{{getRatePercent(2)}}%</span>
 
            </div>
 
-            <div class="row ml-20 fs-16">
+            <div :class="lang=='arabic'? 'row fs-16' : 'row ml-20 fs-16'">
                <span class="starSpan">{{$t('stars5')}} </span>
-                <el-slider disabled class="ml-15" style="width:200px;" :v-model="getRatePercent(1)"></el-slider>
-                <span class="ml-15">{{getRatePercent(1)}}%</span>
+                <el-slider disabled :class="lang=='arabic'? 'mr-15' : 'ml-15'" style="width:200px;" :v-model="getRatePercent(1)"></el-slider>
+                <span :class="lang=='arabic'? 'mr-15' : 'ml-15'">{{getRatePercent(1)}}%</span>
 
            </div>
 
@@ -80,13 +80,13 @@
                     <el-card class="box-card">
           <div class="containter">
                <div class="row">
-                <h5 class="ml-15">{{ $t('sendComments') }}</h5>
+                <h5 :class="lang=='arabic'? 'mr-15' : 'ml-15'">{{ $t('sendComments') }}</h5>
            </div>
           </div>
                 <br>
                 <el-input type="textarea" rows="5" v-model="comment_details"></el-input>
                 <br><br>
-                <el-button style="backgroundColor:#409Eff;color:#fff;"> Send Comment</el-button>
+                <el-button style="backgroundColor:#409Eff;color:#fff;"> {{ $t('sendComment')}}</el-button>
         </el-card>
                 </div>
     </el-tab-pane>
@@ -98,6 +98,7 @@
 export default {
     data() {
       return {
+        lang:'',
         rates:[],
         activeName: 'first',
         color:'',
@@ -176,7 +177,11 @@ export default {
       }
     },
     mounted(){
-        this.rates = JSON.parse(localStorage.getItem('rates')) || [];
+    this.lang = localStorage.getItem('lang');
+    this.rates = JSON.parse(localStorage.getItem('rates')) || [];
+    },
+    updated(){
+    this.lang = localStorage.getItem('lang');
     }
   };
 </script>
@@ -190,6 +195,10 @@ export default {
 }
 .ml-20 {
     margin-left: 20px;
+}
+
+.mr-15 {
+    margin-right: 15px;
 }
 .fs-16 {
     font-size: 16px;

@@ -46,5 +46,7 @@
     "stars2":"2 Stars",
     "stars3":"3 Stars",
     "stars4":"4 Stars",
-    "stars5":"5 Stars"
+    "stars5":"5 Stars",
+    "sendComments": "Send Comments",
+    "sendComment": "Send Comment"
 }
